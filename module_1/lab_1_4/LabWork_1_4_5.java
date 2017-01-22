@@ -1,4 +1,4 @@
-package lab_1_4;
+package module_1.lab_1_4;
 
 /**
  * Created by andrew on 19.01.17.
