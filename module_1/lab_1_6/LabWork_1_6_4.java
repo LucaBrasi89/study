@@ -13,18 +13,41 @@ public class LabWork_1_6_4 {
 
     public static void main(String[] args) {
 
-        int searching_val = 9;
+        int searching_val = 4;
         /*создадим массив*/
         int[] arr = new int[10];
         for (int i = 0; i < arr.length; i++) {
-            System.out.printf("%dth item contain %d value %n", i, (i*i));
-            arr[i] = i*i;
+            System.out.printf("%dth item contain %d value %n", i, (i * i));
+            arr[i] = i * i;
 
         }
         System.out.println();
 
-        int res = Arrays.binarySearch(arr, searching_val);
-        System.out.printf("Value %d was found in %dth position ", searching_val,res);
+
+        int begin = 0;
+        int end = arr.length;
+        int middle = (arr.length) / 2;
+
+
+        while (searching_val != middle) {
+
+            System.out.println(middle);
+            if (searching_val > arr[middle]) {
+
+                begin = ++middle;
+                end = (end - middle) /2;
+
+            } else {
+
+                begin =
+                end = middle;
+
+            }
+
+        }
+        System.out.println(middle);
+
+
     }
 
 }

@@ -1,8 +1,11 @@
-package lab_2_1.lab_2_2_1;
+package module_2.src.lab_2_1.lab_2_2_1;
 
 /**
  * Created by andrew on 28.01.17.
  */
+    /*Сочетает в себе задания 2.1.3 - 2.1.5*/
+
+
 public class Computer {
 
     private String manufacturer;
@@ -54,8 +57,16 @@ public class Computer {
 
     public int getFrequencyCPU() {
 
-        System.out.println(frequencyCPU);
         return frequencyCPU;
+    }
+
+
+    public void view() {
+
+        System.out.println("Manufacter: " + getManufacturer());
+        System.out.println("Frequence: " + getFrequencyCPU());
+        System.out.println("Price: " + getPrice() +" $\n\n");
+
     }
 
 

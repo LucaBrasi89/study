@@ -1,6 +1,6 @@
-package lab_2_1.lab_2_2_3;
+package module_2.src.lab_2_1.lab_2_2_3;
 
-import lab_2_1.lab_2_2_1.Computer;
+import module_2.src.lab_2_1.lab_2_2_1.Computer;
 
 /**
  * Created by andrew on 28.01.17.
@@ -25,16 +25,24 @@ public class PCs {
             computers[i].setFrequencyCPU(2000);
             computers[i].setManufacturer("ASUS");
 
-        for (Computer computer : computers) {
-
-            computer.setPrice(1000);
-
-            int i1 = 05C;
-
-
 
         }
 
-    }
+        int basePrice = 1000;
+        int tenPercents = (int) (basePrice * 0.1);
+        for (Computer computer : computers) {
 
+            computer.setPrice(basePrice);
+            basePrice += tenPercents;
+
+        }
+
+        for (Computer computer : computers) {
+
+            computer.view();
+        }
+
+
+
+    }
 }
