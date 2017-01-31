@@ -13,7 +13,7 @@ public class LabWork_1_6_4 {
 
     public static void main(String[] args) {
 
-        int searching_val = 144;
+        int searching_val = 169;
         /*создадим массив*/
         int[] arr = new int[20];
         for (int i = 0; i < arr.length; i++) {
@@ -23,38 +23,22 @@ public class LabWork_1_6_4 {
         }
         System.out.println();
 
-
         int begin = 0;
-        int end = arr.length-1;
+        int end = arr.length - 1;
         int middle = (arr.length) / 2;
-
 
         while (true) {
 
-            System.out.println(middle);
             if (searching_val > arr[middle]) {
-
                 begin = ++middle;
-                middle = (begin + end) /2;
-
+                middle = (begin + end) / 2;
             } else if (searching_val < arr[middle]) {
-
                 end = --middle;
-                middle = (begin + end) /2;
-
-            }
-
-            else {
-
-                System.out.println(middle);
+                middle = (begin + end) / 2;
+            } else {
                 break;
-
             }
-
         }
-        System.out.printf("Searching value is placed in %d index", middle);
-
-
+        System.out.printf("Searching value is placed in %dth index \n\n", middle);
     }
-
 }
