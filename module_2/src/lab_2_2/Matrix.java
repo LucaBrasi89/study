@@ -42,24 +42,31 @@ public class Matrix {
 
     public void multiplication(int[][] matrix_vals1, int[][] matrix_vals2) {
 
-        int[][] matrix_result = new int[3][3];
+        int[][] matrix_result = new int[matrix_vals1.length][matrix_vals2.length];
 
-        for (int i = 0; i < matrix_vals1.length; i++) {
-            for (int externalJ = 0; externalJ < matrix_vals1.length; externalJ++) {
-                int sum_of_expression = 0;
-                for (int internalJ = 0; internalJ < matrix_vals1.length; internalJ++) {
-                    sum_of_expression += (matrix_vals1[i][internalJ] * matrix_vals2[internalJ][i]);
+        int rowMatrixResult = matrix_vals1.length;
+        int colMatrixResult = matrix_vals1.length;
+
+        for (int i = 0; i < rowMatrixResult; i++) { //rows of m1
+            for (int j = 0; j < rowMatrixResult; j++) { //columns m2
+                for (int k = 0; k < rowMatrixResult; k++) { //columns m1
+
+                    matrix_result[i][j] += matrix_vals1[i][k] * matrix_vals2[k][j];
                 }
-                matrix_result[i][externalJ] = sum_of_expression;
             }
         }
 
         System.out.println("\n\n\nMultiplying result: ");
 
-        for (int[] arr : matrix_result) {
+        for (int[] arr : matrix_result)
+
+        {
             System.out.println(Arrays.toString(arr));
         }
+
     }
+
+
 }
 
 
