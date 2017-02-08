@@ -1,4 +1,4 @@
-package lab_2_5;
+package module_2.src.lab_2_5;
 
 /**
  * Created by andrew on 05.02.17.
@@ -11,6 +11,7 @@ public class UseMyInitTest {
         myInit1.printArray();
         MyInitTest myInit2  = new MyInitTest();
         myInit2.printArray();
+
     }
 
 }

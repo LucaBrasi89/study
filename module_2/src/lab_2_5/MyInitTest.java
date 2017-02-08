@@ -1,4 +1,4 @@
-package lab_2_5;
+package module_2.src.lab_2_5;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
@@ -18,13 +18,23 @@ import java.util.Arrays;
  */
 public class MyInitTest {
 
-    private int[] arr = new int[10];
+    // по усливию задания 2.5.3 сделано STATIC.
+    /*особой разницы я не заметил.*/
+
+    private static int[] arr = new int[10];
 
     static {
         System.out.println("Static initialization block 1");
         System.out.println("Static initialization block 2");
     }
 
+
+    // по усливию задания 2.5.4 сделано STATIC.
+    /*теперь данное поле выводится один раз. При нестатичесоком состоянии
+     выводилось 2 раза. WTF?
+      З.Ы. думаю что это из-за единоразовой загрузки статического поля при
+      первом вызове класса, однако так до конца и не знаю... */
+    static
     {
         System.out.println("non-static initialization block 1");
         System.out.println("nons-static initialization block 2");
