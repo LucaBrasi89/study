@@ -5,8 +5,8 @@ package lab_2_7.Zoo.Mammal;
  */
 public class MonkeyStyle extends Mammal {
 
-    @Override
-    public void setFoodName(String foodName) {
-        super.setFoodName("Banana");
+    public MonkeyStyle()
+    {
+        setFoodName("Banana");
     }
 }

@@ -1,5 +1,7 @@
 package module_2.src.lab_2_7;
 
+import java.util.Random;
+
 /**
  * Created by:  Andrew Sotnikov aka Luca Brasi
  * date:        14.02.17
@@ -22,6 +24,7 @@ public class Device {
         setManufacter(manufacter);
         setPrice(price);
         setSerialNumber(serialNumber);
+        hashCode();
 
     }
 
@@ -65,9 +68,13 @@ public class Device {
             System.out.println("Objects is not equals ");
             return false;
 
-        } else if (other instanceof Device)
-        {
-            System.out.println("Objects is equals ");
+        } else if (other == this) {
+
+            System.out.println("Object is equals to each other");
+            return false;
+
+        } else if (other instanceof Device) {
+            System.out.printf("%s is instance of Device but not same \n", other.getClass().getSimpleName());
             return true;
         } else {
             System.out.println("Objects is not equals ");
@@ -75,5 +82,17 @@ public class Device {
         }
 
     }
+
+
+    @Override
+    public int hashCode() {
+
+        Random rand = new Random();
+        int result = (int) (31 * 100000 * rand.nextDouble());
+
+        return result;
+
+    }
+
 
 }
