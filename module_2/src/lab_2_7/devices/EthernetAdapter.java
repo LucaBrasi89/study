@@ -1,6 +1,4 @@
-package module_2.src.lab_2_7;
-
-import java.beans.EventHandler;
+package module_2.src.lab_2_7.devices;
 
 /**
  * Created by:  Andrew Sotnikov aka Luca Brasi
@@ -49,24 +47,6 @@ public class EthernetAdapter extends Device {
     }
 
 
-    @Override
-    public boolean equals(Object other) {
 
-        if (other == null) {
-            System.out.println("Objects is not equals ");
-            return false;
 
-        } else if (other == this) {
-            System.out.println("This is same object...");
-            return true;
-
-        } else if (other instanceof EthernetAdapter) {
-            System.out.println("Objects is equals ");
-            return true;
-        } else {
-            System.out.println("Objects is not equals ");
-            return false;
-        }
-
-    }
 }

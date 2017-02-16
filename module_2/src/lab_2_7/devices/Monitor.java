@@ -1,4 +1,4 @@
-package module_2.src.lab_2_7;
+package module_2.src.lab_2_7.devices;
 
 /**
  * Created by:  Andrew Sotnikov aka Luca Brasi
@@ -44,26 +44,8 @@ public class Monitor extends Device {
                 '}';
     }
 
-    @Override
-    public boolean equals(Object other) {
 
-        if (other == null) {
-            System.out.println("Objects is not equals ");
-            return false;
 
-        } else if (other == this) {
-            System.out.println("This is same object... ");
-            return true;
-
-        } else if (other instanceof Monitor) {
-            System.out.println("Objects is equals ");
-            return true;
-        } else {
-            System.out.println("Objects is not equals ");
-            return false;
-        }
-
-    }
 
 
 }
