@@ -6,6 +6,9 @@ import static java.lang.Math.*;
  * Created by:  Andrew Sotnikov aka Luca Brasi
  * date:        20.02.17
  */
+
+ /*===== LAB WORK 2.7.7 =====*/
+
 class Circle extends Shape {
 
     private double radius;

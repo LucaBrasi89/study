@@ -7,6 +7,9 @@ import static java.lang.Math.pow;
  * Created by:  Andrew Sotnikov aka Luca Brasi
  * date:        20.02.17
  */
+
+/*===== LAB WORK 2.7.8 =====*/
+
 class Rectangle extends Shape {
 
 

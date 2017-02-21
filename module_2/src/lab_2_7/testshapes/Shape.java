@@ -6,6 +6,9 @@ import sun.security.provider.SHA;
  * Created by:  Andrew Sotnikov aka Luca Brasi
  * date:        17.02.17
  */
+
+/*===== LAB WORK 2.7.6 =====*/
+
 public class Shape {
 
     private String shapeColor;

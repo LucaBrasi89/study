@@ -8,6 +8,9 @@ import java.util.SplittableRandom;
  * Created by:  Andrew Sotnikov aka Luca Brasi
  * date:        20.02.17
  */
+
+/*===== LAB WORK 2.7.9 =====*/
+
 public class Triangle extends Shape {
 
     private double a;
