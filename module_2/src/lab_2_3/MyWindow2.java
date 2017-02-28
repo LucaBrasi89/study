@@ -1,4 +1,4 @@
-package module_2.src.lab_2_3;
+package lab_2_3;
 
 /**
  * Created by andrew on 02.02.17.
