@@ -1,4 +1,4 @@
-package module_2.src.lab_2_7.testshapes;
+package lab_2_7.testshapes;
 
 import static java.lang.Math.PI;
 import static java.lang.Math.pow;

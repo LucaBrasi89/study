@@ -1,4 +1,4 @@
-package module_2.src.lab_2_7.devices;
+package lab_2_7.devices;
 
 /**
  * Created by:  Andrew Sotnikov aka Luca Brasi
