@@ -1,6 +1,6 @@
-package module_2.src.lab_2_1.lab_2_2_3;
+package lab_2_1.lab_2_2_3;
 
-import module_2.src.lab_2_1.lab_2_2_1.Computer;
+import lab_2_1.lab_2_2_1.Computer;
 
 /**
  * Created by andrew on 28.01.17.
