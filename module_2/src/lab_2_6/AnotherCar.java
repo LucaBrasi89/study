@@ -1,5 +1,6 @@
-package module_2.src.lab_2_6;
-import example.testpack.Main;
+package lab_2_6;
+
+
 
 /**
  * Created by andrew on 10.02.17.

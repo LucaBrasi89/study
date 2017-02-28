@@ -1,4 +1,4 @@
-package module_2.src.lab_2_6.shapes;
+package lab_2_6.shapes;
 
 import static java.lang.Math.sqrt;
 

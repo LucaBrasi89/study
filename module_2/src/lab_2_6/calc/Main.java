@@ -1,6 +1,6 @@
-package module_2.src.lab_2_6.calc;
+package lab_2_6.calc;
 
-import module_2.src.lab_2_6.shapes.Triangle;
+import lab_2_6.shapes.Triangle;
 
 /**
  * Created by andrew on 11.02.17.
