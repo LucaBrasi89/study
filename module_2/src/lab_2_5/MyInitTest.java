@@ -1,4 +1,4 @@
-package module_2.src.lab_2_5;
+package lab_2_5;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
