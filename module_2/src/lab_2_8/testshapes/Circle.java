@@ -9,7 +9,7 @@ import static java.lang.Math.*;
 
  /*===== LAB WORK 2.7.7 =====*/
 
-class Circle extends Shape implements Comparetable {
+class Circle extends Shape implements Comparetable, java.util.Comparator<Circle> {
 
     private double radius;
 
@@ -42,7 +42,6 @@ class Circle extends Shape implements Comparetable {
     }
 
 
-
     @Override
     public int compareTo(Shape toCompare) {
 
@@ -50,5 +49,20 @@ class Circle extends Shape implements Comparetable {
         if (this.calcArea() < toCompare.calcArea()) return -1;
         else return 0;
 
+    }
+
+    @Override
+    public int compare(Circle o1, Circle o2) {
+
+//        получим первые символы строки и сравним их
+        char o1symb = o1.getShapeColor().charAt(0);
+        char o2symb = o2.getShapeColor().charAt(0);
+
+        if (o1symb > o2symb)
+            return 1;
+        else if (o1symb < o2symb)
+            return -1;
+        else
+            return 0;
     }
 }

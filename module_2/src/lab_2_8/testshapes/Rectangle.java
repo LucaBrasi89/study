@@ -10,7 +10,7 @@ import static java.lang.Math.pow;
 
 /*===== LAB WORK 2.7.8 =====*/
 
-class Rectangle extends Shape implements java.lang.Comparable<Rectangle> {
+public class Rectangle extends Shape implements java.lang.Comparable<Rectangle> {
 
 
     private double height;
@@ -61,5 +61,6 @@ class Rectangle extends Shape implements java.lang.Comparable<Rectangle> {
         else return 0;
 
     }
+
 
 }
