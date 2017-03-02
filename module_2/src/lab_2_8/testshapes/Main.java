@@ -16,8 +16,6 @@ import java.util.Arrays;
     name. Print result to console.
 * */
 
-
-
 public class Main {
 
     public static void main(String[] args) {
@@ -46,14 +44,9 @@ public class Main {
 */
         Arrays.sort(shapes, new ShapeColorComparator());
         for (Shape shape: shapes) {
-            System.out.println(shape);
+            shape.draw();
         }
 
-
-
-
-
     }
-
 
 }

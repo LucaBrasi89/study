@@ -20,6 +20,13 @@ class Circle extends Shape implements Comparetable, java.util.Comparator<Circle>
 
     }
 
+    @Override
+    public void draw() {
+
+        System.out.println(this);
+
+    }
+
     public double calcArea() {
 
         return (PI * pow(radius, 2));

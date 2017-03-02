@@ -51,6 +51,11 @@ public class Triangle extends Shape implements Comparetable {
         this.c = c;
     }
 
+    @Override
+    public void draw() {
+        System.out.println(this);
+    }
+
     public double calcArea() {
 
         double s = (a + b + c) / 2;

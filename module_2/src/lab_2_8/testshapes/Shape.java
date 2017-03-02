@@ -14,12 +14,8 @@ abstract class Shape implements Drawable {
 
     private String shapeColor;
 
-    public void draw() {
-
-        System.out.println(' ');
-
-    }
-
+//    тут метод абстрактый, ибо на данном этапе полностью его не реализуешь
+    public abstract void draw();
 
     public Shape(String shapeColor) {
         setShapeColor(shapeColor);

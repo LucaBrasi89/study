@@ -40,6 +40,12 @@ public class Rectangle extends Shape implements java.lang.Comparable<Rectangle> 
         this.length = length;
     }
 
+    @Override
+    public void draw() {
+
+        System.out.println(this);
+    }
+
     public double calcArea() {
 
         return (length * height);
