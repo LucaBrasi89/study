@@ -1,7 +1,5 @@
 package lab_2_9;
 
-import example.testpack.Main;
-
 import java.util.Arrays;
 
 /**
