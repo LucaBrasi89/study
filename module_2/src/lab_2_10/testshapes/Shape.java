@@ -41,4 +41,10 @@ class Shape {
         return shape;
     }
 
+    public void draw() {
+
+        System.out.println(this);
+
+    }
+
 }

@@ -1,6 +1,7 @@
 package lab_2_10.testshapes;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * Created by:  Andrew Sotnikov aka Luca Brasi
@@ -21,12 +22,29 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Shape sh1 = Shape.parseShape("Rectangle:RED:10,20");
-        System.out.println(sh1);
-        Shape sh2 = Shape.parseShape("Triangle:PURPLE:40,40,40");
-        System.out.println(sh2);
-        Shape sh3 = Shape.parseShape("Circle:ORANGE:15");
-        System.out.println(sh3);
+        System.out.println("Enter the length of shapes array");
+        Scanner sc1 = new Scanner(System.in);
+        int arrLength = Integer.parseInt(sc1.nextLine());
+//        массив тел
+        Shape[] shapes = new Shape[0];
+//        текущая строка с фигурой
+        String curInputStr;
+        for (int i = 0; i < arrLength; i++) {
+            curInputStr = sc1.nextLine();
+            shapes= Arrays.copyOf(shapes, shapes.length + 1);
+            shapes[shapes.length-1] = Shape.parseShape(curInputStr);
+        }
+        sc1.close();
 
+        for (Shape sh: shapes ) {
+            sh.draw();
+
+        }
+
+        /*
+        Rectangle:RED:10,20
+        Triangle:PURPLE:40,40,40
+        Circle:ORANGE:15
+        */
     }
 }
