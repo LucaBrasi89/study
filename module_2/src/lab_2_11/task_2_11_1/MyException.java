@@ -1,4 +1,4 @@
-package lab_2_11;
+package lab_2_11.task_2_11_1;
 
 /**
  * Created by andrew on 11.03.17.

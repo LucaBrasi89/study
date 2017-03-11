@@ -1,4 +1,4 @@
-package lab_2_11;
+package lab_2_11.task_2_11_1;
 
 /* 1) Create your own exception class MyException using the extends keyword.
         Write a constructor for this class that takes a String argument and
@@ -11,21 +11,13 @@ package lab_2_11;
  */
 
 
-public class MyTest_2 {
+public class MyTest {
 
     public static void main(String[] args) {
-
         try {
-            MyTest_2.test();
+        throw new MyException("damn. Another exception");
         } catch (MyException e) {
-            e.printStackTrace();
+            e.printMessage();
         }
-    }
-
-
-    public static void test() throws MyException {
-
-        throw new MyException("Exception");
-
     }
 }

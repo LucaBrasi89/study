@@ -1,4 +1,4 @@
-package lab_2_11;
+package lab_2_11.task_2_11_1;
 
 /* 3) Define an MyTest object reference and initialize it to null. Try to
 call a method through this reference. Now wrap the code in a try-catch clause
