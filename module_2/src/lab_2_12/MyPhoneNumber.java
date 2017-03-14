@@ -1,6 +1,7 @@
 package lab_2_12;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * Created by andrew on 12.03.17.
@@ -29,6 +30,49 @@ public class MyPhoneNumber {
         }
 
     }
+
+    public void sortByName() {
+
+        Arrays.sort(phoneNumbers, new Comparator<PhoneNumber>() {
+            @Override
+            public int compare(PhoneNumber o1, PhoneNumber o2) {
+
+                char[] first = o1.name.toLowerCase().toCharArray();
+                char[] second = o2.name.toLowerCase().toCharArray();
+                int minLength = Math.min(first.length, second.length);
+                for (int i = 0; i < minLength; i++) {
+                    if (first[i] > second[i]) {
+                        return 1;
+                    } else if (first[i] < second[i]) {
+                        return -1;
+                    }
+                }
+                return -1;
+            }
+        });
+    }
+
+
+    public void sortByPhoneNumber() {
+        Arrays.sort(phoneNumbers, new Comparator<PhoneNumber>() {
+            @Override
+            public int compare(PhoneNumber o1, PhoneNumber o2) {
+
+                char[] first = o1.phone.toLowerCase().toCharArray();
+                char[] second = o2.phone.toLowerCase().toCharArray();
+                int minLength = Math.min(first.length, second.length);
+                for (int i = 0; i < minLength; i++) {
+                    if (first[i] > second[i]) {
+                        return 1;
+                    } else if (first[i] < second[i]) {
+                        return -1;
+                    }
+                }
+                return -1;
+            }
+        });
+    }
+
 
     static class PhoneNumber {
 
