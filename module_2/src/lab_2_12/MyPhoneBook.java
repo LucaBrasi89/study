@@ -6,7 +6,7 @@ import java.util.Comparator;
 /**
  * Created by andrew on 12.03.17.
  */
-public class MyPhoneNumber {
+public class MyPhoneBook {
 
     private PhoneNumber[] phoneNumbers = new PhoneNumber[0];
 

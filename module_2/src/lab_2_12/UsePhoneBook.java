@@ -3,11 +3,11 @@ package lab_2_12;
 /**
  * Created by andrew on 12.03.17.
  */
-public class UsePhoneNumbers {
+public class UsePhoneBook {
 
     public static void main(String[] args) {
 
-        MyPhoneNumber phNumb = new MyPhoneNumber();
+        MyPhoneBook phNumb = new MyPhoneBook();
         phNumb.addPhoneNumber("Billy", "066-846-02-15");
         phNumb.addPhoneNumber("Ann", "050-221-15-64");
         phNumb.addPhoneNumber("Asuka", "096-00-13");
