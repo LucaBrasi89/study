@@ -145,5 +145,19 @@ public class MyPhone {
                         '}';
             }
         }
+
+        class Camera {}
+
+        class Bluetooth {}
+
+        class PowerOnButton {}
+
+        class PhoneDisplay {}
+
+        class PhoneSpeaker {}
+
+        class PhoneBattery {}
+
+        class PhoneCharger {}
     }
 }
