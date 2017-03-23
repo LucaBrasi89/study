@@ -1,4 +1,4 @@
-package lab_2_14;
+package lab_2_14.TestGenerics1;
 
 import lab_2_2.A;
 

@@ -1,4 +1,4 @@
-package lab_2_14;
+package lab_2_14.TestGenerics1;
 
 /**
  * Created by andrew on 19.03.17.
