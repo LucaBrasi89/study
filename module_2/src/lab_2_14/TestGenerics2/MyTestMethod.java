@@ -35,5 +35,23 @@ public class MyTestMethod {
         }
         System.out.println();
     }
+
+    public static <T extends Number & Comparable<T>> void calcSum(T[] arr, T maxElem) {
+
+        int counter = 0;
+        Double sum = 0.0;
+
+        Arrays.sort(arr);
+        MyTestMethod.printVals(arr);
+
+        for (T elem : arr) {
+            if (elem.compareTo((T) maxElem) == 1) {
+                sum = sum + elem.doubleValue();
+            }
+        }
+        System.out.println("Сумма элементов которое больше чем " + maxElem +
+                " - составляет " + sum);
+
+    }
 }
 

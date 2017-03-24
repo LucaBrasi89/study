@@ -35,6 +35,7 @@ public class UseMyTestMethod {
 
     public static void main(String[] args) {
 
+        System.out.println("\n----- Lab 2.14.2 -----");
 //        нагеним рандомов
         Random rand = new Random();
 //        массив интов
@@ -42,15 +43,22 @@ public class UseMyTestMethod {
         for (int i = 0; i < intArr.length; i++) {
             intArr[i] = rand.nextInt(100);
         }
+        System.out.println("\nArray of integers");
         MyTestMethod.<Integer>calcNum(intArr, 20);
-
 //        массив даблов
         Double[] doubleArr = new Double[10];
         for (int i = 0; i < doubleArr.length; i++) {
             doubleArr[i] = (rand.nextInt(100))*1.123;
         }
+        System.out.println("\nArray of Doubles");
+        MyTestMethod.<Double>calcNum(doubleArr,  20.00);
 
-        MyTestMethod.<Double>calcNum(doubleArr, (double) 20);
+        System.out.println("\n----- Lab 2.14.3 -----");
+        System.out.println("\nArray of integers");
+        MyTestMethod.<Integer>calcSum(intArr, 12);
+        System.out.println();
+        System.out.println("\nArray of Doubles");
+        MyTestMethod.<Double>calcSum(doubleArr, 15.00);
 
 
     }
