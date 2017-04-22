@@ -34,8 +34,6 @@ public class Main {
                 e.printStackTrace();
             }
         }
-        FileOutputStream output = new FileOutputStream(Files.walk(Paths.get
-                (source));
 
 
     }
