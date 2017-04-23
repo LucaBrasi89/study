@@ -4,6 +4,7 @@ import java.io.*;
 
 /**
  * Created by andrew on 23.04.17.
+ *
  */
 public class DeserializeDemo {
 
@@ -24,10 +25,6 @@ public class DeserializeDemo {
             e.printStackTrace();
         }
 
-
-
-
     }
-
 
 }

@@ -7,7 +7,7 @@ public class Employee implements java.io.Serializable {
 
     private String name;
     private String addressl;
-    private int SSN;
+    private transient int SSN;
     private int number;
 
     public String getName() {
