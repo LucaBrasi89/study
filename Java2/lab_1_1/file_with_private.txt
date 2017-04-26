@@ -1,0 +1,9 @@
+private keyword
+something like main
+some statement
+
+another private
+
+private again
+
+... and i am private, and i will be replaced

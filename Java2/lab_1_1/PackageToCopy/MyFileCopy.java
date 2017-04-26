@@ -15,6 +15,7 @@ import java.nio.file.Paths;
  *          copies one file (could be binary!) to another (args[0] to args[1]).
  *
  */
+
 public class MyFileCopy {
 
     public static void main(String[] args) throws IOException {
