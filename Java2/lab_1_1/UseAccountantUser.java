@@ -28,11 +28,9 @@ public class UseAccountantUser {
                 break;
             }
             account.testUsers(s);
-
         }
-        account.exitFromDb();
 
-
+        account.printFile();
     }
 
 }

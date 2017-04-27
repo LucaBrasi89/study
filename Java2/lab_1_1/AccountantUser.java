@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -15,58 +16,67 @@ import java.nio.file.Paths;
 public class AccountantUser {
 
     public final String fileName = "/media/Maindata/Дело/study/Java Exersises/Java2/lab_1_1/company.txt";
-    public RandomAccessFile company;
-    public File file;
+    public RandomAccessFile file;
+    private boolean fileIsEmpty = true;
 
 
     public AccountantUser() throws IOException {
 
 //        если файл есть - удалим его
-        file = new File(fileName);
-        if (file.exists()) {
-            System.out.println("Есть такой файл, удалим его!");
-            Files.delete(Paths.get(fileName));
-        }
-        company = new RandomAccessFile(new File(fileName), "rw");
-        company.writeChars("*TEST STRING*");
+        System.out.println("Удалим файл с прошлого раза");
+        Files.delete(Paths.get(fileName));
+        file = new RandomAccessFile(new File(fileName), "rw");
     }
 
-    public void testUsers(String userName) throws IOException {
+    @Override
+    protected void finalize() throws Throwable {
+
+        file.close();
+        ;
+
+    }
+
+    public int testUsers(String userName) throws IOException {
 
         String line = "";
-        company.seek(0);
-        while ((line = company.readLine()) != null) {
-
-            System.out.println(company.getFilePointer());
-//            если нет такого имени - добавим его в
+        boolean userProcessed = false;
+//        если файл пустой, то запишем хоть одну строку для коректной работы
+        if (fileIsEmpty) {
+            file.writeBytes(userName + ":" + "0\n");
+            fileIsEmpty = false;
+            return 0;
+        }
+        file.seek(0);
+        while ((line = file.readLine()) != null) {
+            Long pointer = file.getFilePointer() - 1;
+//            если нет такого имени - добавим его
             String name = line.split(":")[0];
-            System.out.println(name);
-            if (!(name.equals(userName))) {
-                System.out.println("нету такого, добавим");
-                company.writeChars(userName + ":" + "0\n");
-
+            int number = Integer.parseInt(line.split(":")[1]);
+            if (name.equals(userName)) {
+                System.out.println("\nесть такой");
+                file.seek(pointer - line.length());
+                file.writeBytes(userName + ":" + (++number) + "\n");
+                userProcessed = true;
+                break;
             }
+            System.out.println(file.getFilePointer());
         }
 
-
-    }
-
-    public void printFile() {
-
-
-    }
-
-
-    public void exitFromDb() {
-
-        try {
-
-            company.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (!userProcessed) {
+//      походу такого юзера нет и мы находимся в конце файла
+            file.writeBytes(userName + ":0\n");
         }
 
+        return 0;
+    }
 
+    public void printFile() throws IOException {
+
+        file.seek(0);
+        String line = "";
+        while ((line = file.readLine()) != null) {
+            System.out.println(line);
+        }
     }
 
 
@@ -78,6 +88,4 @@ public class AccountantUser {
             e.printStackTrace();
         }
     }
-
-
 }
