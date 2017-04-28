@@ -1,9 +1,11 @@
 package lab_1_2.SerializeUser;
 
+import java.io.Serializable;
+
 /**
  * Created by andrew on 23.04.17.
  */
-public class User {
+public class User implements Serializable {
 
     private String name;
     private String lastname;
@@ -12,6 +14,12 @@ public class User {
 
     public User() {
 
+    }
+
+    public User(String name, String lastname, int age) {
+        setName(name);
+        setLastname(lastname);
+        setAge(age);
     }
 
     public User(String name, String lastname) {
