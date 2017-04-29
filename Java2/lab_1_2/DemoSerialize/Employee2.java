@@ -20,19 +20,18 @@ import java.io.*;
 public class Employee2 implements Externalizable {
 
     private String name;
-    private String addressl;
-    private transient int SSN;
+    private String address;
+    private int SSN;
     private int number;
 
-    public Employee2(String name, String addressl, int SSN, int number) {
+    public Employee2(String name, String address, int SSN, int number) {
         this.name = name;
-        this.addressl = addressl;
+        this.address = address;
         this.SSN = SSN;
         this.number = number;
     }
 
     public Employee2() {
-
 
     }
 
@@ -45,11 +44,11 @@ public class Employee2 implements Externalizable {
     }
 
     public String getAddressl() {
-        return addressl;
+        return address;
     }
 
     public void setAddressl(String addressl) {
-        this.addressl = addressl;
+        this.address = addressl;
     }
 
     public int getSSN() {
@@ -72,7 +71,7 @@ public class Employee2 implements Externalizable {
     public String toString() {
         return "Employee{" +
                 "name='" + name + '\'' +
-                ", addressl='" + addressl + '\'' +
+                ", addressl='" + address + '\'' +
                 ", SSN=" + SSN +
                 ", number=" + number +
                 '}';
@@ -83,9 +82,9 @@ public class Employee2 implements Externalizable {
 
 
         out.writeObject(name);
-        out.writeObject(addressl);
-        out.writeObject(SSN);
-        out.writeObject(number);
+        out.writeObject(address);
+        out.writeInt(SSN);
+        out.writeInt(number);
 
 
     }
@@ -94,11 +93,10 @@ public class Employee2 implements Externalizable {
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
 
         name = (String) in.readObject();
-        addressl = (String) in.readObject();
+        address = (String) in.readObject();
         SSN = in.readInt();
         number = in.readInt();
 
-        System.out.println(this);
 
     }
 }
