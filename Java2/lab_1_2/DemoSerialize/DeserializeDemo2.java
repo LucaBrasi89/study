@@ -26,9 +26,26 @@ public class DeserializeDemo2 {
                 new Employee2("Ann", "Kyiv", 125, 053)};
 
 
+        FileOutputStream fos = new FileOutputStream
+                ("Java2/lab_1_2/DemoSerialize/users.ser");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+
         for (Employee2 user : users) {
-            user.writeExternal((ObjectOutput) user);
+            oos.writeObject(user);
         }
+        oos.flush();
+        oos.close();
+
+
+        FileInputStream fis = new FileInputStream("Java2/lab_1_2/DemoSerialize/users.ser");
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        for (Employee2 user : users) {
+            ois.readObject();
+        }
+        ois.close();
+
+
 
     }
 

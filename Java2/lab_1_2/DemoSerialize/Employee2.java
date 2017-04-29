@@ -81,18 +81,24 @@ public class Employee2 implements Externalizable {
     @Override
     public void writeExternal(ObjectOutput out) throws IOException {
 
-        FileOutputStream fis = new FileOutputStream("Java2/lab_1_2/DemoSerialize/users.ser");
+
         out.writeObject(name);
         out.writeObject(addressl);
         out.writeObject(SSN);
         out.writeObject(number);
-        fis.flush();
-        fis.close();
+
 
     }
 
     @Override
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+
+        name = (String) in.readObject();
+        addressl = (String) in.readObject();
+        SSN = in.readInt();
+        number = in.readInt();
+
+        System.out.println(this);
 
     }
 }
