@@ -1,4 +1,4 @@
-package Lambda;
+package lab_1_7.Lambda;
 
 import java.util.ArrayList;
 import java.util.List;

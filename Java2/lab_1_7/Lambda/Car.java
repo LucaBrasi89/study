@@ -1,4 +1,4 @@
-package Lambda;
+package lab_1_7.Lambda;
 
 /**
  * Created by andrew on 29.04.17.
