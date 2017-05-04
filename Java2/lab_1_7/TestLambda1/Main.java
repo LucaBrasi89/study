@@ -3,6 +3,7 @@ package lab_1_7.TestLambda1;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 /**
@@ -31,6 +32,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+//        task 1.7.2
         //        для интов
 //        yes, it can be shorter, but i just want to write multiline lambda
         sumEven(arrInt, elem -> {
@@ -41,7 +43,14 @@ public class Main {
         });
 
         System.out.println(" - - - - - - - ");
-        printJStr(strings, (elem) -> (elem == Character.getNumericValue('J')) );
+        printJStr(strings, (elem) -> (elem == Character.getNumericValue('J')));
+
+        //        task 1.7.3
+        System.out.println(" \n\n- - - - - - - ");
+        updateList();
+        Consumer<String> style = (str) -> System.out.println(str);
+        strings.forEach(style);
+
     }
 
     public static void sumEven(int[] arrInt, Predicate<Integer> prdct) {
@@ -62,14 +71,28 @@ public class Main {
         for (String word : strings) {
 
             ch = word.charAt(0);
-            if (prdct.test(Character.getNumericValue(ch)) ) {
+            if (prdct.test(Character.getNumericValue(ch))) {
                 System.out.print(" " + word);
             }
 
         }
-
-
     }
 
+    //    replace words in strings list to same words in uppercase
+    public static void updateList() {
 
+//        implementation of convertStr;
+        MyConverter myconv = (str -> {
+            if (!MyConverter.isNull(str)) {
+                return str.toUpperCase();
+            } else {
+                return null;
+            }
+        });
+
+//        process of replacing starts here
+        for (int i = 0; i < strings.size(); i++) {
+            strings.set(i, myconv.convertStr(strings.get(i)));
+        }
+    }
 }
