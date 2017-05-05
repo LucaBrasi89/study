@@ -44,6 +44,7 @@ public class Main {
                 "Melon", "Water-melon", "Cherry", "Strawberry", "Plum", "Pineapple", "Apricot", "Avocado");
 
         System.out.println(" - - - - - - ");
+        System.out.println("This words starting from \"A\" letter: \n");
         strings.stream().sorted((String a, String b) -> (a.charAt(0) - b.charAt(0)))
                 .filter(s -> s.startsWith("A"))
                 .forEach(System.out::println);
@@ -61,10 +62,22 @@ public class Main {
         persons.add(new Person("Scott", "male", 33));
         persons.add(new Person("Ann", "female", 37));
         persons.add(new Person("Frank", "male", 21));
+        persons.add(new Person("Eleanora", "female", 23));
 
+        System.out.println("This guys are military mans: \n");
 //        get a military mans
         persons.stream()
                 .filter((elem) -> (elem.getAge() >=18 && elem.getAge() <=27 && elem.getGender() =="male" ))
                 .forEach(System.out::println);
+
+        //                          * TASK 1.7.4.3 *
+        //    calculate a average woman age
+        System.out.println(" - - - - - - \n");
+        double averAge = persons.stream()
+                .filter((elem) -> elem.getGender() =="female")
+                .mapToInt(w -> w.getAge())
+                .average()
+                .getAsDouble();
+        System.out.println("The average woman age is: " + averAge);
     }
 }
