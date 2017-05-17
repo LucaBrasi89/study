@@ -9,14 +9,17 @@ import java.awt.event.*;
 import static java.awt.SystemColor.menu;
 
 /**
- * Created by sotnik on 08.05.17.
+ * Created by Andrew Sotnikov
+ *                               aka Luca Brasi
+ *                                          on 08.05.17.
+ *
  */
 public class MyApp extends JFrame {
 
     private String name;
     private JFrame frame;
     private JTextField textField1;
-    private JTextField textField2;
+    private JTextField textField2; //result field
 
 
     public MyApp(String name) {
@@ -80,15 +83,17 @@ public class MyApp extends JFrame {
         JMenuItem menuItem1 = new JMenuItem("Question",
                 KeyEvent.VK_T);
 
-//        made a focus on textField with "get user name"
+//        creating a action for click on "question" menu item
         menuItem1.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent ev) {
-                        textField1.requestFocus();
+                        String answer = JOptionPane.showInputDialog("Are you ready to undergo test?");
+                        textField2.setText(answer);
+                        frame.requestFocus(); //unfocus
+                        textField1.setText(""); //clear field
                     }
                 }
         );
-
 
         menu.add(menuItem1);
 
@@ -99,6 +104,16 @@ public class MyApp extends JFrame {
 
                 setAccessibleDescription(
                         "This doesn't really do anything");
+
+        //        made a focus on textField with "get user name"
+        menuItem2.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent ev) {
+                        textField1.requestFocus();
+                    }
+                }
+        );
+
         menu.add(menuItem2);
 
     }
@@ -111,9 +126,7 @@ public class MyApp extends JFrame {
 
         myapp.frame.validate();
 
-
     }
-
 
 }
 
