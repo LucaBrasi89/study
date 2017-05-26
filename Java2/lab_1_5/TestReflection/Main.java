@@ -39,7 +39,7 @@ public class Main {
         }
         System.out.println("\nAll methods:");
 //        this is all methods
-        for (Method method: cls.getMethods()) {
+        for (Method method: cls.getDeclaredMethods()) {
             System.out.println("\t" + method.getReturnType() + "   " + method.getName());
 
         }
@@ -51,7 +51,7 @@ public class Main {
         Object instance = constr.newInstance(arguments);
         Object arg = new Integer(9);
 
-        Method setB = cls.getDeclaredMethod("setB");
+        Method setB = cls.getDeclaredMethod("setA");
         setB.invoke(arg);
         System.out.println(instance);
 

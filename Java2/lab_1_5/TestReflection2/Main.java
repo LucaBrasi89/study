@@ -23,15 +23,22 @@ import java.lang.reflect.Field;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IllegalAccessException, NoSuchFieldException {
 
         String myStr = new String("abcd");
         System.out.println("this is myStr: " + myStr + "\n");
         for (Field field : myStr.getClass().getDeclaredFields()) {
             System.out.println(field);
         }
-//        Field privateField = myStr.getClass().getDeclaredField("value");
-        System.out.println("this is myStr: " + myStr);
+
+            Field field = myStr.getClass().getDeclaredField("value");
+            field.setAccessible(true);
+
+            char[] tmpVal =  {'z', 'x', 'c', 'v'};
+            field.set(myStr, tmpVal);
+            field.setAccessible(false);
+
+        System.out.println("\n\nthis is myStr which is changed: " + myStr);
 
     }
 }
