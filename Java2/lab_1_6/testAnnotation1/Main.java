@@ -1,8 +1,5 @@
-package lab_1_6;
+package lab_1_6.testAnnotation1;
 
-import com.sun.corba.se.spi.ior.ObjectKey;
-
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**

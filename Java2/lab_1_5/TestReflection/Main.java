@@ -51,8 +51,8 @@ public class Main {
         Object instance = constr.newInstance(arguments);
         Object arg = new Integer(9);
 
-        Method setB = cls.getDeclaredMethod("setA");
-        setB.invoke(arg);
+        Method setB = cls.getDeclaredMethod("setA", int.class);
+        setB.invoke(c, arg);
         System.out.println(instance);
 
     }

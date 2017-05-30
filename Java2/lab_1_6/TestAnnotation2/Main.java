@@ -1,5 +1,9 @@
 package lab_1_6.TestAnnotation2;
 
+import javax.swing.*;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
+
 /**
  * Created by:  Andrew Sotnikov aka Luca Brasi
  * date:        26.05.17
@@ -25,16 +29,32 @@ public class Main {
 
     @User.MyPermission(PermissionAction.USER_READ)
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchMethodException {
 
         User user1 = new User("Joey");
+        user1.setPermissions(PermissionAction.USER_CHANGE);
+        user1.setPermissions(PermissionAction.USER_READ);
         user1.getPermissions();
+
         User user2 = new User("Monica");
+        user2.setPermissions(PermissionAction.USER_READ);
         user2.getPermissions();
+
         User user3 = new User("Ross");
+        user3.setPermissions(PermissionAction.USER_CHANGE);
         user3.getPermissions();
+
+        Action.readFile(user1);
+        Action.readFile(user2);
+        Action.readFile(user3);
+
+        Action.writeFile(user1);
+        Action.writeFile(user2);
+        Action.writeFile(user3);
 
 
     }
+
+
 
 }

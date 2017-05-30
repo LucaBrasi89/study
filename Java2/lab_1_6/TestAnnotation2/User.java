@@ -2,6 +2,7 @@ package lab_1_6.TestAnnotation2;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
 public class User {
 
     String name;
-    List<PermissionAction> permissions;
+    List<PermissionAction> permissions = new ArrayList<PermissionAction>();
 
 
     public User(String name) {
@@ -29,26 +30,30 @@ public class User {
                 '}';
     }
 
-    public void getPermissions() {
+    public List<PermissionAction> getPermissions() {
 
-        System.out.println();
-        for (PermissionAction permission :  permissions ) {
-            System.out.print(permission);
-        }
-        System.out.println();
+//        System.out.println();
+//        for (PermissionAction permission :  permissions ) {
+//            System.out.print(permission);
+//        }
+//        System.out.println();
+
+        return permissions;
     }
 
     public void setPermissions(PermissionAction permission) {
-        permissions.add(permission);
+        this.permissions.add(permission);
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Retention(RetentionPolicy.RUNTIME)
     public @interface MyPermission {
 
-        PermissionAction value() default PermissionAction.USER_CHANGE;
+        PermissionAction value();
 
     }
-
-
 
 }
