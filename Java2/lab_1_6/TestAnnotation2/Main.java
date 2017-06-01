@@ -31,16 +31,16 @@ public class Main {
 
     public static void main(String[] args) throws NoSuchMethodException {
 
-        User user1 = new User("Joey");
+        User user1 = new User("rwx");
         user1.setPermissions(PermissionAction.USER_CHANGE);
         user1.setPermissions(PermissionAction.USER_READ);
         user1.getPermissions();
 
-        User user2 = new User("Monica");
+        User user2 = new User("rx");
         user2.setPermissions(PermissionAction.USER_READ);
         user2.getPermissions();
 
-        User user3 = new User("Ross");
+        User user3 = new User("wx");
         user3.setPermissions(PermissionAction.USER_CHANGE);
         user3.getPermissions();
 

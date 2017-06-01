@@ -12,25 +12,24 @@ public class Action {
         try {
             Class<?> action = Class.forName("lab_1_6.TestAnnotation2.Action");
             Class<?> userClass = Class.forName("lab_1_6.TestAnnotation2.User");
-            for (PermissionAction permission : user.getPermissions()) {
-                PermissionAction annotPerm = null;
-                try {
-                    annotPerm = action.getDeclaredMethod("writeFile", User.class).getDeclaredAnnotation(User.MyPermission.class).value();
-                } catch (NoSuchMethodException e) {
-                    e.printStackTrace();
-                }
-                if (annotPerm.equals(permission)) {
 
-                    System.out.println("Access allowed for " + user.getName() + ", write is possible");
-                } else {
-//                    System.out.println("Access forbidden!");
-                }
+            PermissionAction annotPerm = null;
+            try {
+                annotPerm = action.getDeclaredMethod("writeFile", User.class).getDeclaredAnnotation(User.MyPermission.class).value();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
             }
+            if (user.getPermissions().contains(annotPerm)) {
+
+                System.out.println("Access allowed for " + user.getName() + ", write is possible");
+            } else {
+                System.out.println("Access forbidden!" + user.getName() + " can't write ");
+            }
+
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
 
 
     }
@@ -42,24 +41,25 @@ public class Action {
         try {
             Class<?> action = Class.forName("lab_1_6.TestAnnotation2.Action");
             Class<?> userClass = Class.forName("lab_1_6.TestAnnotation2.User");
-            for (PermissionAction permission : user.getPermissions()) {
-                PermissionAction annotPerm = action.getDeclaredMethod("readFile", User.class).getDeclaredAnnotation(User.MyPermission.class).value();
-                if (annotPerm.equals(permission)) {
+            PermissionAction annotPerm = action.getDeclaredMethod("readFile", User.class).getDeclaredAnnotation(User.MyPermission.class).value();
 
-                    System.out.println("Access allowed for " + user.getName() + ", read is possible");
-                } else {
-//                    System.out.println("Access forbidden!");
-                }
+            if (user.getPermissions().contains(annotPerm)) {
+
+                System.out.println("Access allowed for " + user.getName() + ", read is possible");
+            } else {
+                System.out.println("Access forbidden!" + user.getName() + " can't read ");
             }
 
-        } catch (ClassNotFoundException e) {
+
+        } catch (
+                ClassNotFoundException e)
+
+        {
             e.printStackTrace();
         }
 
 
     }
-
-
 
 
 }
