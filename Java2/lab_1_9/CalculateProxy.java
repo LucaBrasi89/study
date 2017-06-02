@@ -12,9 +12,11 @@ import java.lang.reflect.Proxy;
 public class CalculateProxy implements InvocationHandler {
 
     Object objCalc;
+    Class[] interfaces;
+    Object[] targets;
 
-    public CalculateProxy(Object target) {
-        this.objCalc = target;
+    public CalculateProxy(Object[] target) {
+        this.targets = target;
     }
 
     @Override
