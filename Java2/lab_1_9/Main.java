@@ -8,16 +8,26 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Calculate calc = new CalculateImpl();
- /*       System.out.println("wihoout proxy");
-        System.out.println(calc.division(221, 21));
-        System.out.println(calc.multiplication(32, 15));*/
+        Calculate calculate = (Calculate) CalculateProxy.newInstance(Calculate.class);
+        if (calculate != null) {
+            int num_1 = 100,
+                    num_2 = 5;
+            System.out.println("number_1 = " + num_1 + "; number_2 = " + num_2);
+            System.out.println("1) mult -> " + calculate.multiplication(num_1, num_2));
+            System.out.println("2) div -> " + calculate.division(num_1, num_2));
+        }
 
-        System.out.println("\n\nafter using proxies:\n");
-        Calculate proxiedCalc = (Calculate) CalculateProxy.newInstance(calc);
-        System.out.println(proxiedCalc.division(100, 9));
-        System.out.println(proxiedCalc.multiplication(12, 52));
+        System.out.println("-------------------------------");
+        CalculateBitwise calc = (CalculateBitwise)calculate;
+        if (calc != null) {
+            int number_1 = 15,
+                    number_2 = 35;
+            System.out.println("number_1 = " + number_1 + "; number_2 = " + number_2);
+            System.out.println("3) or -> " + calc.orBitwise(number_1, number_2));
+            System.out.println("4) and -> " + calc.andBitwise(number_1, number_2));
+        }
+    }
 
     }
 
-}
+
