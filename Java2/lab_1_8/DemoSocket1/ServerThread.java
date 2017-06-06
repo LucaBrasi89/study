@@ -1,12 +1,16 @@
-package demosocket;
+package lab_1_8.DemoSocket1;
+
+import lab_1_8.DemoSocket.Student;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 /**
- * Created by andrew on 04.06.17.
+ * Created by andrew on 06.06.17.
  */
+
+
 public class ServerThread extends Thread {
 
     private Socket s;
@@ -19,17 +23,9 @@ public class ServerThread extends Thread {
     public void run() {
 
         try {
-
-
             ObjectInputStream dis = new ObjectInputStream(s.getInputStream());
-            Student inStudent = (Student) dis.readObject();
-            inStudent.setId(2);
-            System.out.println(inStudent.toString());
-
-            ObjectOutputStream ous = new ObjectOutputStream(s.getOutputStream());
-            ous.writeObject(inStudent);
-            ous.flush();
-            ous.close();
+            System.out.println(dis.readUTF());
+            System.out.println("PONG");
             s.close();
 
         } catch (Exception e) {

@@ -1,4 +1,4 @@
-package lab_1_8;
+package lab_1_8.DemoSocket;
 
 import java.io.Serializable;
 
