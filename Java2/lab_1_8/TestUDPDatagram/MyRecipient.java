@@ -12,7 +12,7 @@ public class MyRecipient {
     public final static String FILE_TO_SEND = "fileToSend.txt";
 
 
-    public static void main (String [] args ) throws IOException {
+    public static void main(String[] args) throws IOException {
         FileInputStream fis = null;
         BufferedInputStream bis = null;
         OutputStream os = null;
@@ -26,25 +26,23 @@ public class MyRecipient {
                     sock = servsock.accept();
                     System.out.println("Accepted connection : " + sock);
                     // send file
-                    File myFile = new File (FILE_TO_SEND);
-                    byte [] mybytearray  = new byte [(int)myFile.length()];
+                    File myFile = new File(FILE_TO_SEND);
+                    byte[] mybytearray = new byte[(int) myFile.length()];
                     fis = new FileInputStream(myFile);
                     bis = new BufferedInputStream(fis);
-                    bis.read(mybytearray,0,mybytearray.length);
+                    bis.read(mybytearray, 0, mybytearray.length);
                     os = sock.getOutputStream();
                     System.out.println("Sending " + FILE_TO_SEND + "(" + mybytearray.length + " bytes)");
-                    os.write(mybytearray,0,mybytearray.length);
+                    os.write(mybytearray, 0, mybytearray.length);
                     os.flush();
                     System.out.println("Done.");
-                }
-                finally {
+                } finally {
                     if (bis != null) bis.close();
                     if (os != null) os.close();
-                    if (sock!=null) sock.close();
+                    if (sock != null) sock.close();
                 }
             }
-        }
-        finally {
+        } finally {
             if (servsock != null) servsock.close();
         }
     }

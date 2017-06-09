@@ -16,7 +16,7 @@ public class MySender {
 
     public final static int FILE_SIZE = 6022386;
 
-    public static void main (String [] args ) throws IOException {
+    public static void main(String[] args) throws IOException {
         int bytesRead;
         int current = 0;
         FileOutputStream fos = null;
@@ -27,25 +27,24 @@ public class MySender {
             System.out.println("Connecting...");
 
             // receive file
-            byte [] mybytearray  = new byte [FILE_SIZE];
+            byte[] mybytearray = new byte[FILE_SIZE];
             InputStream is = sock.getInputStream();
             fos = new FileOutputStream(FILE_TO_RECEIVED);
             bos = new BufferedOutputStream(fos);
-            bytesRead = is.read(mybytearray,0,mybytearray.length);
+            bytesRead = is.read(mybytearray, 0, mybytearray.length);
             current = bytesRead;
 
             do {
                 bytesRead =
-                        is.read(mybytearray, current, (mybytearray.length-current));
-                if(bytesRead >= 0) current += bytesRead;
-            } while(bytesRead > -1);
+                        is.read(mybytearray, current, (mybytearray.length - current));
+                if (bytesRead >= 0) current += bytesRead;
+            } while (bytesRead > -1);
 
-            bos.write(mybytearray, 0 , current);
+            bos.write(mybytearray, 0, current);
             bos.flush();
             System.out.println("File " + FILE_TO_RECEIVED
                     + " downloaded (" + current + " bytes read)");
-        }
-        finally {
+        } finally {
             if (fos != null) fos.close();
             if (bos != null) bos.close();
             if (sock != null) sock.close();

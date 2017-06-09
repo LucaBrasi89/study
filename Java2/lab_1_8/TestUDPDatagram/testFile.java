@@ -12,13 +12,14 @@ public class testFile {
         FileInputStream fis = new FileInputStream("fileToSend.txt");
         FileOutputStream fos = new FileOutputStream("output.txt");
 //        BufferedReader br = new BufferedReader(new FileReader("fileToSend.txt"));
-        byte[] contentInBytes;
+
 
         int i = 0;
 //        System.out.println(br.readLine());
-        while( (i = fis.read() )!= -1) {
+        while ((i = fis.read()) != -1) {
 
-            System.out.print((char)i);
+            System.out.print((char) i);
+            fos.write(111);
         }
 
         fos.flush();
