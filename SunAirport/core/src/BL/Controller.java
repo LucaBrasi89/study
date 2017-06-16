@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by andrew on 05.06.17.
  */
-public interface BusinessLogic {
+public interface Controller {
 
     public List viewArrivalS();
 

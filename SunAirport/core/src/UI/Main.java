@@ -56,12 +56,13 @@ public class Main {
         JTabbedPane tabbedPane = new JTabbedPane();
         JComponent panel1 = new JPanel();
         tabbedPane.addTab("                Arrival                ", panel1);
+        ArrivalInformationBoard aib = new ArrivalInformationBoard();
+        tabbedPane.add(aib);
         tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
 
         JComponent panel2 = new JPanel();
         tabbedPane.addTab("                 Depature              ", panel2);
         tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
-//        tabbedPane.setSize(900,600);
 
 
 
