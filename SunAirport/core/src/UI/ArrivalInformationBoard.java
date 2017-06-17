@@ -18,11 +18,12 @@ public class ArrivalInformationBoard extends JTable {
             "Status"};
 
 
-    Flight[][] data = FetchFlights.getArrivals();
+    Object[][] data = FetchFlights.getArrivals();
 
     public ArrivalInformationBoard() {
 
-        final JTable table = new JTable(data, columnNames);
+        JTable table = new JTable(data, columnNames);
+
 
 
     }
