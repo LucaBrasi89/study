@@ -4,6 +4,8 @@ import DL.FetchFlights;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 /**
@@ -40,8 +42,9 @@ public class Main {
         c.gridx = 0;
         c.gridy = 0;
         c.gridwidth = 2;
-        c.insets = new Insets(10,0,10,0);
-        JLabel invitationText = new JLabel("Welcome to Sunrise Airport!", SwingConstants.CENTER);
+        c.insets = new Insets(10,0,40,0);
+        JLabel invitationText = new JLabel("Welcome to SunRise Airport!", SwingConstants.CENTER);
+        invitationText.setFont(new Font("Ubuntu", Font.BOLD, 22));
 
         panel.add(invitationText, c);
 
@@ -69,13 +72,17 @@ public class Main {
 
         JTabbedPane tabbedPane = new JTabbedPane();
         JComponent panel1 = new JPanel();
-        tabbedPane.addTab("                Arrival                ", panel1);
+//      arrival tab
+        int tabSpaces = 43; //spaces for filling a tab
+        tabbedPane.addTab(String.format("%1$"+tabSpaces+"s", "Arrival") +
+                String.format("%1$"+(tabSpaces-7)+"s", ""),panel1);
         panel1.add(table);
 
         tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
-
+//      depature tab
         JComponent panel2 = new JPanel();
-        tabbedPane.addTab("                 Depature              ", panel2);
+        tabbedPane.addTab(String.format("%1$"+tabSpaces+"s", "Depature") +
+                String.format("%1$"+(tabSpaces-8)+"s", ""), panel2);
         tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
 
         panel.add(tabbedPane, c);
@@ -92,8 +99,6 @@ public class Main {
         c.insets = new Insets(0,10,0,10);
 
 //        do a left sidebar
-
-
 
         JPanel sideBar = new JPanel(new GridBagLayout());
 //        sideBar.setMinimumSize(new Dimension(200,80));
@@ -138,6 +143,24 @@ public class Main {
         gbc.ipadx = 20;
 
         sideBar.add(passwordField,gbc);
+
+//        create a button
+        gbc.gridx = 0;
+        JButton loginBtn = new JButton("Login");
+        gbc.gridy = 3;
+        gbc.gridwidth = 2;
+        gbc.ipadx = 15;
+
+        loginBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FormValidator formValidator = new FormValidator(loginField, passwordField);
+                formValidator.validateForm();
+            }
+        });
+
+
+        sideBar.add(loginBtn,gbc);
 
         panel.add(sideBar, c);
 
