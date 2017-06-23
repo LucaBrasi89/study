@@ -1,6 +1,7 @@
 package UI;
 
 import DL.CRUD;
+import DL.FetchFlights;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,15 +18,10 @@ public class App extends Application {
 
     public static void main(String[] args) throws ClassNotFoundException {
 
-//        launch();
+        launch();
 
-        CRUD crud = new CRUD();
-        try {
-            crud.createConnection();
-            crud.doQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        FetchFlights ff = new FetchFlights();
+        System.out.println(ff.getArrivals());
     }
 
 
