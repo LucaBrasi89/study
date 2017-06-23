@@ -1,10 +1,13 @@
 package UI;
 
+import DL.CRUD;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.sql.SQLException;
 
 /**
  * Created by andrew on 22.06.17.
@@ -12,9 +15,17 @@ import javafx.stage.Stage;
 
 public class App extends Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
 
-        launch();
+//        launch();
+
+        CRUD crud = new CRUD();
+        try {
+            crud.createConnection();
+            crud.doQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 
