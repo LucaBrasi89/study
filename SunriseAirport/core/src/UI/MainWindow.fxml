@@ -13,7 +13,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BL.MainController">
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MainController">
    <children>
       <HBox layoutX="28.0" layoutY="92.0" prefHeight="602.0" prefWidth="977.0">
          <children>
@@ -53,12 +54,24 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView layoutX="29.0" layoutY="-24.0" prefHeight="569.0" prefWidth="706.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <TableView id="arrivalTable" layoutX="29.0" layoutY="-24.0" prefHeight="569.0" prefWidth="706.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columns>
-                                  <TableColumn prefWidth="150.0" text="flight" />
-                                  <TableColumn prefWidth="150.0" text="airport" />
-                                    <TableColumn minWidth="150.0" prefWidth="150.0" text="time of arrival" />
-                                    <TableColumn prefWidth="255.0" text="status" />
+                                    <TableColumn id="flight" prefWidth="130.0" text="flight" >
+                                        <cellValueFactory><PropertyValueFactory property="flight"/></cellValueFactory>
+                                    </TableColumn>
+
+                                    <TableColumn id="airport" prefWidth="140.0" text="airport" >
+                                        <cellValueFactory><PropertyValueFactory property="airport"/></cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn id="time" minWidth="120.0" prefWidth="144.0" text="time of arrival" >
+                                        <cellValueFactory><PropertyValueFactory property="time"/></cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn id="terminal" prefWidth="160.0" text="terminal" >
+                                        <cellValueFactory><PropertyValueFactory property="terminal"/></cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn id="status" prefWidth="150.0" text="status" >
+                                        <cellValueFactory><PropertyValueFactory property="status"/></cellValueFactory>
+                                    </TableColumn>
 
                                 </columns>
                               </TableView>
@@ -69,12 +82,13 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView layoutX="94.0" layoutY="46.0" prefHeight="569.0" prefWidth="706.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <TableView id="depatureTable" layoutX="94.0" layoutY="46.0" prefHeight="569.0" prefWidth="706.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columns>
-                                    <TableColumn prefWidth="150.0" text="flight" />
-                                    <TableColumn prefWidth="150.0" text="airport" />
-                                    <TableColumn prefWidth="150.0" text="time of depature" />
-                                    <TableColumn prefWidth="255.0" text="status" />
+                                    <TableColumn prefWidth="130.0" text="flight" />
+                                    <TableColumn prefWidth="140.0" text="airport" />
+                                    <TableColumn prefWidth="120.0" text="time of depature" />
+                                    <TableColumn prefWidth="160.0" text="terminal" />
+                                    <TableColumn prefWidth="150.0" text="status" />
                                 </columns>
                               </TableView>
                            </children></AnchorPane>

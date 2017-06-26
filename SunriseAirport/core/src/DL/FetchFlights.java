@@ -46,11 +46,11 @@ public class FetchFlights {
                         rs.getString("airport"),
                         rs.getString("time"),
                         rs.getString("terminal").charAt(0),
-                        rs.getString("status"),
-                        TypeOfFlight.valueOf(rs.getString("typeOfFlight"))));
+                        rs.getString("status")));
 
 
             }
+            crud.closeConnection();
 
 
         } catch (SQLException e) {

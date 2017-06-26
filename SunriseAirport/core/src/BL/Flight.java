@@ -13,38 +13,20 @@ public class Flight {
     private String time;
     private char terminal;
     private String status;
-    private TypeOfFlight typeOfFlight;
+//    private TypeOfFlight typeOfFlight;
 
 
-    public Flight(String flight, String airport, String time, char terminal, String status, TypeOfFlight typeOfFlight) {
+    public Flight(String flight, String airport, String time, char terminal, String status) {
 
         this.flight = flight;
         this.airport = airport;
         this.time = time;
         this.terminal = terminal;
         this.status = status;
-        this.typeOfFlight = typeOfFlight;
+//        this.typeOfFlight = typeOfFlight;
     }
 
-    public Object[] toArray() throws ClassNotFoundException, NoSuchMethodException {
 
-        Class fligthClass =Class.forName("BL.Flight");
-        Constructor[] constructors = fligthClass.getDeclaredConstructors();
-        int constrParams = constructors[0].getParameterCount();
-        Object[] flightArr = new Object[constrParams];
-
-
-        flightArr[0] = (Object) flight;
-        flightArr[1] = (Object) airport;
-        flightArr[2] = (Object) time;
-        flightArr[3] = (Object) terminal;
-        flightArr[4] = (Object) status;
-        flightArr[5] = (Object) typeOfFlight;
-
-
-        return flightArr;
-
-    }
 
     @Override
     public String toString() {
@@ -54,7 +36,47 @@ public class Flight {
                 ", time='" + time + '\'' +
                 ", terminal=" + terminal +
                 ", status='" + status + '\'' +
-                ", typeOfFlight=" + typeOfFlight +
                 '}';
+    }
+
+
+    public String getFlight() {
+        return flight;
+    }
+
+    public void setFlight(String flight) {
+        this.flight = flight;
+    }
+
+    public String getAirport() {
+        return airport;
+    }
+
+    public void setAirport(String airport) {
+        this.airport = airport;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public char getTerminal() {
+        return terminal;
+    }
+
+    public void setTerminal(char terminal) {
+        this.terminal = terminal;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
