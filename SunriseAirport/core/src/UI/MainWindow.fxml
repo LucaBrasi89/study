@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -18,7 +22,7 @@
    <children>
       <HBox layoutX="28.0" layoutY="92.0" prefHeight="602.0" prefWidth="977.0">
          <children>
-            <VBox prefHeight="52.0" prefWidth="271.0">
+            <VBox prefHeight="52.0" prefWidth="271.0" spacing="10">
                <children>
                   <HBox prefHeight="0.0" prefWidth="271.0">
                      <children>
@@ -43,6 +47,7 @@
                         <Insets bottom="50.0" left="50.0" />
                      </opaqueInsets>
                   </HBox>
+                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="104.0" text="login" />
                </children>
                <opaqueInsets>
                   <Insets />
@@ -84,20 +89,20 @@
                            <children>
                               <TableView fx:id="depatureTable" layoutX="94.0" layoutY="46.0" prefHeight="569.0" prefWidth="706.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columns>
-                                    <TableColumn prefWidth="135.0" text="flight" >
+                                    <TableColumn prefWidth="135.0" text="flight">
                                     <cellValueFactory><PropertyValueFactory property="flight" /></cellValueFactory>
                                     </TableColumn>
-                                    <TableColumn prefWidth="210" text="airport" >
+                                    <TableColumn prefWidth="210" text="airport">
                                         <cellValueFactory><PropertyValueFactory property="airport" /></cellValueFactory>
 
                                     </TableColumn>
-                                    <TableColumn prefWidth="140.0" text="time of depature" >
+                                    <TableColumn prefWidth="140.0" text="time of depature">
                                         <cellValueFactory><PropertyValueFactory property="time" /></cellValueFactory>
                                     </TableColumn>
-                                    <TableColumn prefWidth="100.0" text="terminal"  >
+                                    <TableColumn prefWidth="100.0" text="terminal">
                                         <cellValueFactory><PropertyValueFactory property="terminal" /></cellValueFactory>
                                     </TableColumn>
-                                    <TableColumn prefWidth="120.0" text="status" >
+                                    <TableColumn prefWidth="120.0" text="status">
                                         <cellValueFactory><PropertyValueFactory property="status" /></cellValueFactory>
                                     </TableColumn>
                                 </columns>
@@ -109,14 +114,40 @@
             </TabPane>
          </children>
       </HBox>
-      <Label alignment="CENTER" contentDisplay="TOP" layoutX="2.0" layoutY="1.0" prefHeight="76.0" prefWidth="1024.0" text="WELCOME TO SUNRISE AIRPORT!" textAlignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="TOP" depthTest="DISABLE" layoutX="2.0" layoutY="1.0" prefHeight="20.0" prefWidth="1024.0" style="-fx-padding: 30 0 0 0;" text="WELCOME TO SUNRISE AIRPORT!" textAlignment="CENTER">
          <font>
             <Font name="Ubuntu" size="29.0" />
-         </font></Label>
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets></Label>
       <Label alignment="CENTER" layoutX="3.0" layoutY="718.0" prefHeight="16.0" prefWidth="1024.0" text="created by Andrew Sotnikov, 2017">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
+      <MenuBar fx:id="rootMenu" prefWidth="1024" style="-fx-border-insets: 10 10 10 10; -fx-background-color: LightBlue;">
+
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+         <opaqueInsets>
+            <Insets bottom="20.0" />
+         </opaqueInsets>
+      </MenuBar>
    </children>
 </AnchorPane>

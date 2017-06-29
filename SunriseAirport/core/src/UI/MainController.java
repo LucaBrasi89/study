@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.TableView;
 
 import java.net.URL;
@@ -23,6 +24,9 @@ public class MainController implements Initializable {
 
     @FXML
     private TableView depatureTable;
+
+    @FXML
+    private MenuBar rootMenu;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -56,6 +60,18 @@ public class MainController implements Initializable {
 
         depatureTable.setItems(flights);
     }
+
+    public void hideMenu() {
+
+        rootMenu.setVisible(false);
+
+    }
+
+    public void showMenu() {
+
+        rootMenu.setVisible(true);
+    }
+
 
 
 }
