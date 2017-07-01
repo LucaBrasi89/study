@@ -8,7 +8,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,7 +22,8 @@ import java.util.ResourceBundle;
  */
 public class MainController implements Initializable {
 
-    public FetchFlights ff = new FetchFlights();;
+    public FetchFlights ff = new FetchFlights();
+    ;
 
     @FXML
     private TableView arrivalTable;
@@ -38,6 +43,12 @@ public class MainController implements Initializable {
     @FXML
     private VBox sidebar;
 
+    @FXML
+    private TextField searchByFlight;
+
+    @FXML
+    private TextField searchByTime;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -47,16 +58,15 @@ public class MainController implements Initializable {
 
     public void fillArrivalTable() {
 
-            ObservableList<Flight> flights = FXCollections.observableArrayList();
+        ObservableList<Flight> flights = FXCollections.observableArrayList();
 
-            for (Flight flight : ff.getArrivals()) {
-                System.out.println(flight);
-                flights.add(flight);
-            }
-
-            arrivalTable.setItems(flights);
+        for (Flight flight : ff.getArrivals()) {
+            System.out.println(flight);
+            flights.add(flight);
         }
 
+        arrivalTable.setItems(flights);
+    }
 
 
     public void fillDepatureTable() {
@@ -71,6 +81,15 @@ public class MainController implements Initializable {
         depatureTable.setItems(flights);
     }
 
+
+    public void quitRoot(ActionEvent actionEvent) {
+
+        loginInput.clear();
+        passwdInput.clear();
+        rootMenu.setVisible(false);
+        sidebar.setVisible(true);
+
+    }
 
 
     public void chownRoot(ActionEvent actionEvent) {
@@ -97,13 +116,12 @@ public class MainController implements Initializable {
             alert.show();
 
         }
-
     }
 
 
     public boolean ifRoot(String user, String passwd) {
 
-        String originUser = "root" ;
+        String originUser = "root";
         String originPasswd = "root";
         if (originUser.equals(user) && originPasswd.equals(passwd)) {
 
@@ -113,5 +131,22 @@ public class MainController implements Initializable {
             return false;
         }
     }
-}
 
+    public void closeApp(ActionEvent actionEvent) {
+
+        System.out.println("Quiting");
+        Stage stage = (Stage) arrivalTable.getScene().getWindow();
+        stage.close();
+
+    }
+
+
+    public void sendForm(KeyEvent keyEvent) {
+
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            chownRoot((new ActionEvent()));
+
+        }
+    }
+
+}
