@@ -24,30 +24,40 @@
          <children>
             <VBox prefHeight="52.0" prefWidth="271.0" spacing="10">
                <children>
-                  <HBox prefHeight="0.0" prefWidth="271.0">
+                  <VBox fx:id="sidebar" spacing="20">
                      <children>
-                        <Label prefHeight="16.0" prefWidth="80.0" text="Login">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                        <TextField prefHeight="26.0" />
+                        <HBox prefHeight="0.0" prefWidth="271.0">
+                           <children>
+                              <Label prefHeight="16.0" prefWidth="80.0" text="Login">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="loginInput" prefHeight="26.0" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="160.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefWidth="220.0">
+                           <children>
+                              <Label prefHeight="16.0" prefWidth="80.0" text="Password">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <PasswordField fx:id="passwdInput" prefHeight="26.0" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets bottom="50.0" left="50.0" />
+                           </opaqueInsets>
+                        </HBox>
+                        <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#chownRoot" prefHeight="26.0" prefWidth="104.0" text="login">
+                           <VBox.margin>
+                              <Insets left="80.0" />
+                           </VBox.margin></Button>
                      </children>
-                  </HBox>
-                  <HBox prefWidth="220.0">
-                     <children>
-                        <Label prefHeight="16.0" prefWidth="80.0" text="Password">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                        <PasswordField prefHeight="26.0" />
-                     </children>
-                     <opaqueInsets>
-                        <Insets bottom="50.0" left="50.0" />
-                     </opaqueInsets>
-                  </HBox>
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="104.0" text="login" />
+                  </VBox>
                </children>
                <opaqueInsets>
                   <Insets />
@@ -74,7 +84,7 @@
                                     <TableColumn id="terminal" prefWidth="100.0" text="terminal">
                                         <cellValueFactory><PropertyValueFactory property="terminal" /></cellValueFactory>
                                     </TableColumn>
-                                    <TableColumn id="status" prefWidth="120.0" text="status">
+                                    <TableColumn id="status" prefWidth="115.0" text="status">
                                         <cellValueFactory><PropertyValueFactory property="status" /></cellValueFactory>
                                     </TableColumn>
 
@@ -102,7 +112,7 @@
                                     <TableColumn prefWidth="100.0" text="terminal">
                                         <cellValueFactory><PropertyValueFactory property="terminal" /></cellValueFactory>
                                     </TableColumn>
-                                    <TableColumn prefWidth="120.0" text="status">
+                                    <TableColumn prefWidth="115.0" text="status">
                                         <cellValueFactory><PropertyValueFactory property="status" /></cellValueFactory>
                                     </TableColumn>
                                 </columns>
@@ -126,7 +136,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <MenuBar fx:id="rootMenu" prefWidth="1024" style="-fx-border-insets: 10 10 10 10; -fx-background-color: LightBlue;">
+      <MenuBar fx:id="rootMenu" prefWidth="1024" style="-fx-border-insets: 10 10 10 10; -fx-background-color: LightBlue;" visible="false">
 
         <menus>
           <Menu mnemonicParsing="false" text="File">
