@@ -1,4 +1,4 @@
-package lab_1_8.DemoSocket;
+package demosocket;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -19,6 +19,8 @@ public class ServerThread extends Thread {
     public void run() {
 
         try {
+
+
             ObjectInputStream dis = new ObjectInputStream(s.getInputStream());
             Student inStudent = (Student) dis.readObject();
             inStudent.setId(2);

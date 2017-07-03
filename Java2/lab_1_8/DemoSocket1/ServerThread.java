@@ -1,9 +1,6 @@
 package lab_1_8.DemoSocket1;
 
-import lab_1_8.DemoSocket.Student;
-
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 /**

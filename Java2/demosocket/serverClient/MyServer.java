@@ -1,6 +1,9 @@
-package lab_1_8.DemoSocket;
+package demosocket;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -15,9 +18,9 @@ public class MyServer extends Thread {
         ServerSocket ss = new ServerSocket(6666);
         while (true) {
 
+
             Socket s = ss.accept();//establishes connection
-            Thread th = new ServerThread(s);
-            th.start();
+            new ServerThread(s);
         }
 
     }

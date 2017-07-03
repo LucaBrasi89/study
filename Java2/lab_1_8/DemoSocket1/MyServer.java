@@ -1,6 +1,6 @@
 package lab_1_8.DemoSocket1;
 
-import lab_1_8.DemoSocket.ServerThread;
+import demosocket.ServerThread;
 
 import java.io.IOException;
 import java.net.ServerSocket;

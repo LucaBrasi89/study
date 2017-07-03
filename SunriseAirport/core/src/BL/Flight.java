@@ -44,8 +44,17 @@ public class Flight {
 
         return flightArr;
 
+    }
 
-
-
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "flight='" + flight + '\'' +
+                ", airport='" + airport + '\'' +
+                ", time='" + time + '\'' +
+                ", terminal=" + terminal +
+                ", status='" + status + '\'' +
+                ", typeOfFlight=" + typeOfFlight +
+                '}';
     }
 }

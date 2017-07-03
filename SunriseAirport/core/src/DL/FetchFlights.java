@@ -2,7 +2,10 @@ package DL;
 
 import BL.Flight;
 import BL.TypeOfFlight;
+import javafx.scene.control.TableView;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,32 +15,59 @@ import java.util.List;
  */
 public class FetchFlights {
 
-    public static Object[][] getArrivals()  {
+    private CRUD crud;
 
-        List<Flight> flightsList = new ArrayList<Flight>();
-        flightsList.add(new Flight("TK 460","Heathrow Airport","12:42",'A',"Arrived", TypeOfFlight.ARRIVAL));
-        flightsList.add(new Flight("7W 7082","Barcelona","17:39",'B',"Arrived", TypeOfFlight.ARRIVAL));
-        flightsList.add(new Flight("CN S041","Humburg","12:87",'B',"-", TypeOfFlight.ARRIVAL));
+    public FetchFlights() {
 
-        Object[][] flightObj = new Object[flightsList.size()][6];
+        this.crud = new CRUD();
 
-        for (int i = 0; i < flightsList.size(); i++) {
+        try {
 
-            try {
-                flightObj[i] = flightsList.get(i).toArray();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();
-            }
+            crud.createConnection();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
 
 
-        return flightObj;
     }
 
+    public List<Flight> getArrivals() {
+
+        List<Flight> flightsList = new ArrayList<Flight>();
+
+        try {
+            ResultSet rs = crud.doQuery("SELECT * FROM `flights` WHERE `typeOfFlight`='depature'");
+            while (rs.next()) {
+
+                flightsList.add(new Flight(rs.getString("flight"),
+                        rs.getString("airport"),
+                        rs.getString("time"),
+                        rs.getString("terminal").charAt(0),
+                        rs.getString("status"),
+                        TypeOfFlight.valueOf(rs.getString("typeOfFlight"))));
 
 
+            }
 
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        crud.closeConnection();
+        return flightsList;
+    }
 }
+
+
+
+
+
+
+
+
+
+
