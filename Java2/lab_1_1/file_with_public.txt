@@ -1,9 +1,0 @@
-public keyword
-something like main
-some statement
-
-another public
-
-public again
-
-... and i am public, and i will be replaced
