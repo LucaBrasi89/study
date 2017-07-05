@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
 public class MainWindowContr implements Initializable {
 
     public FetchFlights ff = new FetchFlights();
-    ;
+
 
     @FXML
     private TableView arrivalTable;

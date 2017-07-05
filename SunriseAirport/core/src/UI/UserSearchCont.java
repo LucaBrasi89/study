@@ -1,21 +1,25 @@
 package UI;
 
+import BL.Passenger;
+import DL.FetchPassengers;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
+import javafx.fxml.Initializable;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 
-import java.awt.*;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * Created by andrew on 03.07.17.
  */
-public class UserSearchCont {
+public class UserSearchCont implements Initializable {
 
-    @FXML
-    private Checkbox nameBox;
+
 
     @FXML
     private TextField nameField;
@@ -26,7 +30,19 @@ public class UserSearchCont {
     @FXML
     private TextField passportField;
 
+    @FXML
+    private TableView passengersTable;
 
+    private FetchPassengers fp;
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        fp = new FetchPassengers();
+        fillPassengersTable();
+
+    }
 
 
     public void toggleNameField(ActionEvent actionEvent) {
@@ -74,6 +90,20 @@ public class UserSearchCont {
         }
 
     }
-    
+
+
+    public void fillPassengersTable() {
+
+        ObservableList<Passenger> flights = FXCollections.observableArrayList();
+
+        for (Passenger passenger : fp.getPassengers()) {
+            System.out.println(passenger);
+            flights.add(passenger);
+        }
+
+        passengersTable.setItems(flights);
+    }
+
+
 
 }
