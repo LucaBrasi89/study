@@ -96,6 +96,8 @@ public class Passenger {
         this.gender = gender;
     }
 
+    public String getFullName() {return (this.firstName + " " + this.lastName);}
+
     public String getClassOfFlight() {
         return classOfFlight;
     }

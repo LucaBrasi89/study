@@ -1,4 +1,4 @@
-package UI;
+package BL;
 
 import BL.Flight;
 import DL.FetchFlights;
@@ -157,7 +157,7 @@ public class MainWindowContr implements Initializable {
 
     public void quickSearchWin() throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("UserSearch.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/UI/UserSearch.fxml"));
         Stage userSearchWin = new Stage();
 
         userSearchWin.setScene(new Scene(root));

@@ -15,6 +15,7 @@ import java.util.List;
 public class FetchPassengers {
 
     private CRUD crud;
+    private List<Passenger> passengerList;
 
     public FetchPassengers() {
 
@@ -30,9 +31,9 @@ public class FetchPassengers {
     }
 
 
-    public List<Passenger> getPassengers() {
+    public List<Passenger> getAllPassengers() {
 
-        List<Passenger> passengerList = new ArrayList<Passenger>();
+        passengerList = new ArrayList<Passenger>();
 
         try {
             ResultSet rs = crud.doQuery("SELECT * FROM `passengers`");
@@ -47,13 +48,44 @@ public class FetchPassengers {
                         rs.getString("gender"),
                         rs.getString("classOfFlight")));
             }
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return passengerList;
+
+    }
+
+    public List<Passenger> getFilteredPassengers(String name, String gender, String passport) {
+
+        List<Passenger> filtredPassList = new ArrayList<Passenger>();
+        for (Passenger passenger : passengerList) {
+
+
+            if (passenger.getFullName().equals(name) && gender == null && passport == null) {
+                filtredPassList.add(passenger);
+
+            } else if (passenger.getFullName().equals(name) && passenger.getGender().equals(gender) && passport == null) {
+                filtredPassList.add(passenger);
+
+            } else if (passenger.getFullName().equals(name) && passenger.getGender().equals(gender) && passenger.getPassport().equals(passport)) {
+                filtredPassList.add(passenger);
+            }
+
+
+            if (passenger == null && gender == null && passport == null) {
+                filtredPassList.add(passenger);
+
+            } else if (passenger.getFullName().equals(name) && passenger.getGender().equals(gender) && passport == null) {
+                filtredPassList.add(passenger);
+
+            } else if (passenger.getFullName().equals(name) && passenger.getGender().equals(gender) && passenger.getPassport().equals(passport)) {
+                filtredPassList.add(passenger);
+            }
+
+        }
+
+        return filtredPassList;
 
     }
 
