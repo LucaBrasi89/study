@@ -1,2 +1,4 @@
-**/out 
-.idea/*
+**/out/
+**/.idea/
+SunriseAirport/out/production/SunriseAirport/BL/Passenger.class
+
