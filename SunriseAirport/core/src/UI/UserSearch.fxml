@@ -14,8 +14,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.cell.TextFieldTableCell?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BL.UserSearchCont">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BL.UserSearchCont">
     <children>
         <VBox>
             <children>
@@ -35,7 +36,7 @@
                             </rowConstraints>
                             <children>
                                 <TextField fx:id="nameField" style="-fx-pref-width: 40;" GridPane.columnIndex="1" />
-                                <TextField fx:id="genderField" style="-fx-pref-width: 152;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <TextField fx:id="portField" style="-fx-pref-width: 152;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                 <TextField fx:id="passportField" style="-fx-pref-width: 40;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                 <Button mnemonicParsing="false" onAction="#refillPassengerTable" prefHeight="26.0" prefWidth="102.0" text="find" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <!--<fx:define>-->
@@ -43,60 +44,87 @@
                         <!--</fx:define>-->
                         <RadioButton mnemonicParsing="false" selected="true" text="name">
                            <toggleGroup>
-                              <ToggleGroup fx:id="searchKey" />
+                              <ToggleGroup fx:id="searchingKey" />
                            </toggleGroup></RadioButton>
-                        <RadioButton mnemonicParsing="false" text="port" toggleGroup="$searchKey" GridPane.rowIndex="1" />
-                        <RadioButton mnemonicParsing="false" text="passport" toggleGroup="$searchKey" GridPane.rowIndex="2" />
+                        <RadioButton mnemonicParsing="false" text="port" toggleGroup="$searchingKey" GridPane.rowIndex="1" />
+                        <RadioButton mnemonicParsing="false" text="passport" toggleGroup="$searchingKey" GridPane.rowIndex="2" />
 
                             </children>
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
                         </GridPane>
-                        <TableView fx:id="passengersTable" prefHeight="525" prefWidth="550">
+                        <TableView fx:id="passengersTable" editable="true" prefHeight="525" prefWidth="715.0">
                             <columns>
                                 <TableColumn prefWidth="75.0" text="flight">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="flightNumber" />
                                     </cellValueFactory>
+                                    <cellFactory>
+                                        <TextFieldTableCell fx:factory="forTableColumn" />
+                                    </cellFactory>
                                 </TableColumn>
 
-                                <TableColumn prefWidth="75.0" text="first name">
+                                <TableColumn prefWidth="95.0" text="first name">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="firstName" />
                                     </cellValueFactory>
+                                    <cellFactory>
+                                        <TextFieldTableCell fx:factory="forTableColumn" />
+                                    </cellFactory>
                                 </TableColumn>
-                                <TableColumn prefWidth="75.0" text="last name">
+                                <TableColumn prefWidth="93.0" text="last name">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="lastName" />
                                     </cellValueFactory>
+                                    <cellFactory>
+                                        <TextFieldTableCell fx:factory="forTableColumn" />
+                                    </cellFactory>
                                 </TableColumn>
-                                <TableColumn prefWidth="75.0" text="nationality">
+                                <TableColumn prefWidth="87.0" text="nationality">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="nationality" />
                                     </cellValueFactory>
+                                    <cellFactory>
+                                        <TextFieldTableCell fx:factory="forTableColumn" />
+                                    </cellFactory>
                                 </TableColumn>
-                                <TableColumn prefWidth="75.0" text="passport">
+                                <TableColumn prefWidth="90" text="passport">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="passport" />
                                     </cellValueFactory>
+                                    <cellFactory>
+                                        <TextFieldTableCell fx:factory="forTableColumn" />
+                                    </cellFactory>
                                 </TableColumn>
-                                <TableColumn prefWidth="75.0" text="birthday">
+                                <TableColumn prefWidth="95" text="birthday">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="birthday" />
                                     </cellValueFactory>
+                                    <cellFactory>
+                                        <TextFieldTableCell fx:factory="forTableColumn" />
+                                    </cellFactory>
                                 </TableColumn>
-                                <TableColumn prefWidth="75.0" text="gender">
+                                <TableColumn prefWidth="84.0" text="gender">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="gender" />
                                     </cellValueFactory>
+                                    <cellFactory>
+                                        <TextFieldTableCell fx:factory="forTableColumn" />
+                                    </cellFactory>
                                 </TableColumn>
-                                <TableColumn prefWidth="75.0" text="class">
+                                <TableColumn minWidth="0.0" prefWidth="90" text="class">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="classOfFlight" />
                                     </cellValueFactory>
+                                    <cellFactory>
+                                        <TextFieldTableCell fx:factory="forTableColumn" />
+                                    </cellFactory>
                                 </TableColumn>
                             </columns>
+                     <HBox.margin>
+                        <Insets right="10.0" top="10.0" />
+                     </HBox.margin>
                         </TableView>
                     </children>
                 </HBox>

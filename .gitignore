@@ -1,4 +1,2 @@
-out/
-SunriseAirport/.idea/
-SunriseAirport/out/
+**/out 
 .idea/

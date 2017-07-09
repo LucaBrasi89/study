@@ -56,36 +56,23 @@ public class FetchPassengers {
 
     }
 
-    public List<Passenger> getFilteredPassengers(String name, String gender, String passport) {
+    public List<Passenger> getFilteredPassengers(String filterKey, String filterValue) {
 
-        List<Passenger> filtredPassList = new ArrayList<Passenger>();
+        List<Passenger> filteredPassList = new ArrayList<Passenger>();
         for (Passenger passenger : passengerList) {
 
-
-            if (passenger.getFullName().equals(name) && gender == null && passport == null) {
-                filtredPassList.add(passenger);
-
-            } else if (passenger.getFullName().equals(name) && passenger.getGender().equals(gender) && passport == null) {
-                filtredPassList.add(passenger);
-
-            } else if (passenger.getFullName().equals(name) && passenger.getGender().equals(gender) && passenger.getPassport().equals(passport)) {
-                filtredPassList.add(passenger);
+            if (filterKey.equals("name")) {
+                if (filterValue.equals(passenger.getFullName())) {filteredPassList.add(passenger);}
+            } else if (filterKey.equals("port")) {
+                //
+            } else {
+                if (filterValue.equals(passenger.getPassport())) {filteredPassList.add(passenger);}
             }
 
-
-            if (passenger == null && gender == null && passport == null) {
-                filtredPassList.add(passenger);
-
-            } else if (passenger.getFullName().equals(name) && passenger.getGender().equals(gender) && passport == null) {
-                filtredPassList.add(passenger);
-
-            } else if (passenger.getFullName().equals(name) && passenger.getGender().equals(gender) && passenger.getPassport().equals(passport)) {
-                filtredPassList.add(passenger);
-            }
 
         }
 
-        return filtredPassList;
+        return filteredPassList;
 
     }
 

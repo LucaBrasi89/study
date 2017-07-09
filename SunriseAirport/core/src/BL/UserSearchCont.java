@@ -4,13 +4,12 @@ import DL.FetchPassengers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.List;
@@ -21,21 +20,22 @@ import java.util.ResourceBundle;
  */
 public class UserSearchCont implements Initializable {
 
-    private String nameInpVal;
-    private String genderInpVal;
-    private String passportInpVal;
 
     @FXML
     private TextField nameField;
 
     @FXML
-    private TextField genderField;
+    private TextField portField;
 
     @FXML
     private TextField passportField;
 
     @FXML
     private TableView passengersTable;
+
+    @FXML
+    private ToggleGroup searchingKey;
+
 
     private FetchPassengers fp;
 
@@ -46,46 +46,17 @@ public class UserSearchCont implements Initializable {
         fp = new FetchPassengers();
         fillPassengersTable();
 
+        passengersTable.setOnMousePressed(event -> {
+            if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
+                System.out.println(passengersTable.getSelectionModel().getSelectedItem());
+            }
+        });
+
+
+
     }
 
 
-////    TOGGLERS FOR FIELDS
-//
-//    public void toggleNameField(ActionEvent actionEvent) {
-//
-//        System.out.println(nameField.isEditable());
-//        if (!nameField.isDisable()) {
-//            nameField.setDisable(true);
-//        } else {
-//            nameField.setDisable(false);
-//        }
-//
-//    }
-//
-//
-//    public void toggleGenderBox(ActionEvent actionEvent) {
-//
-//
-//        if (!genderBox.isDisable()) {
-//            genderBox.setDisable(true);
-//
-//        } else {
-//            genderBox.setDisable(false);
-//        }
-//
-//    }
-//
-//    public void togglePassportField(ActionEvent actionEvent) {
-//
-//
-//        if (!passportField.isDisable()) {
-//            passportField.setDisable(true);
-//
-//        } else {
-//            passportField.setDisable(false);
-//        }
-//
-//    }
 
 
 //    starting to fill the table when one appear
@@ -104,29 +75,30 @@ public class UserSearchCont implements Initializable {
 
 //    running to refill table. Do it with sorting results
     public void refillPassengerTable() {
-        getFieldValues();
+
+
+//        getting a searchingKey
+            RadioButton selectedRadBtn = (RadioButton) searchingKey.getSelectedToggle();
+            String filterKey = selectedRadBtn.getText().toString();
+            String filterValue;
+            if (filterKey.equals("name")) {
+                filterValue = nameField.getText();
+            } else if (filterKey.equals("port")) {
+                filterValue = portField.getText();
+            } else {
+                filterValue = passportField.getText();
+            }
 
         ObservableList<Passenger> flights = FXCollections.observableArrayList();
-        List<Passenger> filteredPassList = fp.getFilteredPassengers(nameInpVal, genderInpVal, passportInpVal);
+        List<Passenger> filteredPassList = fp.getFilteredPassengers(filterKey, filterValue);
 
         for (Passenger passenger : filteredPassList ) {
-            System.out.println(passenger);
+
             flights.add(passenger);
         }
 
         passengersTable.setItems(flights);
     }
-
-    /* helps to get following a values from sending form:
-    nameField, genderField, passportField/
-     If someone from inputs disable assign it null
-     */
-    public void  getFieldValues() {
-
-
-
-    }
-
 
 
 }
