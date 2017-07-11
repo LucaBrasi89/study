@@ -13,6 +13,9 @@ import java.util.List;
 public class FetchFlights {
 
     private CRUD crud;
+    private List<Flight> depatureFL;
+    private List<Flight> arrivalFL;
+
 
     public FetchFlights() {
 
@@ -31,14 +34,14 @@ public class FetchFlights {
 //    getting a list of arrivals for showing it into the arrival table
     public List<Flight> getArrivals() {
 
-        List<Flight> flightsList = new ArrayList<Flight>();
+        arrivalFL = new ArrayList<Flight>();
 
         try {
             ResultSet rs = crud.doQuery("SELECT * FROM `flights` WHERE `typeOfFlight`='arrival'");
             while (rs.next()) {
 
-                flightsList.add(new Flight(rs.getString("flight"),
-                        rs.getString("airport"),
+                arrivalFL.add(new Flight(rs.getString("flight"),
+                        rs.getString("airportName"),
                         rs.getString("time"),
                         rs.getString("terminal").charAt(0),
                         rs.getString("status")));
@@ -49,21 +52,21 @@ public class FetchFlights {
             e.printStackTrace();
         }
 
-        return flightsList;
+        return arrivalFL;
     }
 
 
     //    getting a list of depatures for showing it into the depature table
     public List<Flight> getDepatures() {
 
-        List<Flight> flightsList = new ArrayList<Flight>();
+        depatureFL = new ArrayList<Flight>();
 
         try {
             ResultSet rs = crud.doQuery("SELECT * FROM `flights` WHERE `typeOfFlight`='depature'");
             while (rs.next()) {
 
-                flightsList.add(new Flight(rs.getString("flight"),
-                        rs.getString("airport"),
+                depatureFL.add(new Flight(rs.getString("flight"),
+                        rs.getString("airportName"),
                         rs.getString("time"),
                         rs.getString("terminal").charAt(0),
                         rs.getString("status")));
@@ -74,15 +77,31 @@ public class FetchFlights {
             e.printStackTrace();
         }
 
-        return flightsList;
+        return depatureFL;
     }
 
+    public List<Flight>  getFilteredFlights(String charSequence, String typeOfFlight) {
+
+        List<Flight> flightsList = null;
+        List<Flight> filteredFlightList = new ArrayList<>();
+        if (typeOfFlight.equals("arrival")) {
+            flightsList = arrivalFL;
+        } else if (typeOfFlight.equals("depature")) {
+            flightsList = depatureFL;
+        }
+        for (Flight flight : flightsList) {
+            if (flight.getFlight().contains(charSequence)) {
+                filteredFlightList.add(flight);
+            }
+        }
+        return filteredFlightList;
+    }
 
     @Override
     protected void finalize() throws Throwable {
 
-        crud.closeConnection();
         super.finalize();
+        crud.closeConnection();
     }
 }
 

@@ -5,6 +5,7 @@ import DL.FetchFlights;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -28,6 +29,8 @@ public class MainWindowContr implements Initializable {
 
     public FetchFlights ff = new FetchFlights();
 
+    @FXML
+    private TabPane tabPane;
 
     @FXML
     private TableView arrivalTable;
@@ -58,6 +61,10 @@ public class MainWindowContr implements Initializable {
 
         fillArrivalTable();
         fillDepatureTable();
+        searchByFlight.addEventFilter(KeyEvent.KEY_TYPED, e -> {
+            quickSearch();
+        });
+
     }
 
     public void fillArrivalTable() {
@@ -154,8 +161,25 @@ public class MainWindowContr implements Initializable {
         }
     }
 
+    public void quickSearch() {
 
-    public void quickSearchWin() throws IOException {
+        String activeTab = tabPane.getSelectionModel().getSelectedItem().getId();
+        String fieldVal = searchByFlight.getText();
+        System.out.println(fieldVal);
+
+        ObservableList<Flight> flights = FXCollections.observableArrayList();
+
+        for (Flight flight : ff.getFilteredFlights(fieldVal, activeTab)) {
+
+            flights.add(flight);
+        }
+
+        arrivalTable.setItems(flights);
+
+    }
+
+
+    public void userSearchWin() throws IOException {
 
         Parent root = FXMLLoader.load(getClass().getResource("/UI/UserSearch.fxml"));
         Stage userSearchWin = new Stage();

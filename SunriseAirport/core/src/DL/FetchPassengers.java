@@ -1,8 +1,6 @@
 package DL;
 
-import BL.Flight;
 import BL.Passenger;
-import BL.TypeOfFlight;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -31,6 +29,34 @@ public class FetchPassengers {
     }
 
 
+    public List<Passenger> getFilteredPassengers(String filterKey, String filterValue) {
+
+        List<Passenger> filteredPassList = new ArrayList<Passenger>();
+        for (Passenger passenger : passengerList) {
+
+            if (filterKey.equals("name")) {
+                if (filterValue.equals(passenger.getFullName())) {filteredPassList.add(passenger);}
+            } else if (filterKey.equals("port")) {
+                //
+            } else {
+                if (filterValue.equals(passenger.getPassport())) {filteredPassList.add(passenger);}
+            }
+
+
+        }
+
+        return filteredPassList;
+
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+
+        crud.closeConnection();
+        super.finalize();
+    }
+
+
     public List<Passenger> getAllPassengers() {
 
         passengerList = new ArrayList<Passenger>();
@@ -54,34 +80,6 @@ public class FetchPassengers {
 
         return passengerList;
 
-    }
-
-    public List<Passenger> getFilteredPassengers(String filterKey, String filterValue) {
-
-        List<Passenger> filteredPassList = new ArrayList<Passenger>();
-        for (Passenger passenger : passengerList) {
-
-            if (filterKey.equals("name")) {
-                if (filterValue.equals(passenger.getFullName())) {filteredPassList.add(passenger);}
-            } else if (filterKey.equals("port")) {
-                //
-            } else {
-                if (filterValue.equals(passenger.getPassport())) {filteredPassList.add(passenger);}
-            }
-
-
-        }
-
-        return filteredPassList;
-
-    }
-
-
-    @Override
-    protected void finalize() throws Throwable {
-
-        crud.closeConnection();
-        super.finalize();
     }
 
 
