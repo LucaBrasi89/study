@@ -39,9 +39,6 @@
                                 <TextField fx:id="portField" style="-fx-pref-width: 152;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                 <TextField fx:id="passportField" style="-fx-pref-width: 40;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                 <Button mnemonicParsing="false" onAction="#refillPassengerTable" prefHeight="26.0" prefWidth="102.0" text="find" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <!--<fx:define>-->
-                            <!--<ToggleGroup fx:id="searchKey"/>-->
-                        <!--</fx:define>-->
                         <RadioButton mnemonicParsing="false" selected="true" text="name">
                            <toggleGroup>
                               <ToggleGroup fx:id="searchingKey" />
@@ -144,7 +141,7 @@
                                 <Insets left="300.0" />
                             </GridPane.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="discard" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                        <Button mnemonicParsing="false" text="discard" GridPane.columnIndex="1" GridPane.halignment="CENTER" onAction="#discardChanges" />
                         <Button mnemonicParsing="false" text="save" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
                     </children>
                 </GridPane>

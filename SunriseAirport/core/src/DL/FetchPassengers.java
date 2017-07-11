@@ -41,8 +41,6 @@ public class FetchPassengers {
             } else {
                 if (filterValue.equals(passenger.getPassport())) {filteredPassList.add(passenger);}
             }
-
-
         }
 
         return filteredPassList;
@@ -79,8 +77,6 @@ public class FetchPassengers {
         }
 
         return passengerList;
-
     }
-
 
 }

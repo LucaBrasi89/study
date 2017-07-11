@@ -1,11 +1,12 @@
 package BL;
 
-import BL.Flight;
 import DL.FetchFlights;
+import javafx.beans.InvalidationListener;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,7 +15,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -31,6 +31,12 @@ public class MainWindowContr implements Initializable {
 
     @FXML
     private TabPane tabPane;
+
+    @FXML
+    private Tab arrivalTab;
+
+    @FXML
+    private Tab depatureTab;
 
     @FXML
     private TableView arrivalTable;
@@ -54,16 +60,37 @@ public class MainWindowContr implements Initializable {
     private TextField searchByFlight;
 
     @FXML
-    private TextField searchByTime;
+    private TextField searchByAirport;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         fillArrivalTable();
         fillDepatureTable();
-        searchByFlight.addEventFilter(KeyEvent.KEY_TYPED, e -> {
-            quickSearch();
+
+//        define a behaviour for quick search TextFields
+        searchByFlight.addEventFilter(KeyEvent.KEY_RELEASED, e -> {
+            searchByAirport.clear();
+            qSearchByFlight();
         });
+
+        searchByAirport.addEventFilter(KeyEvent.KEY_RELEASED, e -> {
+            searchByFlight.clear();
+            qSearhByAiportName();
+        });
+
+        /* assign a behaviour for arrival and depature tabs. Clearing field for no-frozing
+        showing results */
+        arrivalTab.selectedProperty().addListener((InvalidationListener) (ov) -> {
+            searchByFlight.clear();
+            fillArrivalTable();
+        });
+        arrivalTab.selectedProperty().addListener((InvalidationListener) (ov) -> {
+            searchByAirport.clear();
+            fillDepatureTable();
+        });
+
+
 
     }
 
@@ -108,7 +135,7 @@ public class MainWindowContr implements Initializable {
 //        account passed
         if (ifRoot(loginInput.getText(), passwdInput.getText())) {
 
-//          showing meny and hide sidebar
+//          showing menu and hide sidebar
             rootMenu.setVisible(true);
             sidebar.setVisible(false);
 
@@ -161,20 +188,48 @@ public class MainWindowContr implements Initializable {
         }
     }
 
-    public void quickSearch() {
+//    searching and filter values by flight. Show any occurrences if happen
+    public void qSearchByFlight() {
 
         String activeTab = tabPane.getSelectionModel().getSelectedItem().getId();
         String fieldVal = searchByFlight.getText();
-        System.out.println(fieldVal);
 
         ObservableList<Flight> flights = FXCollections.observableArrayList();
 
-        for (Flight flight : ff.getFilteredFlights(fieldVal, activeTab)) {
+        for (Flight flight : ff.getFiltFlByAbbr(fieldVal, activeTab)) {
 
             flights.add(flight);
         }
+        if (activeTab.equals("arrival")) {
+            arrivalTable.setItems(flights);
+        } else if (activeTab.equals("depature")) {
+            depatureTable.setItems(flights);
+        }
 
-        arrivalTable.setItems(flights);
+    }
+
+
+    //    searching and filter values by airportName. Show any occurrences if happen
+    public void qSearhByAiportName() {
+
+
+        String activeTab = tabPane.getSelectionModel().getSelectedItem().getId();
+        String fieldVal = searchByAirport.getText();
+        System.out.println(activeTab + "___" + fieldVal);
+
+        ObservableList<Flight> flights = FXCollections.observableArrayList();
+
+        for (Flight flight : ff.getFiltFlByAirport(fieldVal, activeTab)) {
+
+            flights.add(flight);
+        }
+        if (activeTab.equals("arrival")) {
+            arrivalTable.setItems(flights);
+        } else if (activeTab.equals("depature")) {
+            depatureTable.setItems(flights);
+        }
+
+
 
     }
 
@@ -189,7 +244,5 @@ public class MainWindowContr implements Initializable {
         userSearchWin.show();
 
 
-
     }
-
 }

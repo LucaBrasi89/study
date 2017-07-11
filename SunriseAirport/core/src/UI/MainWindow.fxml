@@ -40,7 +40,7 @@
                                  <VBox.margin>
                                     <Insets left="20.0" right="20.0" />
                                  </VBox.margin></TextField>
-                              <TextField fx:id="searchByTime" focusTraversable="false" promptText="search by name" style="-fx-pref-width: 40;">
+                              <TextField fx:id="searchByAirport" focusTraversable="false" promptText="search by name" style="-fx-pref-width: 40;">
                                  <VBox.margin>
                                     <Insets left="20.0" right="20.0" />
                                  </VBox.margin></TextField>
@@ -93,7 +93,7 @@
             </VBox>
             <TabPane prefHeight="580.0" prefWidth="706.0" tabClosingPolicy="UNAVAILABLE" fx:id="tabPane">
               <tabs>
-                <Tab text=" arrival  " id="arrival">
+                <Tab text=" arrival  " id="arrival" fx:id="arrivalTab">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -121,7 +121,7 @@
                            </children></AnchorPane>
                   </content>
                 </Tab>
-                <Tab text="  depature  " id="depature">
+                <Tab text="  depature  " id="depature" fx:id="depatureTab">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>

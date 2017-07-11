@@ -48,15 +48,11 @@ public class UserSearchCont implements Initializable {
 
         passengersTable.setOnMousePressed(event -> {
             if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
-                System.out.println(passengersTable.getSelectionModel().getSelectedItem());
+//                System.out.println(passengersTable.getSelectionModel().getSelectedItem());
             }
         });
 
-
-
     }
-
-
 
 
 //    starting to fill the table when one appear
@@ -65,7 +61,7 @@ public class UserSearchCont implements Initializable {
         ObservableList<Passenger> flights = FXCollections.observableArrayList();
 
         for (Passenger passenger : fp.getAllPassengers()) {
-            System.out.println(passenger);
+
             flights.add(passenger);
         }
 
@@ -101,6 +97,16 @@ public class UserSearchCont implements Initializable {
     }
 
 
+//    refill table and clear seaching fields fields
+    public void discardChanges(ActionEvent actionEvent) {
+
+        fillPassengersTable();
+        nameField.clear();
+        portField.clear();
+        passportField.clear();
+        System.out.println("\nDISCARD CHANGES\n");
+
+    }
 }
 
 

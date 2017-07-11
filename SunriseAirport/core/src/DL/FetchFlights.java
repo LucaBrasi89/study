@@ -13,8 +13,8 @@ import java.util.List;
 public class FetchFlights {
 
     private CRUD crud;
-    private List<Flight> depatureFL;
     private List<Flight> arrivalFL;
+    private List<Flight> depatureFL;
 
 
     public FetchFlights() {
@@ -80,7 +80,8 @@ public class FetchFlights {
         return depatureFL;
     }
 
-    public List<Flight>  getFilteredFlights(String charSequence, String typeOfFlight) {
+//    retrun values of flights which sorted by flight abbreviation
+    public List<Flight> getFiltFlByAbbr(String charSequence, String typeOfFlight) {
 
         List<Flight> flightsList = null;
         List<Flight> filteredFlightList = new ArrayList<>();
@@ -96,6 +97,31 @@ public class FetchFlights {
         }
         return filteredFlightList;
     }
+
+    //    retrun values of flights which sorted by abbreviation
+    public List<Flight> getFiltFlByAirport(String charSequence, String typeOfFlight) {
+
+        List<Flight> flightsList = null;
+        List<Flight> filteredFlightList = new ArrayList<>();
+        if (typeOfFlight.equals("arrival")) {
+            flightsList = arrivalFL;
+        } else if (typeOfFlight.equals("depature")) {
+            flightsList = depatureFL;
+        }
+        for (Flight flight : flightsList) {
+            if (flight.getAirportName().contains(charSequence)) {
+                filteredFlightList.add(flight);
+            }
+        }
+        return filteredFlightList;
+    }
+
+
+
+
+
+
+
 
     @Override
     protected void finalize() throws Throwable {
