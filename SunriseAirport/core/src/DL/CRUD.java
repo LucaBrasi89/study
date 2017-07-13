@@ -1,18 +1,15 @@
 package DL;
 
-import javax.xml.transform.Result;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.sql.*;
 import java.util.Properties;
 
 /**
  * Created by andrew on 22.06.17.
  */
-public class CRUD  {
+public class CRUD {
 
 
     private Connection con;
@@ -33,8 +30,8 @@ public class CRUD  {
 
         //STEP 2: Register JDBC driver
         Class.forName("com.mysql.jdbc.Driver");
-        con= DriverManager.getConnection(
-                    String.format("jdbc:mysql://localhost/%s",dbName),dbUser,dbPasswd);
+        con = DriverManager.getConnection(
+                String.format("jdbc:mysql://localhost/%s", dbName), dbUser, dbPasswd);
 
     }
 
@@ -49,7 +46,7 @@ public class CRUD  {
         return rs;
 
 
-        }
+    }
 
 
     public void getProperties() {
@@ -65,9 +62,9 @@ public class CRUD  {
             prop.load(input);
 
             // get the property value and print it out
-            dbName= prop.getProperty("dbName");
-            dbUser=prop.getProperty("dbUser");
-            dbPasswd=prop.getProperty("dbPasswd");
+            dbName = prop.getProperty("dbName");
+            dbUser = prop.getProperty("dbUser");
+            dbPasswd = prop.getProperty("dbPasswd");
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -82,7 +79,6 @@ public class CRUD  {
         }
 
 
-
     }
 
     public void closeConnection() {
@@ -94,8 +90,6 @@ public class CRUD  {
         }
 
     }
-
-
 
 
 }

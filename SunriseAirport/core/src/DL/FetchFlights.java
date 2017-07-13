@@ -31,7 +31,7 @@ public class FetchFlights {
 
     }
 
-//    getting a list of arrivals for showing it into the arrival table
+    //    getting a list of arrivals for showing it into the arrival table
     public List<Flight> getArrivals() {
 
         arrivalFL = new ArrayList<Flight>();
@@ -80,7 +80,7 @@ public class FetchFlights {
         return depatureFL;
     }
 
-//    retrun values of flights which sorted by flight abbreviation
+    //    retrun values of flights which sorted by flight abbreviation
     public List<Flight> getFiltFlByAbbr(String charSequence, String typeOfFlight) {
 
         List<Flight> flightsList = null;
@@ -115,12 +115,6 @@ public class FetchFlights {
         }
         return filteredFlightList;
     }
-
-
-
-
-
-
 
 
     @Override

@@ -35,13 +35,17 @@ public class FetchPassengers {
         for (Passenger passenger : passengerList) {
 
             if (filterKey.equals("name")) {
-                if (filterValue.equals(passenger.getFullName())) {filteredPassList.add(passenger);}
+                if (filterValue.equals(passenger.getFullName())) {
+                    filteredPassList.add(passenger);
+                }
             } else if (filterKey.equals("port")) {
                 filteredPassList = getFinalCity(filterValue);
                 break;
 
             } else {
-                if (filterValue.equals(passenger.getPassport())) {filteredPassList.add(passenger);}
+                if (filterValue.equals(passenger.getPassport())) {
+                    filteredPassList.add(passenger);
+                }
             }
         }
 
@@ -72,7 +76,7 @@ public class FetchPassengers {
 
                 String passport = rs.getString("passport");
                 String birthday = rs.getString("birthday");
-                for (Passenger passenger: passengerList) {
+                for (Passenger passenger : passengerList) {
                     if (passenger.getPassport().equals(passport) &&
                             passenger.getBirthday().equals(birthday)) {
 
@@ -124,9 +128,6 @@ public class FetchPassengers {
 
         return passengerList;
     }
-
-
-
 
 
 }

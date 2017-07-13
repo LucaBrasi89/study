@@ -2,8 +2,6 @@ package BL;
 
 import DL.FetchFlights;
 import javafx.beans.InvalidationListener;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -89,7 +87,6 @@ public class MainWindowContr implements Initializable {
             searchByAirport.clear();
             fillDepatureTable();
         });
-
 
 
     }
@@ -188,7 +185,7 @@ public class MainWindowContr implements Initializable {
         }
     }
 
-//    searching and filter values by flight. Show any occurrences if happen
+    //    searching and filter values by flight. Show any occurrences if happen
     public void qSearchByFlight() {
 
         String activeTab = tabPane.getSelectionModel().getSelectedItem().getId();
@@ -228,7 +225,6 @@ public class MainWindowContr implements Initializable {
         } else if (activeTab.equals("depature")) {
             depatureTable.setItems(flights);
         }
-
 
 
     }

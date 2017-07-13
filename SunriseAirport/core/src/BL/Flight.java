@@ -24,7 +24,6 @@ public class Flight {
     }
 
 
-
     @Override
     public String toString() {
         return "Flight{" +

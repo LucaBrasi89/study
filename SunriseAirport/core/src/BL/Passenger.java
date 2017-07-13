@@ -11,7 +11,7 @@ public class Passenger {
     private String nationality;
     private String passport;
     private String birthday;
-    private  String gender;
+    private String gender;
     private String classOfFlight;
 
     public Passenger(String flightNumber, String firstName, String lastName, String nationality, String passport, String birthday, String gender, String classOfFlight) {
@@ -96,7 +96,9 @@ public class Passenger {
         this.gender = gender;
     }
 
-    public String getFullName() {return (this.firstName + " " + this.lastName);}
+    public String getFullName() {
+        return (this.firstName + " " + this.lastName);
+    }
 
     public String getClassOfFlight() {
         return classOfFlight;

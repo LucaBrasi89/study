@@ -2,18 +2,17 @@ package DL;
 
 import BL.Passenger;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
  * Created by andrew on 13.07.17.
- *
- *
+ * <p>
+ * <p>
  * This class works with passengers table. It's provide following operations:
- *
- *  -update passenger data
- *  -remove passenger from table
- *  -insert passenger into the table
+ * <p>
+ * -update passenger data
+ * -remove passenger from table
+ * -insert passenger into the table
  */
 public class ModifyPassengers {
 
@@ -50,7 +49,6 @@ public class ModifyPassengers {
 //        }
 
     }
-
 
 
     @Override

@@ -5,15 +5,20 @@ import DL.ModifyPassengers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.List;
+import java.util.Queue;
+import java.util.ResourceBundle;
 
 /**
  * Created by andrew on 03.07.17.
@@ -59,7 +64,7 @@ public class UserSearchCont implements Initializable {
     }
 
 
-//    starting to fill the table when one appear
+    //    starting to fill the table when one appear
     public void fillPassengersTable() {
 
         ObservableList<Passenger> flights = FXCollections.observableArrayList();
@@ -73,27 +78,27 @@ public class UserSearchCont implements Initializable {
     }
 
 
-//    running to refill table. Do it with sorting results
+    //    running to refill table. Do it with sorting results
     public void refillPassengerTable() {
 
 
 //        getting a searchingKey
-            RadioButton selectedRadBtn = (RadioButton) searchingKey.getSelectedToggle();
-            String filterKey = selectedRadBtn.getText().toString();
-            String filterValue;
-            if (filterKey.equals("name")) {
-                filterValue = nameField.getText();
-            } else if (filterKey.equals("port")) {
-                filterValue = portField.getText();
+        RadioButton selectedRadBtn = (RadioButton) searchingKey.getSelectedToggle();
+        String filterKey = selectedRadBtn.getText().toString();
+        String filterValue;
+        if (filterKey.equals("name")) {
+            filterValue = nameField.getText();
+        } else if (filterKey.equals("port")) {
+            filterValue = portField.getText();
 
-            } else {
-                filterValue = passportField.getText();
-            }
+        } else {
+            filterValue = passportField.getText();
+        }
 
         ObservableList<Passenger> flights = FXCollections.observableArrayList();
         List<Passenger> filteredPassList = fp.getFilteredPassengers(filterKey, filterValue);
 
-        for (Passenger passenger : filteredPassList ) {
+        for (Passenger passenger : filteredPassList) {
 
             flights.add(passenger);
         }
@@ -113,7 +118,7 @@ public class UserSearchCont implements Initializable {
 
     }
 
-//    updating passengers from stack of changes
+    //    updating passengers from stack of changes
     public void savePassengersTable() {
 
         passengersTable.refresh();
@@ -125,6 +130,53 @@ public class UserSearchCont implements Initializable {
 
     }
 
+
+    //    invoking window for add new passengers
+    public void passengerAddWin() throws IOException {
+
+//      set "add" mode
+        PassengerContext.getInstance().setActionState("add");
+
+        Parent root = FXMLLoader.load(getClass().getResource("/UI/PassengerModify.fxml"));
+        Stage psngrModifyWin = new Stage();
+        psngrModifyWin.setScene(new Scene(root));
+        psngrModifyWin.setTitle("Modify passenger data");
+        psngrModifyWin.show();
+    }
+
+    //    invoking window to edit passengers
+    public void passengerEditWin() throws IOException {
+
+//        get selected item for editing in table and set "edit" mode
+
+        Passenger selectedPsngr = (Passenger) passengersTable.getSelectionModel().getSelectedItem();
+        if (selectedPsngr == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("select table item");
+            alert.setHeaderText(null);
+            alert.setContentText("Please, select item before editing ");
+            alert.show();
+        } else {
+            PassengerContext.getInstance().setPsngr(selectedPsngr);
+            PassengerContext.getInstance().setActionState("edit");
+
+            Parent root = FXMLLoader.load(getClass().getResource("/UI/PassengerModify.fxml"));
+            Stage psngrModifyWin = new Stage();
+            psngrModifyWin.setScene(new Scene(root));
+            psngrModifyWin.setTitle("Modify passenger data");
+
+            psngrModifyWin.show();
+        }
+    }
+
+    //    for cancel button
+    public void closeWind(ActionEvent actionEvent) {
+
+        System.out.println("\nclosing UserSearchWindow\n");
+        Stage stage = (Stage) nameField.getScene().getWindow();
+        stage.close();
+
+    }
 
 
 }
