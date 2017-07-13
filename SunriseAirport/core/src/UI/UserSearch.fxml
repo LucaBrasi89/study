@@ -8,13 +8,13 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.cell.TextFieldTableCell?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.cell.TextFieldTableCell?>
 
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BL.UserSearchCont">
     <children>
@@ -125,8 +125,18 @@
                         </TableView>
                     </children>
                 </HBox>
+            <HBox prefHeight="50.0" prefWidth="800.0" spacing="50.0">
+               <children>
+                  <Button mnemonicParsing="false" text="insert" />
+                  <Button mnemonicParsing="false" text="delete" />
+                  <Button mnemonicParsing="false" text="update" />
+               </children>
+               <padding>
+                  <Insets left="300.0" top="10.0" />
+               </padding>
+            </HBox>
 
-                <GridPane prefHeight="75" prefWidth="800">
+                <GridPane prefHeight="50.0" prefWidth="800">
                     <columnConstraints>
                         <ColumnConstraints prefWidth="600" />
                         <ColumnConstraints prefWidth="100" />
@@ -141,8 +151,8 @@
                                 <Insets left="300.0" />
                             </GridPane.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="discard" GridPane.columnIndex="1" GridPane.halignment="CENTER" onAction="#discardChanges" />
-                        <Button mnemonicParsing="false" text="save" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+                        <Button mnemonicParsing="false" onAction="#discardChanges" text="discard" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                        <Button mnemonicParsing="false" onAction="#savePassengersTable" text="save" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
                     </children>
                 </GridPane>
             </children>

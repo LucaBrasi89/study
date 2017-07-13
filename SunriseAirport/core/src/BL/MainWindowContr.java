@@ -99,7 +99,7 @@ public class MainWindowContr implements Initializable {
         ObservableList<Flight> flights = FXCollections.observableArrayList();
 
         for (Flight flight : ff.getArrivals()) {
-            System.out.println(flight);
+//            System.out.println(flight);
             flights.add(flight);
         }
 
@@ -112,7 +112,7 @@ public class MainWindowContr implements Initializable {
         ObservableList<Flight> flights = FXCollections.observableArrayList();
 
         for (Flight flight : ff.getDepatures()) {
-            System.out.println(flight);
+//            System.out.println(flight);
             flights.add(flight);
         }
 
@@ -215,7 +215,7 @@ public class MainWindowContr implements Initializable {
 
         String activeTab = tabPane.getSelectionModel().getSelectedItem().getId();
         String fieldVal = searchByAirport.getText();
-        System.out.println(activeTab + "___" + fieldVal);
+//        System.out.println(activeTab + "___" + fieldVal);
 
         ObservableList<Flight> flights = FXCollections.observableArrayList();
 

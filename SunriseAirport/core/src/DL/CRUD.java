@@ -44,7 +44,6 @@ public class CRUD  {
         //STEP 4: Execute a query
         System.out.println("Creating statement...");
         Statement stmt = con.createStatement();
-        String sql;
         ResultSet rs = stmt.executeQuery(query);
 
         return rs;

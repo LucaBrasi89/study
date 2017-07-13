@@ -37,7 +37,9 @@ public class FetchPassengers {
             if (filterKey.equals("name")) {
                 if (filterValue.equals(passenger.getFullName())) {filteredPassList.add(passenger);}
             } else if (filterKey.equals("port")) {
-                //
+                filteredPassList = getFinalCity(filterValue);
+                break;
+
             } else {
                 if (filterValue.equals(passenger.getPassport())) {filteredPassList.add(passenger);}
             }
@@ -53,6 +55,50 @@ public class FetchPassengers {
         crud.closeConnection();
         super.finalize();
     }
+
+
+    public List<Passenger> getFinalCity(String city) {
+
+        passengerList = new ArrayList<Passenger>();
+        try {
+            ResultSet rs = crud.doQuery("CREATE TEMPORARY TABLE flightsTmp (SELECT flights.*, airports.city\n" +
+                    "FROM flights, airports\n" +
+                    "WHERE flights.airportName=airports.airportName);\n" +
+                    "\n" +
+                    "SELECT DISTINCT passengers.*, flightsTmp.city\n" +
+                    "FROM passengers, flightsTmp\n" +
+                    "WHERE passengers.flightNumber=flightsTmp.flight;");
+            while (rs.next()) {
+
+                String passport = rs.getString("passport");
+                String birthday = rs.getString("birthday");
+                for (Passenger passenger: passengerList) {
+                    if (passenger.getPassport().equals(passport) &&
+                            passenger.getBirthday().equals(birthday)) {
+
+                        passengerList.add(passenger);
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return passengerList;
+    }
+
+
+    /*CREATE TEMPORARY TABLE flightsTmp (SELECT flights.*, airports.city FROM flights, airports WHERE flights.airportName=airports.airportName);
+    SELECT DISTINCT passengers.*, flightsTmp.city FROM passengers, flightsTmp WHERE passengers.flightNumber=flightsTmp.flight*/
+
+
+//    CREATE TEMPORARY TABLE flightsTmp (SELECT flights.*, airports.city
+//            FROM flights, airports
+//                                               WHERE flights.airportName=airports.airportName);
+//
+//    SELECT DISTINCT passengers.*, flightsTmp.city
+//    FROM passengers, flightsTmp
+//    WHERE passengers.flightNumber=flightsTmp.flight;
 
 
     public List<Passenger> getAllPassengers() {
@@ -78,5 +124,9 @@ public class FetchPassengers {
 
         return passengerList;
     }
+
+
+
+
 
 }

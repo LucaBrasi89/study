@@ -1,6 +1,7 @@
 package BL;
 
 import DL.FetchPassengers;
+import DL.ModifyPassengers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,8 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * Created by andrew on 03.07.17.
@@ -38,6 +38,8 @@ public class UserSearchCont implements Initializable {
 
 
     private FetchPassengers fp;
+    // stack with changed passengers
+    private Queue<Integer> changedPsngrsStack = new ArrayDeque<>();
 
 
     @Override
@@ -48,7 +50,9 @@ public class UserSearchCont implements Initializable {
 
         passengersTable.setOnMousePressed(event -> {
             if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
-//                System.out.println(passengersTable.getSelectionModel().getSelectedItem());
+
+                changedPsngrsStack.add(passengersTable.getSelectionModel().getSelectedIndex());
+
             }
         });
 
@@ -81,6 +85,7 @@ public class UserSearchCont implements Initializable {
                 filterValue = nameField.getText();
             } else if (filterKey.equals("port")) {
                 filterValue = portField.getText();
+
             } else {
                 filterValue = passportField.getText();
             }
@@ -97,7 +102,7 @@ public class UserSearchCont implements Initializable {
     }
 
 
-//    refill table and clear seaching fields fields
+    //    refill table and clear searching fields fields
     public void discardChanges(ActionEvent actionEvent) {
 
         fillPassengersTable();
@@ -107,6 +112,21 @@ public class UserSearchCont implements Initializable {
         System.out.println("\nDISCARD CHANGES\n");
 
     }
+
+//    updating passengers from stack of changes
+    public void savePassengersTable() {
+
+        passengersTable.refresh();
+        ModifyPassengers mp = new ModifyPassengers();
+        for (int psngrIndex : changedPsngrsStack) {
+            Passenger psngr = (Passenger) passengersTable.getItems().get(psngrIndex);
+            mp.updatePassenger(psngr);
+        }
+
+    }
+
+
+
 }
 
 
