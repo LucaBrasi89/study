@@ -1,5 +1,6 @@
 package BL;
 
+import DL.ModifyPassengers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -60,16 +61,29 @@ public class PassengerModifyCont implements Initializable {
 
 
         if (PassengerContext.getInstance().getActionState().equals("add")) {
-
-            System.out.println("inserting mode");
             clearFields();
         } else {
-//                  System.out.println("editing mode");
             System.out.println(PassengerContext.getInstance().getPsngr());
             predefineValues(PassengerContext.getInstance().getPsngr());
-
-
         }
+
+
+//        validation
+
+        birthdayTField.textProperty().addListener((observable, oldValue, newValue) -> {
+            validateBirthdayField();
+        });
+    }
+
+    private void validateBirthdayField() {
+
+        String curName = birthdayTField.getText();
+        if (curName.matches("[1,2][0-9]{3}-[0,1][0-9]-[0,1,2,3][0-9]")){
+            birthdayTField.setStyle("-fx-text-fill: black");
+        } else {
+            birthdayTField.setStyle("-fx-text-fill: red");
+        }
+
 
     }
 
@@ -95,9 +109,26 @@ public class PassengerModifyCont implements Initializable {
         lastNameTField.setText(psngr.getLastName());
         nationalityTField.setText(psngr.getNationality());
         passportTField.setText(psngr.getPassport());
+//        get old values for identity row in table
+        PassengerContext.getInstance().setNonModifiedPassp(passportTField.getText());
         birthdayTField.setText(psngr.getBirthday());
+//        get old values for identity row in table
+        PassengerContext.getInstance().setNonModifiedBirth(birthdayTField.getText());
         genderChBox.setValue(psngr.getGender());
         classChBox.setValue(psngr.getClassOfFlight());
+    }
+
+
+    public Passenger getFieldsValues() {
+
+        Passenger psngr = new Passenger(flightNumberTField.getText(),
+                firstNameTField.getText(), lastNameTField.getText(),
+                nationalityTField.getText(), passportTField.getText(),
+                birthdayTField.getText(), (String) genderChBox.getValue(),
+                (String) classChBox.getValue());
+
+        return psngr;
+
     }
 
     public void clearFields() {
@@ -111,6 +142,16 @@ public class PassengerModifyCont implements Initializable {
         genderChBox.setValue("male");
         classChBox.setValue("business");
     }
+
+
+    public void saveToPassengers(ActionEvent actionEvent) {
+
+        new ModifyPassengers(getFieldsValues());
+        closeWind(new ActionEvent());
+
+    }
+
+
 
 
 }

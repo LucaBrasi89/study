@@ -230,9 +230,9 @@ public class MainWindowContr implements Initializable {
     }
 
 
-    public void userSearchWin() throws IOException {
+    public void passengerSearchWin() throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("/UI/UserSearch.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/UI/PassengerSearch.fxml"));
         Stage userSearchWin = new Stage();
 
         userSearchWin.setScene(new Scene(root));

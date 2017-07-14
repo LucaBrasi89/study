@@ -39,14 +39,29 @@ public class CRUD {
     public ResultSet doQuery(String query) throws SQLException {
 
         //STEP 4: Execute a query
-        System.out.println("Creating statement...");
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(query);
 
         return rs;
 
+    }
+
+
+    public void execQuery(String query) throws SQLException {
+
+        Statement stmt = con.createStatement();
+        stmt.executeUpdate(query);
 
     }
+
+    public void execQuery(String query, String message) throws SQLException {
+
+        System.out.println(message);
+        Statement stmt = con.createStatement();
+        stmt.executeUpdate(query);
+
+    }
+
 
 
     public void getProperties() {
@@ -56,7 +71,8 @@ public class CRUD {
 
         try {
 
-            input = new FileInputStream("/media/Maindata/Дело/study/Java Exersises/SunriseAirport/core/src/properties.cfg");
+            input = new FileInputStream("" +
+                    "/media/Maindata/Дело/study/Java Exersises/SunriseAirport/core/src/resources/properties.cfg");
 
             // load a properties file
             prop.load(input);

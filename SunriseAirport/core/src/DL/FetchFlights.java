@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by andrew on 16.06.17.
  */
-public class FetchFlights {
+public class FetchFlights implements PassengerActoin {
 
     private CRUD crud;
     private List<Flight> arrivalFL;
@@ -18,6 +18,7 @@ public class FetchFlights {
 
 
     public FetchFlights() {
+
 
         this.crud = new CRUD();
 
@@ -118,7 +119,7 @@ public class FetchFlights {
 
 
     @Override
-    protected void finalize() throws Throwable {
+    public void finalize() throws Throwable {
 
         super.finalize();
         crud.closeConnection();

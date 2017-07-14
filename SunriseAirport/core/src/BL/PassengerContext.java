@@ -15,6 +15,10 @@ public class PassengerContext {
     private Passenger psngr;
     private String actionState;
 
+    private String nonModifiedBirth;
+    private String nonModifiedPassp;
+
+
     public Passenger getPsngr() {
 
         return psngr;
@@ -31,5 +35,22 @@ public class PassengerContext {
 
     public void setActionState(String actionState) {
         this.actionState = actionState;
+    }
+
+
+    public String getNonModifiedBirth() {
+        return nonModifiedBirth;
+    }
+
+    public void setNonModifiedBirth(String nonModifiedBirth) {
+        this.nonModifiedBirth = nonModifiedBirth;
+    }
+
+    public String getNonModifiedPassp() {
+        return nonModifiedPassp;
+    }
+
+    public void setNonModifiedPassp(String nonModifiedPassp) {
+        this.nonModifiedPassp = nonModifiedPassp;
     }
 }

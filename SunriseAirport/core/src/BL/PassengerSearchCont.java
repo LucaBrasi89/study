@@ -2,6 +2,8 @@ package BL;
 
 import DL.FetchPassengers;
 import DL.ModifyPassengers;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,8 +25,13 @@ import java.util.ResourceBundle;
 /**
  * Created by andrew on 03.07.17.
  */
-public class UserSearchCont implements Initializable {
+public class PassengerSearchCont implements Initializable {
 
+    @FXML
+    public Tooltip namePattern;
+
+    @FXML
+    public Tooltip passportPattern;
 
     @FXML
     private TextField nameField;
@@ -57,8 +64,15 @@ public class UserSearchCont implements Initializable {
             if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
 
                 changedPsngrsStack.add(passengersTable.getSelectionModel().getSelectedIndex());
-
             }
+        });
+
+        nameField.textProperty().addListener((observable, oldValue, newValue) -> {
+            validateNameField();
+        });
+
+        passportField.textProperty().addListener((observable, oldValue, newValue) -> {
+            validatePassportField();
         });
 
     }
@@ -118,17 +132,17 @@ public class UserSearchCont implements Initializable {
 
     }
 
-    //    updating passengers from stack of changes
-    public void savePassengersTable() {
-
-        passengersTable.refresh();
-        ModifyPassengers mp = new ModifyPassengers();
-        for (int psngrIndex : changedPsngrsStack) {
-            Passenger psngr = (Passenger) passengersTable.getItems().get(psngrIndex);
-            mp.updatePassenger(psngr);
-        }
-
-    }
+//    //    updating passengers from stack of changes
+//    public void savePassengersTable() {
+//
+//        passengersTable.refresh();
+//        ModifyPassengers mp = new ModifyPassengers();
+//        for (int psngrIndex : changedPsngrsStack) {
+//            Passenger psngr = (Passenger) passengersTable.getItems().get(psngrIndex);
+//            mp.updatePassenger(psngr);
+//        }
+//
+//    }
 
 
     //    invoking window for add new passengers
@@ -175,6 +189,30 @@ public class UserSearchCont implements Initializable {
         System.out.println("\nclosing UserSearchWindow\n");
         Stage stage = (Stage) nameField.getScene().getWindow();
         stage.close();
+    }
+
+
+//    change text of name field if it not match to pattern
+    public void validateNameField() {
+
+        String curName = nameField.getText();
+        if (curName.matches("[A-Z][a-z]{1,20} [A-Z][a-z]{1,20}")){
+            nameField.setStyle("-fx-text-fill: black");
+        } else {
+            nameField.setStyle("-fx-text-fill: red");
+        }
+
+    }
+
+//    change text of passport field if it not match to pattern
+    public void validatePassportField() {
+
+        String curName = passportField.getText();
+        if (curName.matches("[A-Z]{1,5}[0-9]{3,10}")){
+            passportField.setStyle("-fx-text-fill: black");
+        } else {
+            passportField.setStyle("-fx-text-fill: red");
+        }
 
     }
 

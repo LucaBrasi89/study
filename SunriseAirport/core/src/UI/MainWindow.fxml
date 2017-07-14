@@ -213,7 +213,7 @@
                     </items>
                     <SeparatorMenuItem/>
                     <items>
-                        <MenuItem mnemonicParsing="false" text="User search" onAction="#userSearchWin"/>
+                        <MenuItem mnemonicParsing="false" text="User search" onAction="#passengerSearchWin"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
