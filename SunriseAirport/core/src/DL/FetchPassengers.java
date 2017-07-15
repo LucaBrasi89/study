@@ -26,6 +26,9 @@ public class FetchPassengers implements PassengerActoin {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
+        createDetailsTable();
+
     }
 
 
@@ -61,49 +64,30 @@ public class FetchPassengers implements PassengerActoin {
     }
 
 
-    public List<Passenger> getFinalCity(String city) {
+    public List<Passenger> getFinalCity(String searchingCity) {
 
-        passengerList = new ArrayList<Passenger>();
+        List<Passenger> filteredPassList = new ArrayList<Passenger>();
         try {
-            ResultSet rs = crud.doQuery("CREATE TEMPORARY TABLE flightsTmp (SELECT flights.*, airports.city\n" +
-                    "FROM flights, airports\n" +
-                    "WHERE flights.airportName=airports.airportName);\n" +
-                    "\n" +
-                    "SELECT DISTINCT passengers.*, flightsTmp.city\n" +
-                    "FROM passengers, flightsTmp\n" +
+
+            ResultSet rs = crud.doQuery("SELECT passengers.*, flightsTmp.city FROM passengers, flightsTmp " +
                     "WHERE passengers.flightNumber=flightsTmp.flight;");
             while (rs.next()) {
 
-                String passport = rs.getString("passport");
-                String birthday = rs.getString("birthday");
-                for (Passenger passenger : passengerList) {
-                    if (passenger.getPassport().equals(passport) &&
-                            passenger.getBirthday().equals(birthday)) {
-
-                        passengerList.add(passenger);
-                    }
+                String existedCity = rs.getString("city");
+                if (existedCity.equals(searchingCity)) {
+                    filteredPassList.add(new Passenger(rs.getString("flightNumber"),
+                            rs.getString("firstName"), rs.getString("lastName"),
+                            rs.getString("nationality"), rs.getString("passport"),
+                            rs.getString("birthday"),rs.getString("gender"),
+                            rs.getString("classOfFlight")));
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return passengerList;
+        return filteredPassList;
     }
-
-
-    /*CREATE TEMPORARY TABLE flightsTmp (SELECT flights.*, airports.city FROM flights, airports WHERE flights.airportName=airports.airportName);
-    SELECT DISTINCT passengers.*, flightsTmp.city FROM passengers, flightsTmp WHERE passengers.flightNumber=flightsTmp.flight*/
-
-
-//    CREATE TEMPORARY TABLE flightsTmp (SELECT flights.*, airports.city
-//            FROM flights, airports
-//                                               WHERE flights.airportName=airports.airportName);
-//
-//    SELECT DISTINCT passengers.*, flightsTmp.city
-//    FROM passengers, flightsTmp
-//    WHERE passengers.flightNumber=flightsTmp.flight;
-
 
     public List<Passenger> getAllPassengers() {
 
@@ -127,6 +111,17 @@ public class FetchPassengers implements PassengerActoin {
         }
 
         return passengerList;
+    }
+
+    public void createDetailsTable() {
+
+        try {
+            crud.execQuery("CREATE TEMPORARY TABLE flightsTmp (SELECT flights.*, airports.city " +
+                    "FROM flights, airports WHERE flights.airportName=airports.airportName)");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
 

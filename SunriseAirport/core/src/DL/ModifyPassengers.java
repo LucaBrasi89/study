@@ -37,23 +37,6 @@ public class ModifyPassengers implements PassengerActoin {
 
     }
 
-//    public void updatePassenger(Passenger psngr) {
-//
-//        System.out.println(psngr);
-//        try {
-//            ResultSet rs = crud.doQuery(String.format(
-//                    "UPDATE passengers SET flightNumber=%s," +
-//                            "firstName=%s, lastName=%s, nationality=%s, " +
-//                            "passport=%s, birthday=%s, gender=%s, class=%s",
-//                    psngr.getFlightNumber(), psngr.getFirstName(),
-//                    psngr.getLastName(), psngr.getNationality(), psngr.getPassport(),
-//                    psngr.getBirthday(), psngr.getGender(), psngr.getClassOfFlight()
-//            ));
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//
-//    }
 
 
 //    generate a query depending on which button event from {add/edit}

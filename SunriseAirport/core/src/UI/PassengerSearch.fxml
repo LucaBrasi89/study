@@ -150,7 +150,7 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" text="delete">
+                        <Button mnemonicParsing="false" text="delete" onAction="#deletePassenger">
                             <graphic>
                                 <ImageView fitHeight="16" fitWidth="16" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -206,12 +206,12 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button mnemonicParsing="false"  text="save"
+                        <Button mnemonicParsing="false"  text="refresh"
                                 GridPane.columnIndex="2" GridPane.halignment="CENTER">
                             <graphic>
                                 <ImageView fitHeight="16" fitWidth="16" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="/resources/save.png"/>
+                                        <Image url="/resources/refresh.png"/>
                                     </image>
                                 </ImageView>
                             </graphic>

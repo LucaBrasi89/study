@@ -5,7 +5,7 @@ package DL;
  */
 public interface PassengerActoin {
 
-    CRUD crud = new CRUD();
+    CRUD crud = null;
 
     void finalize() throws Throwable  ;
 

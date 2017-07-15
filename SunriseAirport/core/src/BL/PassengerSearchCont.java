@@ -1,5 +1,6 @@
 package BL;
 
+import DL.DeletePassengers;
 import DL.FetchPassengers;
 import DL.ModifyPassengers;
 import javafx.beans.value.ChangeListener;
@@ -132,19 +133,6 @@ public class PassengerSearchCont implements Initializable {
 
     }
 
-//    //    updating passengers from stack of changes
-//    public void savePassengersTable() {
-//
-//        passengersTable.refresh();
-//        ModifyPassengers mp = new ModifyPassengers();
-//        for (int psngrIndex : changedPsngrsStack) {
-//            Passenger psngr = (Passenger) passengersTable.getItems().get(psngrIndex);
-//            mp.updatePassenger(psngr);
-//        }
-//
-//    }
-
-
     //    invoking window for add new passengers
     public void passengerAddWin() throws IOException {
 
@@ -217,6 +205,16 @@ public class PassengerSearchCont implements Initializable {
     }
 
 
+    public void deletePassenger(ActionEvent actionEvent) {
+
+        Passenger psngr = (Passenger) passengersTable.getSelectionModel().getSelectedItem();
+        if (psngr != null) {
+            new DeletePassengers(psngr);
+        } else {
+            System.out.println("Hey, choose someone!");
+        }
+
+    }
 }
 
 
