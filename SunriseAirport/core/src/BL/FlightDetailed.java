@@ -9,19 +9,20 @@ public class FlightDetailed {
     private String airportName;
     private String time;
     private String typeOfFlight;
-    private int economyPassengersCount;
-    private int businessPassengersCount;
+    private int economyPsngrCount;
+    private int businessPsngrCount;
     private int economyPrice;
     private int businessPrice;
 
+
     public FlightDetailed(String flightNumber, String airportName, String time, String typeOfFlight,
-                          int economyPassengersCount, int businessPassengersCount, int economyPrice, int businessPrice) {
+                          int economyPsngrCount, int businessPsngrCount, int economyPrice, int businessPrice) {
         this.flightNumber = flightNumber;
         this.airportName = airportName;
         this.time = time;
         this.typeOfFlight = typeOfFlight;
-        this.economyPassengersCount = economyPassengersCount;
-        this.businessPassengersCount = businessPassengersCount;
+        this.economyPsngrCount = economyPsngrCount;
+        this.businessPsngrCount = businessPsngrCount;
         this.economyPrice = economyPrice;
         this.businessPrice = businessPrice;
     }
@@ -58,20 +59,20 @@ public class FlightDetailed {
         this.typeOfFlight = typeOfFlight;
     }
 
-    public int getEconomyPassengersCount() {
-        return economyPassengersCount;
+    public int getEconomyPsngrCount() {
+        return economyPsngrCount;
     }
 
-    public void setEconomyPassengersCount(int economyPassengersCount) {
-        this.economyPassengersCount = economyPassengersCount;
+    public void setEconomyPsngrCount(int economyPsngrCount) {
+        this.economyPsngrCount = economyPsngrCount;
     }
 
-    public int getBusinessPassengersCount() {
-        return businessPassengersCount;
+    public int getBusinessPsngrCount() {
+        return businessPsngrCount;
     }
 
-    public void setBusinessPassengersCount(int businessPassengersCount) {
-        this.businessPassengersCount = businessPassengersCount;
+    public void setBusinessPsngrCount(int businessPsngrCount) {
+        this.businessPsngrCount = businessPsngrCount;
     }
 
     public int getEconomyPrice() {
@@ -88,5 +89,36 @@ public class FlightDetailed {
 
     public void setBusinessPrice(int businessPrice) {
         this.businessPrice = businessPrice;
+    }
+
+    public String getRoute() {
+
+        String route;
+        if (typeOfFlight.equals("ARRIVAL")) {
+            route = airportName + " - Sunrise";
+        } else {
+            route = "Sunrise - " + airportName;
+        }
+        return route;
+
+    }
+
+    public int getSumPsngrCount() {
+
+        return (economyPsngrCount + businessPsngrCount);
+    }
+
+    @Override
+    public String toString() {
+        return "FlightDetailed { " +
+                "flightNumber='" + flightNumber + '\'' +
+                ", airportName='" + airportName + '\'' +
+                ", time='" + time + '\'' +
+                ", typeOfFlight='" + typeOfFlight + '\'' +
+                ", economyPsngrCount=" + economyPsngrCount +
+                ", businessPsngrCount=" + businessPsngrCount +
+                ", economyPrice=" + economyPrice +
+                ", businessPrice=" + businessPrice +
+                '}';
     }
 }

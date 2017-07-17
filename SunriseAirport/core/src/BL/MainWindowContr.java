@@ -1,6 +1,7 @@
 package BL;
 
 import DL.FetchFlights;
+import DL.FetchFlightsDetailed;
 import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -87,7 +88,6 @@ public class MainWindowContr implements Initializable {
             searchByAirport.clear();
             fillDepatureTable();
         });
-
 
     }
 
@@ -226,7 +226,6 @@ public class MainWindowContr implements Initializable {
             depatureTable.setItems(flights);
         }
 
-
     }
 
 
@@ -236,9 +235,19 @@ public class MainWindowContr implements Initializable {
         Stage userSearchWin = new Stage();
 
         userSearchWin.setScene(new Scene(root));
-        userSearchWin.setTitle("User search window");
+        userSearchWin.setTitle("User search");
         userSearchWin.show();
 
+    }
+
+    public void flightSearchWin(ActionEvent actionEvent) throws IOException {
+
+        Parent root = FXMLLoader.load(getClass().getResource("/UI/FlightSearch.fxml"));
+        Stage userSearchWin = new Stage();
+
+        userSearchWin.setScene(new Scene(root));
+        userSearchWin.setTitle("Advanced flight search");
+        userSearchWin.show();
 
     }
 }
