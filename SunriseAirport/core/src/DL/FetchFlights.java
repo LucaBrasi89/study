@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by andrew on 16.06.17.
  */
-public class FetchFlights implements PassengerActoin {
+public class FetchFlights implements PassengerAction {
 
     private CRUD crud;
     private List<Flight> arrivalFL;

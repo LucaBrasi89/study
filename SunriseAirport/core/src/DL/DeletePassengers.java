@@ -7,7 +7,7 @@ import java.sql.SQLException;
 /**
  * Created by andrew on 16.07.17.
  */
-public class DeletePassengers implements PassengerActoin {
+public class DeletePassengers implements PassengerAction {
 
     private CRUD crud;
 

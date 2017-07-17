@@ -15,7 +15,7 @@ import java.sql.SQLException;
  * -remove passenger from table
  * -insert passenger into the table
  */
-public class ModifyPassengers implements PassengerActoin {
+public class ModifyPassengers implements PassengerAction {
 
     private CRUD crud;
     private Passenger psngr;

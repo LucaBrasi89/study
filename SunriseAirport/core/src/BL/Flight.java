@@ -10,7 +10,6 @@ public class Flight {
     private String time;
     private char terminal;
     private String status;
-//    private TypeOfFlight typeOfFlight;
 
 
     public Flight(String flight, String airportName, String time, char terminal, String status) {
@@ -20,7 +19,6 @@ public class Flight {
         this.time = time;
         this.terminal = terminal;
         this.status = status;
-//        this.typeOfFlight = typeOfFlight;
     }
 
 
