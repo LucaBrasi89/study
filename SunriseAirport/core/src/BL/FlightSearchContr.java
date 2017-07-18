@@ -1,18 +1,25 @@
-package UI;
+package BL;
 
 import BL.Flight;
 import BL.FlightDetailed;
+import BL.FlightDetailedContext;
 import DL.FetchFlightsDetailed;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +35,9 @@ public class FlightSearchContr implements Initializable {
 
     @FXML
     public TextField searchByFlight;
+
+    @FXML
+    public ContextMenu contextMenu;
 
     private List<FlightDetailed> flightsDetailed = new ArrayList<FlightDetailed>();
     private FetchFlightsDetailed ffd = new FetchFlightsDetailed();
@@ -45,6 +55,14 @@ public class FlightSearchContr implements Initializable {
             qSearchByFlight();
         });
 
+
+
+        flightsTable.setOnContextMenuRequested( e -> {
+
+            System.out.println("show details");
+            contextMenu.show(flightsTable, e.getScreenX(), e.getScreenY());
+
+        });
     }
 
 
@@ -55,6 +73,7 @@ public class FlightSearchContr implements Initializable {
             flights.add(flight);
         }
         flightsTable.setItems(flights);
+
 
     }
 
@@ -70,13 +89,38 @@ public class FlightSearchContr implements Initializable {
 
     }
 
-    public void closeApp(ActionEvent actionEvent) {
 
-        System.out.println("Quiting");
+    public void closeWin() {
+
+        System.out.println("close Flight search window");
         Stage stage = (Stage) flightsTable.getScene().getWindow();
         stage.close();
 
     }
+
+    public void showDetails() throws IOException {
+
+
+        FlightDetailedContext fdCon = FlightDetailedContext.getInstance();
+        fdCon.setFlight((FlightDetailed) flightsTable.getSelectionModel().getSelectedItem());
+        flightDetailedWin();
+
+
+    }
+
+
+    public void flightDetailedWin() throws IOException {
+
+        Parent root = FXMLLoader.load(getClass().getResource("/UI/FlightDetailed.fxml"));
+        Stage userSearchWin = new Stage();
+
+        userSearchWin.setScene(new Scene(root));
+        userSearchWin.setTitle("Look at more details");
+        userSearchWin.show();
+
+    }
+
+
 
 }
 

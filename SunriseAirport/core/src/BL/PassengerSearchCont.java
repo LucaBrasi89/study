@@ -172,7 +172,7 @@ public class PassengerSearchCont implements Initializable {
     }
 
     //    for cancel button
-    public void closeWind(ActionEvent actionEvent) {
+    public void closeWin(ActionEvent actionEvent) {
 
         System.out.println("\nclosing UserSearchWindow\n");
         Stage stage = (Stage) nameField.getScene().getWindow();

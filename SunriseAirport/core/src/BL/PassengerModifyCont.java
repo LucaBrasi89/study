@@ -89,7 +89,7 @@ public class PassengerModifyCont implements Initializable {
 
 
     //    for cancel button
-    public void closeWind(ActionEvent actionEvent) {
+    public void closeWin(ActionEvent actionEvent) {
 
         System.out.println("\nclosing PassengerModify window\n");
         Stage stage = (Stage) firstNameTField.getScene().getWindow();
@@ -147,7 +147,7 @@ public class PassengerModifyCont implements Initializable {
     public void saveToPassengers(ActionEvent actionEvent) {
 
         new ModifyPassengers(getFieldsValues());
-        closeWind(new ActionEvent());
+        closeWin(new ActionEvent());
 
     }
 

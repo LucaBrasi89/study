@@ -1,11 +1,15 @@
 package DL;
 
 import BL.Flight;
+import javafx.util.converter.DateTimeStringConverter;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
 
 /**
  * Created by andrew on 16.06.17.
@@ -41,11 +45,14 @@ public class FetchFlights implements PassengerAction {
             ResultSet rs = crud.doQuery("SELECT * FROM `flights` WHERE `typeOfFlight`='arrival'");
             while (rs.next()) {
 
+                String time = rs.getString("time");
+                String status = generateStatus(time, "ARRIVAL");
+
                 arrivalFL.add(new Flight(rs.getString("flight"),
                         rs.getString("airportName"),
-                        rs.getString("time"),
+                        time,
                         rs.getString("terminal").charAt(0),
-                        rs.getString("status")));
+                        status));
             }
 
 
@@ -65,12 +72,14 @@ public class FetchFlights implements PassengerAction {
         try {
             ResultSet rs = crud.doQuery("SELECT * FROM `flights` WHERE `typeOfFlight`='depature'");
             while (rs.next()) {
+                String time = rs.getString("time");
+                String status = generateStatus(time, "DEPATURE");
 
                 depatureFL.add(new Flight(rs.getString("flight"),
                         rs.getString("airportName"),
-                        rs.getString("time"),
+                        time,
                         rs.getString("terminal").charAt(0),
-                        rs.getString("status")));
+                        status));
             }
 
 
@@ -117,6 +126,36 @@ public class FetchFlights implements PassengerAction {
         return filteredFlightList;
     }
 
+
+    public String generateStatus(String time, String type) {
+
+        System.out.println(time);
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
+        LocalTime flightTime = LocalTime.from(LocalTime.parse(time, dtf)) ;
+
+
+        LocalTime now = LocalTime.now();
+        long minutesDiff = ChronoUnit.MINUTES.between(now, flightTime);
+        System.out.println(minutesDiff);
+
+        if (minutesDiff >= 20 && minutesDiff <= 120 && type.equals("DEPATURE") ) {
+            return "check-in";
+        } else if (minutesDiff < 20 && minutesDiff >= 0 && type.equals("DEPATURE")) {
+            return "boarding";
+        } else  if (minutesDiff < 0 && type.equals("DEPATURE")) {
+            return "departed";
+        } else if (minutesDiff < 180  && minutesDiff >= 0 && type.equals("ARRIVAL")) {
+            Random rand = new Random();
+            LocalTime sheduledTime = flightTime.plusMinutes(rand.nextInt(10));
+            return "sheduled " + String.valueOf(sheduledTime.getHour()+":"+sheduledTime.getMinute());
+
+        } else if(minutesDiff < 0  && type.equals("ARRIVAL")) {
+            return "landed";
+        }
+        else {
+            return "   -   ";
+        }
+    }
 
     @Override
     public void finalize() throws Throwable {

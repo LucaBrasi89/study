@@ -64,11 +64,11 @@
                 </GridPane>
                 <HBox>
                     <children>
-                        <Button mnemonicParsing="false" onAction="#closeWind" prefWidth="90.0" text="cancel">
+                        <Button mnemonicParsing="false" onAction="#closeWin" prefWidth="90.0" text="cancel">
                             <graphic>
                                 <ImageView fitHeight="16" fitWidth="16" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="/resources/cancel.png" />
+                                        <Image url="/resources/icons/cancel.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
@@ -80,7 +80,7 @@
                             <graphic>
                                 <ImageView fitHeight="16" fitWidth="16" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="/resources/OK.png" />
+                                        <Image url="/resources/icons/OK.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
