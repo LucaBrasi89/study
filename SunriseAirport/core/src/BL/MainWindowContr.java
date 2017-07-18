@@ -1,7 +1,7 @@
 package BL;
 
+import DL.AuthUser;
 import DL.FetchFlights;
-import DL.FetchFlightsDetailed;
 import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -96,7 +96,6 @@ public class MainWindowContr implements Initializable {
         ObservableList<Flight> flights = FXCollections.observableArrayList();
 
         for (Flight flight : ff.getArrivals()) {
-//            System.out.println(flight);
             flights.add(flight);
         }
 
@@ -109,7 +108,6 @@ public class MainWindowContr implements Initializable {
         ObservableList<Flight> flights = FXCollections.observableArrayList();
 
         for (Flight flight : ff.getDepatures()) {
-//            System.out.println(flight);
             flights.add(flight);
         }
 
@@ -149,27 +147,19 @@ public class MainWindowContr implements Initializable {
             alert.setHeaderText("We are sorry...");
             alert.setContentText("but you are trying to type wrong login or password.");
             alert.show();
-
         }
     }
 
 
     public boolean ifRoot(String user, String passwd) {
 
-        String originUser = "root";
-        String originPasswd = "root";
-        if (originUser.equals(user) && originPasswd.equals(passwd)) {
-
-            return true;
-        } else {
-
-            return false;
-        }
+        AuthUser authUser = new AuthUser();
+        return (boolean) authUser.apply(user, passwd);
     }
 
-    public void closeApp(ActionEvent actionEvent) {
+    public void closeApp() {
 
-        System.out.println("Quiting");
+        System.out.println("Quiting from Main window");
         Stage stage = (Stage) arrivalTable.getScene().getWindow();
         stage.close();
 
@@ -212,7 +202,6 @@ public class MainWindowContr implements Initializable {
 
         String activeTab = tabPane.getSelectionModel().getSelectedItem().getId();
         String fieldVal = searchByAirport.getText();
-//        System.out.println(activeTab + "___" + fieldVal);
 
         ObservableList<Flight> flights = FXCollections.observableArrayList();
 
@@ -231,7 +220,7 @@ public class MainWindowContr implements Initializable {
 
     public void passengerSearchWin() throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("/UI/PassengerSearch.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/UI/fxml/PassengerSearch.fxml"));
         Stage userSearchWin = new Stage();
 
         userSearchWin.setScene(new Scene(root));
@@ -242,7 +231,7 @@ public class MainWindowContr implements Initializable {
 
     public void flightSearchWin(ActionEvent actionEvent) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("/UI/FlightSearch.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/UI/fxml/FlightSearch.fxml"));
         Stage userSearchWin = new Stage();
 
         userSearchWin.setScene(new Scene(root));
@@ -250,4 +239,17 @@ public class MainWindowContr implements Initializable {
         userSearchWin.show();
 
     }
+
+
+    public void showAboutMe() {
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("About Me");
+        alert.setHeaderText("");
+        alert.setContentText("Author: Andrew Sotnikov\n\n" +
+                "Email: andrew.sotnikov.eng@gmail.com\n\nMainAcademy, Java course final project\n\nKyiv 2017");
+        alert.showAndWait();
+
+    }
 }
+

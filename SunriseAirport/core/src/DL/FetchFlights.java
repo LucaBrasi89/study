@@ -129,14 +129,11 @@ public class FetchFlights implements PassengerAction {
 
     public String generateStatus(String time, String type) {
 
-        System.out.println(time);
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
         LocalTime flightTime = LocalTime.from(LocalTime.parse(time, dtf)) ;
 
-
         LocalTime now = LocalTime.now();
         long minutesDiff = ChronoUnit.MINUTES.between(now, flightTime);
-        System.out.println(minutesDiff);
 
         if (minutesDiff >= 20 && minutesDiff <= 120 && type.equals("DEPATURE") ) {
             return "check-in";

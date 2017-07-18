@@ -1,12 +1,8 @@
 package BL;
 
-import BL.Flight;
-import BL.FlightDetailed;
-import BL.FlightDetailedContext;
 import DL.FetchFlightsDetailed;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,7 +12,6 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -111,7 +106,7 @@ public class FlightSearchContr implements Initializable {
 
     public void flightDetailedWin() throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("/UI/FlightDetailed.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/UI/fxml/FlightDetailed.fxml"));
         Stage userSearchWin = new Stage();
 
         userSearchWin.setScene(new Scene(root));

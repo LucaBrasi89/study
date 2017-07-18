@@ -2,9 +2,6 @@ package BL;
 
 import DL.DeletePassengers;
 import DL.FetchPassengers;
-import DL.ModifyPassengers;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -139,7 +136,7 @@ public class PassengerSearchCont implements Initializable {
 //      set "add" mode
         PassengerContext.getInstance().setActionState("add");
 
-        Parent root = FXMLLoader.load(getClass().getResource("/UI/PassengerModify.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/UI/fxml/PassengerModify.fxml"));
         Stage psngrModifyWin = new Stage();
         psngrModifyWin.setScene(new Scene(root));
         psngrModifyWin.setTitle("Modify passenger data");
@@ -162,7 +159,7 @@ public class PassengerSearchCont implements Initializable {
             PassengerContext.getInstance().setPsngr(selectedPsngr);
             PassengerContext.getInstance().setActionState("edit");
 
-            Parent root = FXMLLoader.load(getClass().getResource("/UI/PassengerModify.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/UI/fxml/PassengerModify.fxml"));
             Stage psngrModifyWin = new Stage();
             psngrModifyWin.setScene(new Scene(root));
             psngrModifyWin.setTitle("Modify passenger data");
