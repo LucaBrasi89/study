@@ -30,7 +30,7 @@
                                         <Tooltip fx:id="namePattern" text="follow this pattern: Name Lastname"/>
                                     </tooltip>
                                 </TextField>
-                                <TextField fx:id="portField" style="-fx-pref-width: 152;" GridPane.columnIndex="1"
+                                <TextField fx:id="cityField" style="-fx-pref-width: 152;" GridPane.columnIndex="1"
                                            GridPane.rowIndex="1"/>
                                 <TextField fx:id="passportField" style="-fx-pref-width: 40;" GridPane.columnIndex="1"
                                            GridPane.rowIndex="2">
@@ -55,7 +55,7 @@
                                         <ToggleGroup fx:id="searchingKey"/>
                                     </toggleGroup>
                                 </RadioButton>
-                                <RadioButton mnemonicParsing="false" text="port" toggleGroup="$searchingKey"
+                                <RadioButton mnemonicParsing="false" text="city" toggleGroup="$searchingKey"
                                              GridPane.rowIndex="1"/>
                                 <RadioButton mnemonicParsing="false" text="passport" toggleGroup="$searchingKey"
                                              GridPane.rowIndex="2"/>
@@ -150,7 +150,7 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" text="delete" onAction="#deletePassenger">
+                        <Button mnemonicParsing="false" onAction="#deletePassenger" text="delete">
                             <graphic>
                                 <ImageView fitHeight="16" fitWidth="16" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -184,7 +184,8 @@
                         <RowConstraints prefHeight="75"/>
                     </rowConstraints>
                     <children>
-                        <Button mnemonicParsing="false" onAction="#closeWin" text="cancel" textAlignment="CENTER">
+                        <Button cancelButton="true" mnemonicParsing="false" onAction="#closeWin" text="cancel"
+                                textAlignment="CENTER">
                             <graphic>
                                 <ImageView fitHeight="16" fitWidth="16" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -196,7 +197,7 @@
                                 <Insets left="300.0"/>
                             </GridPane.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#discardChanges" text="discard"
+                        <Button mnemonicParsing="false" visible="false" onAction="#refreshChanges" text="discard"
                                 GridPane.columnIndex="1" GridPane.halignment="CENTER">
                             <graphic>
                                 <ImageView fitHeight="16" fitWidth="16" pickOnBounds="true" preserveRatio="true">
@@ -206,7 +207,7 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button mnemonicParsing="false"  text="refresh"
+                        <Button mnemonicParsing="false" text="refresh" onAction="#refreshChanges"
                                 GridPane.columnIndex="2" GridPane.halignment="CENTER">
                             <graphic>
                                 <ImageView fitHeight="16" fitWidth="16" pickOnBounds="true" preserveRatio="true">

@@ -224,7 +224,7 @@ public class MainWindowContr implements Initializable {
         Stage userSearchWin = new Stage();
 
         userSearchWin.setScene(new Scene(root));
-        userSearchWin.setTitle("User search");
+        userSearchWin.setTitle("Passenger search");
         userSearchWin.show();
 
     }

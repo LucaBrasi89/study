@@ -1,7 +1,5 @@
 package BL;
 
-import BL.FlightDetailed;
-import BL.FlightDetailedContext;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,8 +26,8 @@ public class FlightsDetailedContr implements Initializable {
     public Label economyPrice;
     @FXML
     public Label economyPassengers;
-    @FXML
 
+    @FXML
 
 
     @Override
@@ -39,7 +37,7 @@ public class FlightsDetailedContr implements Initializable {
 
     }
 
-//    fill labels with data for more detailed information
+    //    fill labels with data for more detailed information
     public void fillLabels() {
 
         FlightDetailed flight = FlightDetailedContext.getInstance().getFlight();

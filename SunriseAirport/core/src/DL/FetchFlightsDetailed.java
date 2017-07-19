@@ -1,23 +1,30 @@
 package DL;
 
-import BL.Flight;
 import BL.FlightDetailed;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static javax.swing.UIManager.getInt;
 
 /**
  * Created by andrew on 16.06.17.
+ * <p>
+ * Fetching detailed data:
+ * <p>
+ * -flight number;
+ * -business class passengers quantity;
+ * -business class ticket price;
+ * -economy class passengers quantity;
+ * -economy class ticket price;
+ * <p>
+ * All this data uses in FlightDetailed window
  */
 public class FetchFlightsDetailed implements PassengerAction {
 
     private CRUD crud;
     private List<FlightDetailed> flightsDetailed = new ArrayList<FlightDetailed>();
-
-
 
     public FetchFlightsDetailed() {
 
@@ -35,7 +42,7 @@ public class FetchFlightsDetailed implements PassengerAction {
     }
 
 
-//          getting a list of all flights with details (route, class, cost).
+    //          getting a list of all flights with details (route, class, cost).
 //          Every flight devided by classOfFlight.
     public List<FlightDetailed> getRawFlights() {
 
@@ -48,22 +55,23 @@ public class FetchFlightsDetailed implements PassengerAction {
                     "FROM flights, prices WHERE flights.flight=prices.flightNumber " +
                     "ORDER BY flights.flight, prices.classOfFlight;");
             while (rs.next()) {
-                        String flightNumber =  rs.getString("flight");
-                        String airportName = rs.getString("airportName");
-                        String time = rs.getString("time");
-                        String typeOfFlight = rs.getString("typeOfFlight");
-                        int businessPrice;
-                        int economyPrice;
-                        if (rs.getString("classOfFlight").equals("business")) {
-                             businessPrice = rs.getInt("cost");
-                            economyPrice = 0;
-                        } else {
-                           businessPrice = 0;
-                            economyPrice = rs.getInt("cost");;
-                        }
+                String flightNumber = rs.getString("flight");
+                String airportName = rs.getString("airportName");
+                String time = rs.getString("time");
+                String typeOfFlight = rs.getString("typeOfFlight");
+                int businessPrice;
+                int economyPrice;
+                if (rs.getString("classOfFlight").equals("business")) {
+                    businessPrice = rs.getInt("cost");
+                    economyPrice = 0;
+                } else {
+                    businessPrice = 0;
+                    economyPrice = rs.getInt("cost");
+                    ;
+                }
 
-                        tmpFlights.add(new FlightDetailed(flightNumber, airportName, time, typeOfFlight,
-                                0, 0, economyPrice, businessPrice));
+                tmpFlights.add(new FlightDetailed(flightNumber, airportName, time, typeOfFlight,
+                        0, 0, economyPrice, businessPrice));
             }
 
         } catch (SQLException e) {
@@ -74,25 +82,22 @@ public class FetchFlightsDetailed implements PassengerAction {
     }
 
 
-
-
     public void fillPrice() {
 
         List<FlightDetailed> tmpFlights = getRawFlights();
 
-        for (int i = 0; i < tmpFlights.size(); i=i+2) {
+        for (int i = 0; i < tmpFlights.size(); i = i + 2) {
 
             FlightDetailed fdBus = tmpFlights.get(i);
-            FlightDetailed fdEco = tmpFlights.get(i+1);
+            FlightDetailed fdEco = tmpFlights.get(i + 1);
             flightsDetailed.add(new FlightDetailed(fdBus.getFlightNumber(), fdBus.getAirportName(), fdBus.getTime(),
-                    fdBus.getTypeOfFlight(),0,0, fdEco.getEconomyPrice(),
+                    fdBus.getTypeOfFlight(), 0, 0, fdEco.getEconomyPrice(),
                     fdBus.getBusinessPrice()));
         }
     }
 
 
-
-//
+    //
     public void fillPassCount() {
 
         for (FlightDetailed flightDetailed : flightsDetailed) {
@@ -101,12 +106,12 @@ public class FetchFlightsDetailed implements PassengerAction {
 
                 System.out.printf("");
                 ResultSet rs = crud.doQuery(String.format("SELECT COUNT(*) FROM passengers WHERE flightNumber='%s' " +
-                        "&& classOfFlight='business';",flightDetailed.getFlightNumber()));
+                        "&& classOfFlight='business';", flightDetailed.getFlightNumber()));
                 rs.next();
                 int businessPrice = rs.getInt(1);
 
                 rs = crud.doQuery(String.format("SELECT COUNT(*) FROM passengers WHERE flightNumber='%s' " +
-                        "&& classOfFlight='economy';",flightDetailed.getFlightNumber()));
+                        "&& classOfFlight='economy';", flightDetailed.getFlightNumber()));
                 rs.next();
                 int economyPrice = rs.getInt(1);
                 flightDetailed.setBusinessPsngrCount(businessPrice);
@@ -115,10 +120,7 @@ public class FetchFlightsDetailed implements PassengerAction {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
-
         }
-
     }
 
 
@@ -143,8 +145,6 @@ public class FetchFlightsDetailed implements PassengerAction {
         }
         return filteredFlightList;
     }
-
-
 
 
     @Override

@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -38,7 +39,6 @@ public class FlightSearchContr implements Initializable {
     private FetchFlightsDetailed ffd = new FetchFlightsDetailed();
 
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -51,8 +51,7 @@ public class FlightSearchContr implements Initializable {
         });
 
 
-
-        flightsTable.setOnContextMenuRequested( e -> {
+        flightsTable.setOnContextMenuRequested(e -> {
 
             System.out.println("show details");
             contextMenu.show(flightsTable, e.getScreenX(), e.getScreenY());
@@ -93,13 +92,22 @@ public class FlightSearchContr implements Initializable {
 
     }
 
+    //    showing details about chosen flight. Passengers count, prices.
+//    if nothing have chosen show message box with error, otherwise show details.
     public void showDetails() throws IOException {
 
-
         FlightDetailedContext fdCon = FlightDetailedContext.getInstance();
-        fdCon.setFlight((FlightDetailed) flightsTable.getSelectionModel().getSelectedItem());
-        flightDetailedWin();
-
+        FlightDetailed selectedFlight = (FlightDetailed) flightsTable.getSelectionModel().getSelectedItem();
+        if (selectedFlight == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("select table item");
+            alert.setHeaderText(null);
+            alert.setContentText("Please choose item before see details");
+            alert.show();
+        } else {
+            fdCon.setFlight(selectedFlight);
+            flightDetailedWin();
+        }
 
     }
 
@@ -114,7 +122,6 @@ public class FlightSearchContr implements Initializable {
         userSearchWin.show();
 
     }
-
 
 
 }

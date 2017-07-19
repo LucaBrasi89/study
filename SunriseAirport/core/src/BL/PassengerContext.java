@@ -2,6 +2,8 @@ package BL;
 
 /**
  * Created by andrew on 13.07.17.
+ * <p>
+ * Represents a mechanism for shared data between fxml controllers.
  */
 public class PassengerContext {
 

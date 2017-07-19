@@ -9,6 +9,8 @@ import java.util.List;
 
 /**
  * Created by andrew on 05.07.17.
+ * <p>
+ * Fetching flights for filling table in PassengersSearch window.
  */
 public class FetchPassengers implements PassengerAction {
 
@@ -41,7 +43,7 @@ public class FetchPassengers implements PassengerAction {
                 if (filterValue.equals(passenger.getFullName())) {
                     filteredPassList.add(passenger);
                 }
-            } else if (filterKey.equals("port")) {
+            } else if (filterKey.equals("city")) {
                 filteredPassList = getFinalCity(filterValue);
                 break;
 
@@ -78,7 +80,7 @@ public class FetchPassengers implements PassengerAction {
                     filteredPassList.add(new Passenger(rs.getString("flightNumber"),
                             rs.getString("firstName"), rs.getString("lastName"),
                             rs.getString("nationality"), rs.getString("passport"),
-                            rs.getString("birthday"),rs.getString("gender"),
+                            rs.getString("birthday"), rs.getString("gender"),
                             rs.getString("classOfFlight")));
                 }
             }

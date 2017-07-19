@@ -35,7 +35,7 @@ public class PassengerSearchCont implements Initializable {
     private TextField nameField;
 
     @FXML
-    private TextField portField;
+    private TextField cityField;
 
     @FXML
     private TextField passportField;
@@ -100,8 +100,8 @@ public class PassengerSearchCont implements Initializable {
         String filterValue;
         if (filterKey.equals("name")) {
             filterValue = nameField.getText();
-        } else if (filterKey.equals("port")) {
-            filterValue = portField.getText();
+        } else if (filterKey.equals("city")) {
+            filterValue = cityField.getText();
 
         } else {
             filterValue = passportField.getText();
@@ -119,14 +119,14 @@ public class PassengerSearchCont implements Initializable {
     }
 
 
-    //    refill table and clear searching fields fields
-    public void discardChanges(ActionEvent actionEvent) {
+    //    refill table and clear searching fields
+    public void refreshChanges(ActionEvent actionEvent) {
 
         fillPassengersTable();
         nameField.clear();
-        portField.clear();
+        cityField.clear();
         passportField.clear();
-        System.out.println("\nDISCARD CHANGES\n");
+        System.out.println("\nRefresh changes\n");
 
     }
 
@@ -153,7 +153,7 @@ public class PassengerSearchCont implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("select table item");
             alert.setHeaderText(null);
-            alert.setContentText("Please, select item before editing ");
+            alert.setContentText("Please choose item before editing ");
             alert.show();
         } else {
             PassengerContext.getInstance().setPsngr(selectedPsngr);
@@ -177,11 +177,11 @@ public class PassengerSearchCont implements Initializable {
     }
 
 
-//    change text of name field if it not match to pattern
+    //    change text of name field if it not match to pattern
     public void validateNameField() {
 
         String curName = nameField.getText();
-        if (curName.matches("[A-Z][a-z]{1,20} [A-Z][a-z]{1,20}")){
+        if (curName.matches("[A-Z][a-z]{1,20} [A-Z][a-z]{1,20}")) {
             nameField.setStyle("-fx-text-fill: black");
         } else {
             nameField.setStyle("-fx-text-fill: red");
@@ -189,11 +189,11 @@ public class PassengerSearchCont implements Initializable {
 
     }
 
-//    change text of passport field if it not match to pattern
+    //    change text of passport field if it not match to pattern
     public void validatePassportField() {
 
         String curName = passportField.getText();
-        if (curName.matches("[A-Z]{1,5}[0-9]{3,10}")){
+        if (curName.matches("[A-Z]{1,5}[0-9]{3,10}")) {
             passportField.setStyle("-fx-text-fill: black");
         } else {
             passportField.setStyle("-fx-text-fill: red");

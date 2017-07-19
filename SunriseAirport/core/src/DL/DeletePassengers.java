@@ -6,6 +6,9 @@ import java.sql.SQLException;
 
 /**
  * Created by andrew on 16.07.17.
+ * <p>
+ * Represents a mechanism for deleting passengers from 'passengers table'.
+ * Working with 'delete' btn in passenger search window.
  */
 public class DeletePassengers implements PassengerAction {
 

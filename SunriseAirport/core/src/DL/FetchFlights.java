@@ -1,18 +1,20 @@
 package DL;
 
 import BL.Flight;
-import javafx.util.converter.DateTimeStringConverter;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 /**
  * Created by andrew on 16.06.17.
+ * <p>
+ * Fetching flights for filling tables in MainWindow.
  */
 public class FetchFlights implements PassengerAction {
 
@@ -42,7 +44,7 @@ public class FetchFlights implements PassengerAction {
         arrivalFL = new ArrayList<Flight>();
 
         try {
-            ResultSet rs = crud.doQuery("SELECT * FROM `flights` WHERE `typeOfFlight`='arrival'");
+            ResultSet rs = crud.doQuery("SELECT * FROM `flights` WHERE `typeOfFlight`='arrival' ORDER BY time");
             while (rs.next()) {
 
                 String time = rs.getString("time");
@@ -70,7 +72,7 @@ public class FetchFlights implements PassengerAction {
         depatureFL = new ArrayList<Flight>();
 
         try {
-            ResultSet rs = crud.doQuery("SELECT * FROM `flights` WHERE `typeOfFlight`='depature'");
+            ResultSet rs = crud.doQuery("SELECT * FROM `flights` WHERE `typeOfFlight`='depature' ORDER BY time");
             while (rs.next()) {
                 String time = rs.getString("time");
                 String status = generateStatus(time, "DEPATURE");
@@ -130,26 +132,33 @@ public class FetchFlights implements PassengerAction {
     public String generateStatus(String time, String type) {
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
-        LocalTime flightTime = LocalTime.from(LocalTime.parse(time, dtf)) ;
+        LocalTime flightTime = LocalTime.from(LocalTime.parse(time, dtf));
 
         LocalTime now = LocalTime.now();
         long minutesDiff = ChronoUnit.MINUTES.between(now, flightTime);
 
-        if (minutesDiff >= 20 && minutesDiff <= 120 && type.equals("DEPATURE") ) {
+        if (minutesDiff >= 20 && minutesDiff <= 120 && type.equals("DEPATURE")) {
             return "check-in";
         } else if (minutesDiff < 20 && minutesDiff >= 0 && type.equals("DEPATURE")) {
             return "boarding";
-        } else  if (minutesDiff < 0 && type.equals("DEPATURE")) {
+        } else if (minutesDiff < 0 && type.equals("DEPATURE")) {
             return "departed";
-        } else if (minutesDiff < 180  && minutesDiff >= 0 && type.equals("ARRIVAL")) {
+        } else if (minutesDiff < 180 && minutesDiff >= 0 && type.equals("ARRIVAL")) {
             Random rand = new Random();
             LocalTime sheduledTime = flightTime.plusMinutes(rand.nextInt(10));
-            return "sheduled " + String.valueOf(sheduledTime.getHour()+":"+sheduledTime.getMinute());
+//            getMinute can return minutes if single-digit format. Following upgrade it to
+//            double-digit
+            String formattedMin;
+            if (sheduledTime.getMinute() < 10) {
+                formattedMin = "0" + sheduledTime.getMinute();
+            } else {
+                formattedMin = String.valueOf(sheduledTime.getMinute());
+            }
+            return "sheduled " + String.valueOf(sheduledTime.getHour() + ":" + formattedMin);
 
-        } else if(minutesDiff < 0  && type.equals("ARRIVAL")) {
+        } else if (minutesDiff < 0 && type.equals("ARRIVAL")) {
             return "landed";
-        }
-        else {
+        } else {
             return "   -   ";
         }
     }

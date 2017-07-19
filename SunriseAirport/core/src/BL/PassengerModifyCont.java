@@ -78,7 +78,7 @@ public class PassengerModifyCont implements Initializable {
     private void validateBirthdayField() {
 
         String curName = birthdayTField.getText();
-        if (curName.matches("[1,2][0-9]{3}-[0,1][0-9]-[0,1,2,3][0-9]")){
+        if (curName.matches("[1,2][0-9]{3}-[0,1][0-9]-[0,1,2,3][0-9]")) {
             birthdayTField.setStyle("-fx-text-fill: black");
         } else {
             birthdayTField.setStyle("-fx-text-fill: red");
@@ -144,14 +144,13 @@ public class PassengerModifyCont implements Initializable {
     }
 
 
-    public void saveToPassengers(ActionEvent actionEvent) {
+    //    saving modified data and close win
+    public void saveToPassengers() {
 
         new ModifyPassengers(getFieldsValues());
         closeWin(new ActionEvent());
 
     }
-
-
 
 
 }

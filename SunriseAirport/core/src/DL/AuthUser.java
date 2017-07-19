@@ -10,6 +10,9 @@ import java.util.function.Function;
 
 /**
  * Created by andrew on 18.07.17.
+ * <p>
+ * Represents a mechanism of checking users with highest permissions.
+ * Getting login and  MD5 sum of password. Compare it with existing in base.
  */
 public class AuthUser implements BiFunction {
 
@@ -23,7 +26,6 @@ public class AuthUser implements BiFunction {
         String login = (String) o;
         String passwd = (String) o2;
 
-
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] messageDigest = md.digest(passwd.getBytes());
@@ -34,7 +36,7 @@ public class AuthUser implements BiFunction {
                 passwdMD5 = "" + passwdMD5;
             }
             crud.createConnection();
-            ResultSet rs = crud.doQuery(String.format("SELECT password FROM permittedUsers WHERE login='%s'",login));
+            ResultSet rs = crud.doQuery(String.format("SELECT password FROM permittedUsers WHERE login='%s'", login));
             rs.next();
             if (rs.getString(1).equals(passwdMD5)) {
                 authComplete = true;
@@ -55,16 +57,10 @@ public class AuthUser implements BiFunction {
         return authComplete;
     }
 
-
-
     @Override
     public BiFunction andThen(Function after) {
 
         return null;
     }
-
-
-
-
 
 }

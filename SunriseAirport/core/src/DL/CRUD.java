@@ -8,9 +8,13 @@ import java.util.Properties;
 
 /**
  * Created by andrew on 22.06.17.
+ * <p>
+ * Represents a low-level mechanis for working with MySQL DB.
+ * Contain basic operations: create connections, send queries, close connections.
+ * Data for connections get from property file.
  */
-public class CRUD {
 
+public class CRUD {
 
     private Connection con;
     private String JDBC_DRIVER = "com.mysql.jdbc.Driver";
@@ -35,7 +39,7 @@ public class CRUD {
 
     }
 
-
+    //    represents a mechanism for working with SELECT qeuries
     public ResultSet doQuery(String query) throws SQLException {
 
         //STEP 4: Execute a query
@@ -47,6 +51,7 @@ public class CRUD {
     }
 
 
+    //    represents a mechanism for working with INSERT qeuries
     public void execQuery(String query) throws SQLException {
 
         Statement stmt = con.createStatement();
@@ -54,16 +59,7 @@ public class CRUD {
 
     }
 
-    public void execQuery(String query, String message) throws SQLException {
-
-        System.out.println(message);
-        Statement stmt = con.createStatement();
-        stmt.executeUpdate(query);
-
-    }
-
-
-
+    //    parsing property file for getting connection
     public void getProperties() {
 
         prop = new Properties();
@@ -71,9 +67,7 @@ public class CRUD {
 
         try {
 
-            input = new FileInputStream("" +
-                    "/media/Maindata/Дело/study/Java Exersises/SunriseAirport/core/src/resources/properties.cfg");
-
+            input = new FileInputStream("core/src/resources/properties.cfg");
             // load a properties file
             prop.load(input);
 
@@ -93,9 +87,8 @@ public class CRUD {
                 }
             }
         }
-
-
     }
+
 
     public void closeConnection() {
 
@@ -104,8 +97,5 @@ public class CRUD {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
-
-
 }

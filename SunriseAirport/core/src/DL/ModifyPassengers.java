@@ -8,12 +8,8 @@ import java.sql.SQLException;
 /**
  * Created by andrew on 13.07.17.
  * <p>
- * <p>
- * This class works with passengers table. It's provide following operations:
- * <p>
- * -update passenger data
- * -remove passenger from table
- * -insert passenger into the table
+ * Represents a mechanism for add and edit passengers to 'passengers table'.
+ * Working with 'add' and 'edit' btns in passenger search window.
  */
 public class ModifyPassengers implements PassengerAction {
 
@@ -38,8 +34,7 @@ public class ModifyPassengers implements PassengerAction {
     }
 
 
-
-//    generate a query depending on which button event from {add/edit}
+    //    generate a query depending on which button event from {add/edit}
     public String generateQuery() {
 
         String query;
@@ -81,7 +76,6 @@ public class ModifyPassengers implements PassengerAction {
         crud.closeConnection();
         super.finalize();
     }
-
 
 
 }

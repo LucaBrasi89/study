@@ -1,7 +1,11 @@
+package resources;
+
 import java.util.*;
 
 /**
  * Created by andrew on 19.06.17.
+ * <p>
+ * Generate query string for filling Passengers in DB.
  */
 public class GenerateNames {
 
