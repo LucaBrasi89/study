@@ -1,11 +1,13 @@
 package BL;
 
+import java.util.Comparator;
+
 /**
  * Created by andrew on 16.06.17.
  * <p>
  * Advanced data structure for representing information about flight in details.
  */
-public class FlightDetailed {
+public class FlightDetailed  {
 
     private String flightNumber;
     private String airportName;
@@ -123,4 +125,6 @@ public class FlightDetailed {
                 ", businessPrice=" + businessPrice +
                 '}';
     }
+
+
 }

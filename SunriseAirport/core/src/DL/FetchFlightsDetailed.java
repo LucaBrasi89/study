@@ -135,16 +135,48 @@ public class FetchFlightsDetailed implements PassengerAction {
 
 
     //    retrun values of flights which sorted by flight
-    public List<FlightDetailed> getFiltFlight(String charSequence) {
+    public List<FlightDetailed> getFiltFlight(String charSequence, int lowerLim, int upperLim) {
 
         List<FlightDetailed> filteredFlightList = new ArrayList<>();
         for (FlightDetailed flight : flightsDetailed) {
-            if (flight.getFlightNumber().contains(charSequence)) {
+            if (flight.getFlightNumber().contains(charSequence)
+                    && flight.getEconomyPrice() >= lowerLim
+                    && flight.getBusinessPrice() <= upperLim) {
                 filteredFlightList.add(flight);
             }
         }
         return filteredFlightList;
     }
+
+    public int getMaxPrice() {
+
+
+        try {
+            ResultSet rs = crud.doQuery("SELECT MAX(cost) FROM prices;");
+            rs.next();
+            return rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+        return Integer.parseInt(null);
+
+    }
+
+    public int getMinPrice() {
+
+        try {
+            ResultSet rs = crud.doQuery("SELECT MIN(cost) FROM prices;");
+            rs.next();
+            return rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+        return Integer.parseInt(null);
+
+    }
+
 
 
     @Override

@@ -35,6 +35,12 @@ public class FlightSearchContr implements Initializable {
     @FXML
     public ContextMenu contextMenu;
 
+    @FXML
+    public TextField lowerLim;
+
+    @FXML
+    public TextField upperLim;
+
     private List<FlightDetailed> flightsDetailed = new ArrayList<FlightDetailed>();
     private FetchFlightsDetailed ffd = new FetchFlightsDetailed();
 
@@ -44,19 +50,24 @@ public class FlightSearchContr implements Initializable {
 
         showAllFlights();
 
-        //        define a behaviour for quick search TextFields
+        //        define a behaviour for quick FlightNumber quick search
         searchByFlight.addEventFilter(KeyEvent.KEY_RELEASED, e -> {
 
             qSearchByFlight();
         });
 
+        //        define a behaviour for limits of quick search
+        lowerLim.addEventFilter(KeyEvent.KEY_RELEASED, e -> {
 
-        flightsTable.setOnContextMenuRequested(e -> {
-
-            System.out.println("show details");
-            contextMenu.show(flightsTable, e.getScreenX(), e.getScreenY());
-
+            qSearchByFlight();
         });
+
+        upperLim.addEventFilter(KeyEvent.KEY_RELEASED, e -> {
+
+            qSearchByFlight();
+        });
+
+
     }
 
 
@@ -76,7 +87,21 @@ public class FlightSearchContr implements Initializable {
 
         ObservableList<FlightDetailed> flights = FXCollections.observableArrayList();
         String inputText = searchByFlight.getText();
-        for (FlightDetailed flight : ffd.getFiltFlight(inputText)) {
+        int lowerLim;
+        int upperLim;
+        if (this.lowerLim.getText().equals("")) {
+             lowerLim = ffd.getMinPrice();
+        } else {
+            lowerLim = Integer.parseInt(this.lowerLim.getText());
+        }
+
+        if (this.upperLim.getText().equals("")) {
+            upperLim = ffd.getMaxPrice();
+        } else {
+            upperLim = Integer.parseInt(this.upperLim.getText());
+        }
+
+        for (FlightDetailed flight : ffd.getFiltFlight(inputText,lowerLim,upperLim)) {
             flights.add(flight);
         }
         flightsTable.setItems(flights);

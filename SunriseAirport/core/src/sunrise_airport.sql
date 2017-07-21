@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 19, 2017 at 03:20 PM
--- Server version: 5.7.18-0ubuntu0.16.04.1
--- PHP Version: 7.0.15-0ubuntu0.16.04.4
+-- Generation Time: Jul 21, 2017 at 10:17 PM
+-- Server version: 5.7.19-0ubuntu0.16.04.1
+-- PHP Version: 7.0.18-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -854,8 +854,8 @@ INSERT INTO `prices` (`flightNumber`, `cost`, `classOfFlight`) VALUES
 ('TH 148', 442, 'economy'),
 ('UK 124', 601, 'business'),
 ('UK 124', 462, 'economy'),
-('UK 5712', 0, 'business'),
-('UK 5712', 0, 'economy'),
+('UK 5712', 696, 'business'),
+('UK 5712', 535, 'economy'),
 ('XE 1057', 603, 'business'),
 ('XE 1057', 464, 'economy');
 
