@@ -60,11 +60,13 @@ public class FlightSearchContr implements Initializable {
         lowerLim.addEventFilter(KeyEvent.KEY_RELEASED, e -> {
 
             qSearchByFlight();
+            validateMinLimField();
         });
 
         upperLim.addEventFilter(KeyEvent.KEY_RELEASED, e -> {
 
             qSearchByFlight();
+            validateMaxLimField();
         });
 
 
@@ -133,7 +135,6 @@ public class FlightSearchContr implements Initializable {
             fdCon.setFlight(selectedFlight);
             flightDetailedWin();
         }
-
     }
 
 
@@ -147,6 +148,33 @@ public class FlightSearchContr implements Initializable {
         userSearchWin.show();
 
     }
+
+
+//    validate fields with min pric limit. Input should be Int type
+//    and be in range 10..999. If it is out of range then will be paint
+//    in red.
+    public void validateMinLimField() {
+
+        String curName = lowerLim.getText();
+        if (curName.matches("[1-9][0-9]{1,2}")) {
+            lowerLim.setStyle("-fx-text-fill: black");
+        } else {
+            lowerLim.setStyle("-fx-text-fill: red");
+        }
+    }
+
+
+//    working same like "validateMinLimField"
+    public void validateMaxLimField() {
+
+        String curName = upperLim.getText();
+        if (curName.matches("[1-9][0-9]{1,2}")) {
+            upperLim.setStyle("-fx-text-fill: black");
+        } else {
+            upperLim.setStyle("-fx-text-fill: red");
+        }
+    }
+
 
 
 }

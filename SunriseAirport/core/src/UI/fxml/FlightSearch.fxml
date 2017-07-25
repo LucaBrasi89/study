@@ -18,6 +18,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.Tooltip?>
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BL.FlightSearchContr">
     <children>
         <HBox layoutX="22.0" layoutY="28.0" prefHeight="504.0" prefWidth="785.0" spacing="20">
@@ -54,8 +55,16 @@
                   </Label>
                   <HBox prefHeight="36.0" prefWidth="33.0" spacing="30.0">
                      <children>
-                        <TextField fx:id="lowerLim" />
-                        <TextField fx:id="upperLim" />
+                        <TextField fx:id="lowerLim" promptText="min limit" >
+                            <tooltip>
+                                <Tooltip  text="minimum price limit for quick filter, should contain only digits"/>
+                            </tooltip>
+                        </TextField>
+                        <TextField fx:id="upperLim" promptText="max limit">
+                            <tooltip>
+                                <Tooltip  text="maximum price limit for quick filter, should contain only digits"/>
+                            </tooltip>
+                        </TextField>
                      </children>
                      <VBox.margin>
                         <Insets left="10.0" />
