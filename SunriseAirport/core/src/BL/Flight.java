@@ -2,8 +2,6 @@ package BL;
 
 /**
  * Created by andrew on 16.06.17.
- * <p>
- * Basic data structure for representing information about flight.
  */
 public class Flight {
 

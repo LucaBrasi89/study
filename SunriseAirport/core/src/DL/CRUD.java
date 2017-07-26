@@ -19,6 +19,7 @@ public class CRUD {
     private Connection con;
     private String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     private Properties prop;
+    private String hostName;
     private String dbName;
     private String dbUser;
     private String dbPasswd;
@@ -35,7 +36,7 @@ public class CRUD {
         //STEP 2: Register JDBC driver
         Class.forName("com.mysql.jdbc.Driver");
         con = DriverManager.getConnection(
-                String.format("jdbc:mysql://localhost/%s", dbName), dbUser, dbPasswd);
+                String.format("jdbc:mysql://%s/%s", hostName, dbName), dbUser, dbPasswd);
 
     }
 
@@ -67,11 +68,12 @@ public class CRUD {
 
         try {
 
-            input = new FileInputStream("core/src/resources/properties.cfg");
+            input = new FileInputStream("core/src/resources/database.properties");
             // load a properties file
             prop.load(input);
 
             // get the property value and print it out
+            hostName = prop.getProperty("hostName");
             dbName = prop.getProperty("dbName");
             dbUser = prop.getProperty("dbUser");
             dbPasswd = prop.getProperty("dbPasswd");
