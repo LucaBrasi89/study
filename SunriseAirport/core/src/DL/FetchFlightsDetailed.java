@@ -50,12 +50,12 @@ public class FetchFlightsDetailed implements PassengerAction {
         List<FlightDetailed> tmpFlights = new ArrayList<FlightDetailed>();
 
         try {
-            ResultSet rs = crud.doQuery("SELECT flights.flight, flights.airportName, " +
+            ResultSet rs = crud.doQuery("SELECT flights.flightNumber, flights.airportName, " +
                     "flights.time, flights.typeOfFlight, prices.cost, prices.classOfFlight " +
-                    "FROM flights, prices WHERE flights.flight=prices.flightNumber " +
-                    "ORDER BY flights.flight, prices.classOfFlight;");
+                    "FROM flights, prices WHERE flights.flightNumber=prices.flightNumber " +
+                    "ORDER BY flights.flightNumber, prices.classOfFlight;");
             while (rs.next()) {
-                String flightNumber = rs.getString("flight");
+                String flightNumber = rs.getString("flightNumber");
                 String airportName = rs.getString("airportName");
                 String time = rs.getString("time");
                 String typeOfFlight = rs.getString("typeOfFlight");

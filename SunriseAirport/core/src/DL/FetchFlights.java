@@ -50,7 +50,7 @@ public class FetchFlights implements PassengerAction {
                 String time = rs.getString("time");
                 String status = generateStatus(time, "ARRIVAL");
 
-                arrivalFL.add(new Flight(rs.getString("flight"),
+                arrivalFL.add(new Flight(rs.getString("flightNumber"),
                         rs.getString("airportName"),
                         time,
                         rs.getString("terminal").charAt(0),
@@ -77,7 +77,7 @@ public class FetchFlights implements PassengerAction {
                 String time = rs.getString("time");
                 String status = generateStatus(time, "DEPATURE");
 
-                depatureFL.add(new Flight(rs.getString("flight"),
+                depatureFL.add(new Flight(rs.getString("flightNumber"),
                         rs.getString("airportName"),
                         time,
                         rs.getString("terminal").charAt(0),
