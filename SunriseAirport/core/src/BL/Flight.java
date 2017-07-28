@@ -3,20 +3,20 @@ package BL;
 /**
  * Created by andrew on 16.06.17.
  * <p>
- * Basic data structure for representing information about flight.
+ * Basic data structure for representing information about flightNumber.
  */
 public class Flight {
 
-    private String flight;
+    private String flightNumber;
     private String airportName;
     private String time;
     private char terminal;
     private String status;
 
 
-    public Flight(String flight, String airportName, String time, char terminal, String status) {
+    public Flight(String flightName, String airportName, String time, char terminal, String status) {
 
-        this.flight = flight;
+        this.flightNumber = flightName;
         this.airportName = airportName;
         this.time = time;
         this.terminal = terminal;
@@ -27,7 +27,7 @@ public class Flight {
     @Override
     public String toString() {
         return "Flight{" +
-                "flight='" + flight + '\'' +
+                "flightNumber='" + flightNumber + '\'' +
                 ", airportName='" + airportName + '\'' +
                 ", time='" + time + '\'' +
                 ", terminal=" + terminal +
@@ -36,12 +36,12 @@ public class Flight {
     }
 
 
-    public String getFlight() {
-        return flight;
+    public String getFlightNumber() {
+        return flightNumber;
     }
 
-    public void setFlight(String flight) {
-        this.flight = flight;
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
     }
 
     public String getAirportName() {

@@ -67,7 +67,7 @@
                         </GridPane>
                         <TableView fx:id="passengersTable" editable="true" prefHeight="525" prefWidth="715.0">
                             <columns>
-                                <TableColumn prefWidth="75.0" text="flight">
+                                <TableColumn prefWidth="75.0" text="flightNumber">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="flightNumber"/>
                                     </cellValueFactory>

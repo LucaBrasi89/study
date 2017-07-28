@@ -103,7 +103,7 @@ public class FetchFlights implements PassengerAction {
             flightsList = depatureFL;
         }
         for (Flight flight : flightsList) {
-            if (flight.getFlight().contains(charSequence)) {
+            if (flight.getFlightNumber().contains(charSequence)) {
                 filteredFlightList.add(flight);
             }
         }

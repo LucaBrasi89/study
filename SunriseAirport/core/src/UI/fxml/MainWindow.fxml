@@ -27,7 +27,7 @@
                                             </VBox.margin>
                                         </Label>
                                         <TextField fx:id="searchByFlight" focusTraversable="false"
-                                                   promptText="search by flight" style="-fx-pref-width: 40;">
+                                                   promptText="search by flightNumber" style="-fx-pref-width: 40;">
                                             <VBox.margin>
                                                 <Insets left="20.0" right="20.0"/>
                                             </VBox.margin>
@@ -99,9 +99,9 @@
                                                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                                                    AnchorPane.topAnchor="0.0">
                                             <columns>
-                                                <TableColumn id="flight" prefWidth="135.0" text="flight">
+                                                <TableColumn id="flightNumber" prefWidth="135.0" text="flightNumber">
                                                     <cellValueFactory>
-                                                        <PropertyValueFactory property="flight"/>
+                                                        <PropertyValueFactory property="flightNumber"/>
                                                     </cellValueFactory>
                                                 </TableColumn>
 
@@ -142,9 +142,9 @@
                                                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                                                    AnchorPane.topAnchor="0.0">
                                             <columns>
-                                                <TableColumn prefWidth="135.0" text="flight">
+                                                <TableColumn prefWidth="135.0" text="flightNumber">
                                                     <cellValueFactory>
-                                                        <PropertyValueFactory property="flight"/>
+                                                        <PropertyValueFactory property="flightNumber"/>
                                                     </cellValueFactory>
                                                 </TableColumn>
                                                 <TableColumn prefWidth="210" text="airport">

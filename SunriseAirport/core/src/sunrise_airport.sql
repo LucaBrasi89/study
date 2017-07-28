@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 21, 2017 at 10:17 PM
+-- Generation Time: Jul 28, 2017 at 09:43 PM
 -- Server version: 5.7.19-0ubuntu0.16.04.1
--- PHP Version: 7.0.18-0ubuntu0.16.04.1
+-- PHP Version: 7.0.15-0ubuntu0.16.04.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -59,8 +59,8 @@ INSERT INTO `airports` (`airportName`, `city`) VALUES
 --
 
 CREATE TABLE `flights` (
-  `flight` varchar(10) CHARACTER SET utf8 NOT NULL,
-  `airportName` text NOT NULL,
+  `flightNumber` varchar(10) CHARACTER SET utf8 NOT NULL,
+  `airportName` varchar(26) CHARACTER SET utf8 NOT NULL,
   `time` text NOT NULL,
   `terminal` text NOT NULL,
   `status` text NOT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE `flights` (
 -- Dumping data for table `flights`
 --
 
-INSERT INTO `flights` (`flight`, `airportName`, `time`, `terminal`, `status`, `typeOfFlight`) VALUES
+INSERT INTO `flights` (`flightNumber`, `airportName`, `time`, `terminal`, `status`, `typeOfFlight`) VALUES
 ('AU 717', 'Shanghai Pudong', '01:17', 'A', 'check-in', 'DEPATURE'),
 ('AZ 1271', 'John F Kennedy', '17:02', 'B', 'check-in', 'DEPATURE'),
 ('AZ 974', 'John F Kennedy', '14:51', 'E', 'check-in', 'DEPATURE'),
@@ -106,14 +106,14 @@ INSERT INTO `flights` (`flight`, `airportName`, `time`, `terminal`, `status`, `t
 --
 
 CREATE TABLE `passengers` (
-  `flightNumber` text NOT NULL,
+  `flightNumber` varchar(10) NOT NULL,
   `firstName` text NOT NULL,
   `lastName` text NOT NULL,
   `nationality` text NOT NULL,
   `passport` varchar(14) NOT NULL,
   `birthday` date NOT NULL,
   `gender` text NOT NULL,
-  `classOfFlight` text NOT NULL
+  `classOfFlight` varchar(10) NOT NULL DEFAULT 'economy'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -796,7 +796,7 @@ INSERT INTO `permittedUsers` (`login`, `password`) VALUES
 --
 
 CREATE TABLE `prices` (
-  `flightNumber` varchar(14) NOT NULL,
+  `flightNumber` varchar(10) NOT NULL,
   `cost` smallint(6) NOT NULL,
   `classOfFlight` varchar(10) NOT NULL DEFAULT 'economy'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -873,13 +873,17 @@ ALTER TABLE `airports`
 -- Indexes for table `flights`
 --
 ALTER TABLE `flights`
-  ADD PRIMARY KEY (`flight`);
+  ADD PRIMARY KEY (`flightNumber`),
+  ADD KEY `airportName` (`airportName`),
+  ADD KEY `flightNumber` (`flightNumber`);
 
 --
 -- Indexes for table `passengers`
 --
 ALTER TABLE `passengers`
-  ADD PRIMARY KEY (`passport`,`birthday`);
+  ADD PRIMARY KEY (`passport`,`birthday`),
+  ADD KEY `flightNumber` (`flightNumber`),
+  ADD KEY `classOfFlight` (`classOfFlight`);
 
 --
 -- Indexes for table `permittedUsers`
@@ -891,7 +895,30 @@ ALTER TABLE `permittedUsers`
 -- Indexes for table `prices`
 --
 ALTER TABLE `prices`
-  ADD PRIMARY KEY (`flightNumber`,`classOfFlight`);
+  ADD PRIMARY KEY (`flightNumber`,`classOfFlight`),
+  ADD KEY `classOfFlight` (`classOfFlight`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `flights`
+--
+ALTER TABLE `flights`
+  ADD CONSTRAINT `flights_ibfk_1` FOREIGN KEY (`airportName`) REFERENCES `airports` (`airportName`);
+
+--
+-- Constraints for table `passengers`
+--
+ALTER TABLE `passengers`
+  ADD CONSTRAINT `passengers_ibfk_1` FOREIGN KEY (`classOfFlight`) REFERENCES `prices` (`classOfFlight`);
+
+--
+-- Constraints for table `prices`
+--
+ALTER TABLE `prices`
+  ADD CONSTRAINT `prices_ibfk_1` FOREIGN KEY (`flightNumber`) REFERENCES `flights` (`flightNumber`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -86,7 +86,7 @@
             </VBox>
                 <TableView fx:id="flightsTable" prefHeight="514.0" prefWidth="560.0">
                     <columns>
-                        <TableColumn prefWidth="120.0" text="flight No">
+                        <TableColumn prefWidth="120.0" text="flightNumber No">
                             <cellValueFactory>
                                 <PropertyValueFactory property="flightNumber" />
                             </cellValueFactory>

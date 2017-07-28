@@ -39,7 +39,7 @@
                             </tooltip>
                         </TextField>
 
-                        <Label text="flight number:"/>
+                        <Label text="flightNumber number:"/>
                         <Label text="first name:" GridPane.rowIndex="1"/>
                         <Label text="last name:" GridPane.rowIndex="2"/>
                         <Label text="nationality:" GridPane.rowIndex="3"/>
