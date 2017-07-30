@@ -1,4 +1,4 @@
-package DL;
+package dl.model;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.util.Properties;
 /**
  * Created by andrew on 22.06.17.
  * <p>
- * Represents a low-level mechanis for working with MySQL DB.
+ * Represents a low-level mechanism for working with MySQL DB.
  * Contain basic operations: create connections, send queries, close connections.
  * Data for connections get from property file.
  */
@@ -17,7 +17,6 @@ import java.util.Properties;
 public class CRUD {
 
     private Connection con;
-    private String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     private Properties prop;
     private String hostName;
     private String dbName;
@@ -32,20 +31,18 @@ public class CRUD {
 
     public void createConnection() throws SQLException, ClassNotFoundException {
 
-
-        //STEP 2: Register JDBC driver
-        Class.forName("com.mysql.jdbc.Driver");
         con = DriverManager.getConnection(
                 String.format("jdbc:mysql://%s/%s", hostName, dbName), dbUser, dbPasswd);
 
     }
 
-    //    represents a mechanism for working with SELECT qeuries
+    //    represents a mechanism for working with SELECT queries
     public ResultSet doQuery(String query) throws SQLException {
 
-        //STEP 4: Execute a query
-        Statement stmt = con.createStatement();
+
+        PreparedStatement stmt = con.prepareStatement(query);
         ResultSet rs = stmt.executeQuery(query);
+
 
         return rs;
 
@@ -70,8 +67,7 @@ public class CRUD {
 
             input = new FileInputStream("core/src/resources/database.properties");
             // load a properties file
-            prop.load(input);
-
+            prop.load(getClass().getResourceAsStream("../../resources/database.properties"));
             // get the property value and print it out
             hostName = prop.getProperty("hostName");
             dbName = prop.getProperty("dbName");

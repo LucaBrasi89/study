@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <AnchorPane prefHeight="420" prefWidth="530.0" xmlns="http://javafx.com/javafx/8.0.112"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="BL.PassengerModifyCont">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="bl.controllers.PassengerModifyContr">
     <children>
         <VBox layoutX="84.0" layoutY="30.0" spacing="20">
             <children>
@@ -39,7 +39,7 @@
                             </tooltip>
                         </TextField>
 
-                        <Label text="flightNumber number:"/>
+                        <Label text="flightNumber:"/>
                         <Label text="first name:" GridPane.rowIndex="1"/>
                         <Label text="last name:" GridPane.rowIndex="2"/>
                         <Label text="nationality:" GridPane.rowIndex="3"/>

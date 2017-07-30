@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <AnchorPane prefHeight="331.0" prefWidth="550" xmlns="http://javafx.com/javafx/8.0.112"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="BL.FlightsDetailedContr">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="bl.controllers.FlightsDetailedContr">
     <children>
         <GridPane layoutX="65.0" layoutY="38.0" prefHeight="220" prefWidth="500">
             <columnConstraints>

@@ -1,6 +1,6 @@
-package DL;
+package dl.model;
 
-import BL.Flight;
+import dl.data.Flight;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

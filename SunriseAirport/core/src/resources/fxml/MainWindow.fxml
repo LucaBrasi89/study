@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <AnchorPane fx:id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="670" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.112"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="BL.MainWindowContr">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="bl.controllers.MainWindowContr">
     <children>
         <HBox layoutX="28.0" layoutY="92.0" prefHeight="530" prefWidth="977.0">
             <children>
@@ -111,17 +111,18 @@
                                                     </cellValueFactory>
                                                 </TableColumn>
                                                 <TableColumn id="time" minWidth="140.0" prefWidth="144.0"
-                                                             text="time of arrival"  style="-fx-alignment: CENTER;">
+                                                             text="time of arrival" style="-fx-alignment: CENTER;">
                                                     <cellValueFactory>
                                                         <PropertyValueFactory property="time"/>
                                                     </cellValueFactory>
                                                 </TableColumn>
-                                                <TableColumn id="terminal" prefWidth="100.0" text="terminal" style="-fx-alignment: CENTER;">
+                                                <TableColumn id="terminal" prefWidth="100.0" text="terminal"
+                                                             style="-fx-alignment: CENTER;">
                                                     <cellValueFactory>
                                                         <PropertyValueFactory property="terminal"/>
                                                     </cellValueFactory>
                                                 </TableColumn>
-                                                <TableColumn id="status" prefWidth="115.0" text="status" >
+                                                <TableColumn id="status" prefWidth="115.0" text="status">
                                                     <cellValueFactory>
                                                         <PropertyValueFactory property="status"/>
                                                     </cellValueFactory>
@@ -152,12 +153,14 @@
                                                         <PropertyValueFactory property="airportName"/>
                                                     </cellValueFactory>
                                                 </TableColumn>
-                                                <TableColumn prefWidth="140.0" text="time of depature"  style="-fx-alignment: CENTER;">
+                                                <TableColumn prefWidth="140.0" text="time of depature"
+                                                             style="-fx-alignment: CENTER;">
                                                     <cellValueFactory>
                                                         <PropertyValueFactory property="time"/>
                                                     </cellValueFactory>
                                                 </TableColumn>
-                                                <TableColumn prefWidth="100.0" text="terminal"  style="-fx-alignment: CENTER;">
+                                                <TableColumn prefWidth="100.0" text="terminal"
+                                                             style="-fx-alignment: CENTER;">
                                                     <cellValueFactory>
                                                         <PropertyValueFactory property="terminal"/>
                                                     </cellValueFactory>

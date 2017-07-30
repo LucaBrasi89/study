@@ -1,4 +1,4 @@
-package DL;
+package dl.model;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;

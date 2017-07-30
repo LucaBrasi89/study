@@ -1,6 +1,6 @@
-package DL;
+package dl.model;
 
-import BL.Passenger;
+import dl.data.Passenger;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

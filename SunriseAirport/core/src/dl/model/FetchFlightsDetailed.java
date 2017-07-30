@@ -1,6 +1,6 @@
-package DL;
+package dl.model;
 
-import BL.FlightDetailed;
+import dl.data.FlightDetailed;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -176,7 +176,6 @@ public class FetchFlightsDetailed implements PassengerAction {
         return Integer.parseInt(null);
 
     }
-
 
 
     @Override

@@ -1,4 +1,4 @@
-package UI;
+package ui;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -25,7 +25,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("fxml/MainWindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/MainWindow.fxml"));
         primaryStage.setScene(new Scene(root));
 
         primaryStage.setTitle("Sunrise");

@@ -1,5 +1,7 @@
-package BL;
+package bl.controllers;
 
+import dl.data.FlightDetailed;
+import dl.data.FlightDetailedContext;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

@@ -1,4 +1,4 @@
-package DL;
+package dl.model;
 
 /**
  * Created by andrew on 14.07.17.

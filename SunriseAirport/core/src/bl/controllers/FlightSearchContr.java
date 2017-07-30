@@ -1,6 +1,8 @@
-package BL;
+package bl.controllers;
 
-import DL.FetchFlightsDetailed;
+import dl.data.FlightDetailed;
+import dl.data.FlightDetailedContext;
+import dl.model.FetchFlightsDetailed;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -92,7 +94,7 @@ public class FlightSearchContr implements Initializable {
         int lowerLim;
         int upperLim;
         if (this.lowerLim.getText().equals("")) {
-             lowerLim = ffd.getMinPrice();
+            lowerLim = ffd.getMinPrice();
         } else {
             lowerLim = Integer.parseInt(this.lowerLim.getText());
         }
@@ -103,7 +105,7 @@ public class FlightSearchContr implements Initializable {
             upperLim = Integer.parseInt(this.upperLim.getText());
         }
 
-        for (FlightDetailed flight : ffd.getFiltFlight(inputText,lowerLim,upperLim)) {
+        for (FlightDetailed flight : ffd.getFiltFlight(inputText, lowerLim, upperLim)) {
             flights.add(flight);
         }
         flightsTable.setItems(flights);
@@ -140,7 +142,7 @@ public class FlightSearchContr implements Initializable {
 
     public void flightDetailedWin() throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("/UI/fxml/FlightDetailed.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/resources/fxml/FlightDetailed.fxml"));
         Stage userSearchWin = new Stage();
 
         userSearchWin.setScene(new Scene(root));
@@ -150,7 +152,7 @@ public class FlightSearchContr implements Initializable {
     }
 
 
-//    validate fields with min pric limit. Input should be Int type
+    //    validate fields with min pric limit. Input should be Int type
 //    and be in range 10..999. If it is out of range then will be paint
 //    in red.
     public void validateMinLimField() {
@@ -164,7 +166,7 @@ public class FlightSearchContr implements Initializable {
     }
 
 
-//    working same like "validateMinLimField"
+    //    working same like "validateMinLimField"
     public void validateMaxLimField() {
 
         String curName = upperLim.getText();
@@ -174,7 +176,6 @@ public class FlightSearchContr implements Initializable {
             upperLim.setStyle("-fx-text-fill: red");
         }
     }
-
 
 
 }

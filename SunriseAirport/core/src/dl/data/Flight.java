@@ -1,4 +1,4 @@
-package BL;
+package dl.data;
 
 /**
  * Created by andrew on 16.06.17.

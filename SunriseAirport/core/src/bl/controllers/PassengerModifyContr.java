@@ -1,6 +1,8 @@
-package BL;
+package bl.controllers;
 
-import DL.ModifyPassengers;
+import dl.data.Passenger;
+import dl.data.PassengerContext;
+import dl.model.ModifyPassengers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,7 +18,7 @@ import java.util.ResourceBundle;
 /**
  * Created by andrew on 13.07.17.
  */
-public class PassengerModifyCont implements Initializable {
+public class PassengerModifyContr implements Initializable {
 
     @FXML
     private TextField flightNumberTField;

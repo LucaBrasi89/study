@@ -1,7 +1,8 @@
-package BL;
+package bl.controllers;
 
-import DL.AuthUser;
-import DL.FetchFlights;
+import dl.data.Flight;
+import dl.model.AuthUser;
+import dl.model.FetchFlights;
 import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -220,7 +221,7 @@ public class MainWindowContr implements Initializable {
 
     public void passengerSearchWin() throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("/UI/fxml/PassengerSearch.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/resources/fxml/PassengerSearch.fxml"));
         Stage userSearchWin = new Stage();
 
         userSearchWin.setScene(new Scene(root));
@@ -231,7 +232,7 @@ public class MainWindowContr implements Initializable {
 
     public void flightSearchWin(ActionEvent actionEvent) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("/UI/fxml/FlightSearch.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/resources/fxml/FlightSearch.fxml"));
         Stage userSearchWin = new Stage();
 
         userSearchWin.setScene(new Scene(root));
