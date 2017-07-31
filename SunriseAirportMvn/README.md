@@ -27,7 +27,7 @@
     Prerequisites:
 
         -installed Java (version 1.8);
-        -internet connection for connected to remote DB;
+        -internet connection for reaching to remote DB;
 
     How to run:
 
