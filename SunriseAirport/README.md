@@ -1,10 +1,10 @@
-* ----- * ----- * ----- * ----- * ----- * ----- ** ----- * ----- * ----- * ----- * ----- * ----- *
+* ----- * ----- * ----- * ----- * ----- * ----- ** ----- * ----- *
 
                 SunriseAirport
 
                 Main Academy graduation project
 
-* ----- * ----- * ----- * ----- * ----- * ----- ** ----- * ----- * ----- * ----- * ----- * ----- *
+* ----- * ----- * ----- * ----- * ----- * ----- ** ----- * ----- * 
 
 
     Task:
@@ -27,7 +27,6 @@
     Prerequisites:
 
         -installed Java (version 1.8);
-	    -downloaded mysql-connector-java.jar (http://central.maven.org/maven2/mysql/mysql-connector-java/5.1.21/mysql-connector-java-5.1.21.jar)
         -internet connection for connected to remote DB;
 
     How to run:
