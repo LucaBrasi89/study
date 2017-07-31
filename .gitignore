@@ -2,5 +2,7 @@
 out/
 **/SunriseAirport.jar
 **/META-INF
+**/out
+**/target
 
 
