@@ -1,8 +1,8 @@
 * ----- * ----- * ----- * ----- * ----- * ----- ** ----- * ----- * ----- * ----- * ----- * ----- *
 
-                                    SunriseAirport
+                SunriseAirport
 
-                                    Main Academy graduation project
+                Main Academy graduation project
 
 * ----- * ----- * ----- * ----- * ----- * ----- ** ----- * ----- * ----- * ----- * ----- * ----- *
 
