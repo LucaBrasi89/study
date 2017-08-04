@@ -207,7 +207,7 @@ public class PassengerSearchContr implements Initializable {
         if (psngr != null) {
             new DeletePassengers(psngr);
         } else {
-            System.out.println("Hey, choose someone!");
+            Log.getInstance().info("Hey, choose someone!");
         }
 
     }

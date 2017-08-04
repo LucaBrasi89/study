@@ -73,7 +73,7 @@ public class FetchPassengers implements PassengerAction {
         try {
 
             ResultSet rs = crud.doQuery("SELECT passengers.*, flightsTmp.city FROM passengers, flightsTmp " +
-                    "WHERE passengers.flightNumber=flightsTmp.flight;");
+                    "WHERE passengers.flightNumber=flightsTmp.flightNumber;");
             while (rs.next()) {
 
                 String existedCity = rs.getString("city");

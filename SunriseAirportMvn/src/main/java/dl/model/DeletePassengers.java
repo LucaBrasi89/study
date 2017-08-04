@@ -20,7 +20,7 @@ public class DeletePassengers implements PassengerAction {
         this.crud = new CRUD();
         try {
             crud.createConnection();
-            Log.getInstance().info("Passenger: " + psngr.getFullName() + "was deleted");
+            Log.getInstance().info("Passenger: " + psngr.getFullName() + " was deleted");
             crud.execQuery(String.format("DELETE FROM passengers WHERE birthday='%s' && " +
                     "passport='%s'", psngr.getBirthday(), psngr.getPassport()));
         } catch (SQLException e) {
